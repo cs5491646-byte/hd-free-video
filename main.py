@@ -2,9 +2,10 @@ import os
 import telebot
 from yt_dlp import YoutubeDL
 
-# Cole o Token do seu bot entre as aspas abaixo
-API_TOKEN = 
-bot = telebot.Bot(8880654461:AAHGQbEEQ8sEzos_R4HZDD5mT1HfSWh5PnE)
+
+API_TOKEN = '8880654461:AAHGQbEEQ8sEzos_R...'
+bot = telebot.Bot(token=API_TOKEN)
+
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
