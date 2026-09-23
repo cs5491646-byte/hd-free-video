@@ -4,7 +4,7 @@ from yt_dlp import YoutubeDL
 
 
 API_TOKEN = '8880654461:AAHGQbEEQ8sEzos_R...'
-bot = telebot.Bot(token=API_TOKEN)
+bot = telebot.bot(token=API_TOKEN)
 
 
 @bot.message_handler(commands=['start', 'help'])
