@@ -5,292 +5,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📱 HD VIDEOS POV</title>
     <style>
-        /* ESTILO VISUAL GERAL (TEMA ESCURO PREMIUM) */
+        /* ESTILO VISUAL GERAL (TEMA ESCURO) */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            user-select: none;
             -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none; /* Bloqueia seleção de textos e cópias */
         }
 
         body {
             background-color: #000000;
             color: #ffffff;
             padding: 15px;
-            padding-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* TÍTULO PRINCIPAL */
         .titulo-pagina {
-            text-align: center;
-            font-size: 20px;
+            color: #2488ff; /* Azul idêntico ao da foto */
+            font-size: 18px;
             font-weight: bold;
-            color: #32bcad;
+            text-align: center;
             margin-top: 10px;
             margin-bottom: 15px;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* 1. BARRA DE PESQUISA COM LUPA */
+        /* BARRA DE PESQUISA (LUPA) */
         .container-pesquisa {
             width: 100%;
+            max-width: 450px;
+            position: relative;
             margin-bottom: 20px;
         }
 
-        .campo-pesquisa {
-            display: flex;
-            align-items: center;
-            background: #121212;
-            border: 1px solid #222;
-            border-radius: 25px;
-            padding: 12px 15px;
-        }
-
-        .campo-pesquisa span {
-            font-size: 18px;
-            margin-right: 10px;
-        }
-
-        #input-buscar {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-size: 16px;
+        .input-pesquisa {
             width: 100%;
+            background-color: #0f1115;
+            border: 1px solid #1c1f26;
+            border-radius: 25px;
+            padding: 12px 15px 12px 45px;
+            color: #ffffff;
+            font-size: 14px;
             outline: none;
         }
 
-        #input-buscar::placeholder {
-            color: #555555;
+        .input-pesquisa::placeholder {
+            color: #565e6d;
         }
 
-        /* CONTAINER DOS PRODUTOS */
-        .grade-produtos {
+        .icone-lupa {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #565e6d;
+        }
+
+        /* CONTAINER DOS PRODUTOS / VÍDEOS */
+        .lista-produtos {
+            width: 100%;
+            max-width: 450px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
-        /* 2. CARD DO PRODUTO */
-        .card-produto {
-            background: #0b0b0b;
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid #161616;
+        /* CARD DO VÍDEO */
+        .card-video {
+            background-color: #0d0e12;
+            border: 1px solid #1c1f2a;
+            border-radius: 18px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        /* PLAYER DE VÍDEO VERTICAL (9:16) */
+        /* PLAYER DE VÍDEO VERTICAL */
         .video-container {
             width: 100%;
-            background: #000;
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 15px;
+            background-color: #16181f;
+            aspect-ratio: 9 / 16; /* Força o formato vertical de Reels/TikTok */
+            max-height: 400px; /* Evita que fique gigante na tela */
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         video {
             width: 100%;
-            max-width: 100%;
-            aspect-ratio: 9 / 16; /* Força o formato vertical estilo Reels */
-            object-fit: cover;    /* Preenche perfeitamente a janela */
-            background-color: #000;
-            pointer-events: none; /* Evita cliques diretos e arrastes no vídeo */
+            height: 100%;
+            object-fit: cover; /* Garante que preencha o espaço vertical */
         }
 
-        /* DETALHES DO PRODUTO */
-        .detalhes h3 {
-            font-size: 18px;
+        /* TEXTOS DO CARD */
+        .titulo-video {
+            font-size: 16px;
+            font-weight: bold;
             color: #ffffff;
-            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
-        .detalhes p {
+        .descricao-video {
             font-size: 13px;
-            color: #888888;
+            color: #8a8f98;
             line-height: 1.4;
-            margin-bottom: 12px;
         }
 
-        .preco {
-            font-size: 22px;
-            font-weight: bold;
-            color: #00ff7f; /* Verde Neon */
-            display: block;
-            margin-bottom: 15px;
+        /* RODAPÉ DO CARD (PREÇO E BOTÃO) */
+        .rodape-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
         }
 
-        /* SISTEMA DE CHECKOUT E BOTÕES */
-        .checkout-pix {
-            background: #111;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #1a1a1a;
-        }
-
-        .instrucao-pix {
-            font-size: 12px;
-            color: #aaa;
-            margin-bottom: 8px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .input-pix {
-            width: 100%;
-            padding: 10px;
-            background: #000;
-            color: #fff;
-            border: 1px solid #222;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            text-align: center;
-            font-family: monospace;
-            font-size: 14px;
-        }
-
-        .btn-copiar, .btn-paguei {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-bottom: 8px;
-        }
-
-        .btn-copiar {
-            background: #222;
-            color: #fff;
-        }
-
-        .btn-paguei {
-            background: #32bcad; /* Azul Pix */
-            color: #fff;
-            margin-bottom: 0;
-        }
-
-        /* TELA DE SUCESSO E CÓDIGO SECRETO */
-        .tela-sucesso {
-            text-align: center;
-            padding: 15px 5px;
-            background: #0c1210;
-            border-radius: 12px;
-            border: 1px dashed #32bcad;
-        }
-
-        .codigo-secreto-exibir {
-            background: #000;
-            color: #00ff7f;
-            font-family: monospace;
+        .preco-video {
+            color: #39cc6c; /* Verde brilhante do preço */
             font-size: 18px;
             font-weight: bold;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #111;
-            display: inline-block;
-            margin: 15px 0;
-            letter-spacing: 1px;
         }
 
-        .btn-whatsapp-suporte {
-            display: block;
-            background: #25d366; /* Verde WhatsApp */
-            color: #fff;
-            text-decoration: none;
-            padding: 14px;
+        .btn-comprar {
+            background-color: #1a73e8; /* Azul do botão */
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 24px;
+            font-size: 14px;
             font-weight: bold;
-            border-radius: 8px;
-            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-comprar:hover {
+            background-color: #155cb4;
         }
     </style>
 </head>
 <body>
 
-    <!-- TÍTULO FIXO DO MINI APP -->
-    <h1 class="titulo-pagina">PRODUTOS EXCLUSIVOS (POV) 💎</h1>
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="titulo-pagina">PRODUTOS EXCLUSIVOS (POV) 💎</div>
 
-    <!-- 1. BARRA DE PESQUISA -->
+    <!-- BARRA DE PESQUISA COM LUPA -->
     <div class="container-pesquisa">
-        <div class="campo-pesquisa">
-            <span>🔍</span>
-            <input type="text" id="input-buscar" placeholder="Pesquisar por modelo ou produto..." onkeyup="filtrarProdutos()">
+        <span class="icone-lupa">🔍</span>
+        <input type="text" class="input-pesquisa" placeholder="Pesquisar por modelo ou produto...">
+    </div>
+
+    <!-- LISTA DE VÍDEOS -->
+    <div class="lista-produtos">
+
+        <!-- CARD 1: RELÓGIO DE LUXO -->
+        <div class="card-video">
+            <div class="video-container">
+                <!-- Substitua o src pelo link real do seu vídeo .mp4 -->
+                <video controls playsinline preload="metadata">
+                    <source src="link-do-seu-video-1.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+            <div class="titulo-video">Vídeo POV - Relógio de Luxo Prata</div>
+            <div class="descricao-video">
+                Vídeo exclusivo de 20 segundos em altíssima definição (estilo POV) focado nos reflexos e detalhes do mostrador. Perfeito para criativos de anúncios ou redes sociais.
+            </div>
+            <div class="rodape-card">
+                <div class="preco-video">R$ 9,90</div>
+                <a href="#" class="btn-comprar">Comprar Vídeo</a>
+            </div>
         </div>
+
+        <!-- CARD 2: TÊNIS STREETWEAR -->
+        <div class="card-video">
+            <div class="video-container">
+                <!-- Substitua o src pelo link real do seu vídeo .mp4 -->
+                <video controls playsinline preload="metadata">
+                    <source src="link-do-seu-video-2.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+            <div class="titulo-video">Vídeo POV - Tênis Streetwear</div>
+            <div class="descricao-video">
+                Gravação dinâmica de 20 segundos mostrando os detalhes do tênis em ambiente urbano. Ideal para Reels ou TikTok.
+            </div>
+            <div class="rodape-card">
+                <div class="preco-video">R$ 9,90</div>
+                <a href="#" class="btn-comprar">Comprar Vídeo</a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- GRADE DINÂMICA COM OS 100 MODELOS -->
-    <div class="grade-produtos" id="lista-de-produtos">
-        <!-- O script abaixo vai construir e injetar os 100 modelos aqui dentro automaticamente -->
-    </div>
-
-    <!-- CONFIGURAÇÕES E MOTORES DO MINI APP (JAVASCRIPT) -->
-    <script>
-        // CONFIGURAÇÃO CENTRAL: Cole o seu WhatsApp com o código do país (55) na frente
-        const CONFIG_WHATSAPP = "5511999999999"; 
-
-        // CONFIGURAÇÃO CENTRAL: Cole a sua Chave PIX Real ou Código Copia e Cola aqui
-        const CONFIG_CHAVE_PIX = "SUA_CHAVE_PIX_AQUI_OU_COPIA_E_COLA";
-
-        // LISTA DOS 100 MODELOS (Simulação automatizada para o arquivo ficar leve)
-        const listaProdutos = [];
-        for (let i = 1; i <= 100; i++) {
-            // Define nomes de exemplo usando termos comuns de busca (Relógio, Tênis, Phone) para testar a lupa
-            let nomeItem = `Modelo #${String(i).padStart(2, '0')}`;
-            if (i % 3 === 1) nomeItem += " - Relógio de Luxo Premium POV";
-            if (i % 3 === 2) nomeItem += " - Tênis Streetwear Urbano POV";
-            if (i % 3 === 0) nomeItem += " - Fone de Ouvido Wireless POV";
-
-            listaProdutos.push({
-                id: `prod-video-${i}`,
-                idInput: `pix-input-${i}`,
-                titulo: nomeItem,
-                descricao: `Criativo vertical de alta conversão gravado em altíssima definição (HD). O material oficial acompanha o arquivo limpo para postagem imediata e o link do fornecedor verificado.`,
-                preco: "R$ 9,90",
-                // Link de teste padrão do Firebase para renderizar os players verticais de exemplo
-                videoUrl: "https://googleapis.com"
-            });
-        }
-
-        // FUNÇÃO QUE INJETA OS 100 PRODUTOS NA TELA
-        const container = document.getElementById('lista-de-produtos');
-        listaProdutos.forEach(prod => {
-            const card = document.createElement('div');
-            card.className = 'card-produto';
-            card.id = prod.id;
-            card.innerHTML = `
-                <div class="tela-compra">
-                    <div class="video-container">
-                        <video src="${prod.videoUrl}" preload="none" controls controlsList="nodownload" oncontextmenu="return false;"></video>
-                    </div>
-                    <div class="detalhes">
-                        <h3>${prod.titulo}</h3>
-                        <p>${prod.descricao}</p>
-                        <span class="preco">${prod.preco}</span>
-                    </div>
-                    <div class="checkout-pix">
-                        <p class="instrucao-pix">COPIE O CÓDIGO PIX ABAIXO PARA GARANTIR O ACESSO:</p>
-                        <input type="text" value="${CONFIG_CHAVE_PIX}" id="${prod.idInput}" readonly class="input-pix">
-                        <button onclick="copiarPix('${prod.idInput}')" class="btn-copiar">📋 Copiar Código PIX</button>
-                        <button onclick="gerarCodigoSecreto('${prod.titulo.replace(/[^a-zA-Z0-9]/g, '_')}', '${prod.id}')" class="btn-paguei">⚡ Já fiz o PIX! Liberar Código</button>
-                    </div>
-                </div>
-                <div class="tela-sucesso" style="display: none;">
-                    <span style="font-size: 36px;">🔑</span>
-                    <h2 style="font-size: 20px; color: #32bcad; margin-bottom: 8px;">CÓDIGO GERADO!</h2>
-                    <p style="font-size: 13px; color: #bbb; line-height: 1.4;">Envie este <b>Código Secreto</b> exclusivo no suporte do WhatsApp junto com o comprovante para receber o arquivo HD original imediatamente:</p>
-                    <div class="codigo-secreto-exibir"></div>
-                    <a href="#" target="_blank" class="btn-whatsapp-suporte">📱 Enviar Código Secreto via WhatsApp</a>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-
-
+</body>
+</html>
