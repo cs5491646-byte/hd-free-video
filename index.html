@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📱 HD VIDEOS POV</title>
     <style>
-        /* ESTILO VISUAL GERAL (TEMA ESCURO) */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,10 +17,9 @@
         body {
             background-color: #000000;
             color: #ffffff;
-            padding-top: 70px; /* Espaço para o topo fixo não cobrir os vídeos */
+            padding-top: 85px;
         }
 
-        /* 🔍 TOPO FIXO COM BARRA DE PESQUISA (NUNCA SOME) */
         .header-fixo {
             position: fixed !important;
             top: 0 !important;
@@ -69,7 +67,6 @@
             font-size: 16px;
         }
 
-        /* 🎬 VITRINE DE PRODUTOS (3 POR LINHA / VERTICAL NO CELULAR) */
         .vitrine-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -81,7 +78,7 @@
 
         @media (max-width: 768px) {
             .vitrine-container {
-                grid-template-columns: repeat(1, 1fr); /* Fica em 1 coluna vertical perfeita no celular */
+                grid-template-columns: repeat(1, 1fr);
             }
         }
 
@@ -97,7 +94,7 @@
 
         .video-player {
             width: 100%;
-            height: 400px; /* Altura ideal para vídeo vertical de 20 segundos */
+            height: 400px;
             object-fit: cover;
             border-radius: 10px;
             background: #000;
@@ -132,14 +129,8 @@
             cursor: pointer;
             text-align: center;
             font-size: 14px;
-            transition: 0.2s;
         }
 
-        .btn-comprar:hover {
-            background: #0066cc;
-        }
-
-        /* 🔐 JANELA MODAL DO PIX (ANTI-FRAUDE) */
         .overlay-pix {
             display: none;
             position: fixed;
@@ -204,7 +195,6 @@
             font-size: 14px;
         }
 
-        /* 🎉 TELA DE SUCESSO RESTRITA (SÓ ABRE APÓS PAGAMENTO COMPROVADO) */
         .tela-sucesso {
             display: none;
         }
@@ -224,7 +214,6 @@
 </head>
 <body>
 
-    <!-- 🔍 TOPO COM A LUPA FIXA -->
     <div class="header-fixo">
         <div class="titulo-app">Produtos Exclusivos (POV) 💎</div>
         <div class="search-container">
@@ -233,14 +222,11 @@
         </div>
     </div>
 
-    <!-- 🎬 CONTAINER ONDE APARECEM OS VÍDEOS -->
     <div class="vitrine-container" id="vitrineProdutos"></div>
 
-    <!-- 🔐 ESTRUTURA SEGURO DO PIX -->
     <div id="pix-overlay" class="overlay-pix" onclick="fecharJanelaPix()"></div>
     <div id="pix-modal" class="modal-pix">
         
-        <!-- PARTE 1: MOSTRAR O PIX PARA PAGAR -->
         <div id="bloco-pagamento">
             <h3 style="color: #00ff7f; margin-bottom: 5px;">✓ Pix Gerado</h3>
             <p id="pix-produto-nome" style="font-size: 14px; font-weight: bold; margin-bottom: 10px;"></p>
@@ -250,36 +236,41 @@
             <button class="btn-verificar" onclick="verificarPagamentoReal()">🔄 Já paguei! Verificar e Liberar</button>
         </div>
 
-        <!-- PARTE 2: SUCESSO (BLOQUEADA E ESCONDIDA CONTRA FRAUDES) -->
         <div id="bloco-sucesso" class="tela-sucesso">
             <h2 style="color: #25d366; margin-bottom: 10px;">🎉 Pagamento Confirmado!</h2>
             <p style="font-size: 14px; color: #fff;">Sua compra foi processada pelo Mercado Pago com sucesso.</p>
             <a id="link-sucesso-whatsapp" href="#" target="_blank" class="btn-sucesso-whatsapp">
-                🚀 CLIQUE AQUI PARA RECEBER SEU VÍDEO NO WHATSAPP
+                🚀 CLIQUE AQUI PARA RECEBER SEU VIDEO E LINK
             </a>
         </div>
     </div>
 
     <script>
-        // CONFIGURAÇÕES DO MERCADO PAGO E WHATSAPP DO SEU NEGÓCIO
         const MP_ACCESS_TOKEN = "APP_USR-2030346022437362-092410-6ac6067c75f9a39df00132fdebcc2703-1023626070";
         const SEU_WHATSAPP = "5581920053746";
-
-        // ID DO PIX ATUAL PARA VERIFICAÇÃO SEGREDA ANTI-FRAUDE
         let pagamentoIdAtual = null; 
 
-        // 🗂️ BANCO DE DADOS DE 500 VÍDEOS AUTOMATIZADO
-        // Eu configurei os primeiros de exemplo. Para colocar os próximos, basta copiar a linha e mudar os dados!
         const listaProdutos = [
-            { id: 1, titulo: "Vídeo POV - Relógio de Luxo Prata", desc: "Gravação exclusiva focada nos reflexos do mostrador de safira e pulseira de aço inoxidável. Ideal para dropshipping.", videoUrl: "links_dos_seus_videos/relogio.mp4" },
-            { id: 2, titulo: "Vídeo POV - Tênis Streetwear", desc: "Gravação dinâmica de 20 segundos mostrando os detalhes do tênis em ambiente urbano. Ideal para Reels ou TikTok.", videoUrl: "links_dos_seus_videos/tenis.mp4" },
-            { id: 3, titulo: "Vídeo POV - Óculos Aviador Black", desc: "Demonstração premium em alta definição realçando o acabamento e as lentes polarizadas do produto.", videoUrl: "links_dos_seus_videos/oculos.mp4" },
-            
-            // Adicione do 4 ao 500 seguindo o mesmo padrão exato abaixo:
-            // { id: 4, titulo: "Nome do produto 4", desc: "Descrição do produto 4", videoUrl: "link_do_video_4.mp4" },
+            { 
+                id: 1, 
+                titulo: "Vídeo POV - Exemplo Relógio", 
+                desc: "Gravação teste com link real ativo para validação de carregamento e funcionamento em ambiente móvel.", 
+                videoUrl: "https://mixkit.co" 
+            },
+            { 
+                id: 2, 
+                titulo: "Vídeo POV - Exemplo Tênis", 
+                desc: "Segundo vídeo teste ativo na vitrine para demonstrar o alinhamento responsivo em colunas.", 
+                videoUrl: "https://mixkit.co" 
+            },
+            { 
+                id: 3, 
+                titulo: "Vídeo POV - Exemplo Óculos", 
+                desc: "Terceiro vídeo de teste público rodando de forma fluída no catálogo automático.", 
+                videoUrl: "https://mixkit.co" 
+            }
         ];
 
-        // ⚙️ GERA OS 500 PRODUTOS NA TELA SOZINHO
         function carregarVitrine() {
             const container = document.getElementById("vitrineProdutos");
             container.innerHTML = "";
@@ -291,3 +282,30 @@
                         <div class="video-titulo">#${prod.id} ${prod.titulo}</div>
                         <div class="video-desc">${prod.desc}</div>
                         <div class="video-preco">R$ 9,90</div>
+                        <button class="btn-comprar" onclick="gerarPixMercadoPago('${prod.id}', '${prod.titulo}')">Comprar Vídeo</button>
+                    </div>
+                `;
+            });
+        }
+
+        function filtrarProdutos() {
+            const termo = document.getElementById("inputPesquisa").value.toLowerCase();
+            const cards = document.querySelectorAll(".video-card");
+            
+            cards.forEach(card => {
+                const titulo = card.getAttribute("data-titulo");
+                if (titulo.includes(termo)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        async function gerarPixMercadoPago(id, titulo) {
+            alert("Aguarde... Solicitando código Pix ao Mercado Pago.");
+            
+            const payload = {
+                transaction_amount: 9.90,
+                description: `Produto #${id} - ${titulo}`,
+                payment_method_id: "pix",
