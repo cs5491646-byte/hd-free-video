@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📱 HD VIDEOS POV</title>
     <style>
-        /* ESTILO VISUAL GERAL (TEMA ESCURO) */
+        /* ESTILO VISUAL PREMIUM (TEMA ESCURO) */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,9 +24,9 @@
             align-items: center;
         }
 
-        /* TÍTULO PRINCIPAL */
+        /* TÍTULO EM AZUL EXATO */
         .titulo-pagina {
-            color: #2488ff; /* Azul idêntico ao da foto */
+            color: #2488ff;
             font-size: 18px;
             font-weight: bold;
             text-align: center;
@@ -68,7 +68,17 @@
             color: #565e6d;
         }
 
-        /* CONTAINER DOS PRODUTOS / VÍDEOS */
+        /* RESULTADOS ENCONTRADOS */
+        .contador-videos {
+            width: 100%;
+            max-width: 450px;
+            font-size: 13px;
+            color: #565e6d;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        /* CONTAINER DOS PRODUTOS */
         .lista-produtos {
             width: 100%;
             max-width: 450px;
@@ -77,7 +87,7 @@
             gap: 20px;
         }
 
-        /* CARD DO VÍDEO */
+        /* CARD DO VÍDEO COMPACTO E ORGANIZADO */
         .card-video {
             background-color: #0d0e12;
             border: 1px solid #1c1f2a;
@@ -88,14 +98,14 @@
             gap: 12px;
         }
 
-        /* PLAYER DE VÍDEO VERTICAL */
+        /* FORMATO VERTICAL 9:16 (TIKTOK/REELS) */
         .video-container {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
             background-color: #16181f;
-            aspect-ratio: 9 / 16; /* Força o formato vertical de Reels/TikTok */
-            max-height: 400px; /* Evita que fique gigante na tela */
+            aspect-ratio: 9 / 16;
+            max-height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -104,10 +114,9 @@
         video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Garante que preencha o espaço vertical */
+            object-fit: cover;
         }
 
-        /* TEXTOS DO CARD */
         .titulo-video {
             font-size: 16px;
             font-weight: bold;
@@ -121,7 +130,7 @@
             line-height: 1.4;
         }
 
-        /* RODAPÉ DO CARD (PREÇO E BOTÃO) */
+        /* RODAPÉ (PREÇO E BOTÃO) */
         .rodape-card {
             display: flex;
             justify-content: space-between;
@@ -130,13 +139,13 @@
         }
 
         .preco-video {
-            color: #39cc6c; /* Verde brilhante do preço */
+            color: #39cc6c;
             font-size: 18px;
             font-weight: bold;
         }
 
         .btn-comprar {
-            background-color: #1a73e8; /* Azul do botão */
+            background-color: #1a73e8;
             color: #ffffff;
             border: none;
             border-radius: 20px;
@@ -145,7 +154,7 @@
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.3s;
         }
 
         .btn-comprar:hover {
@@ -158,54 +167,77 @@
     <!-- TÍTULO DA PÁGINA -->
     <div class="titulo-pagina">PRODUTOS EXCLUSIVOS (POV) 💎</div>
 
-    <!-- BARRA DE PESQUISA COM LUPA -->
+    <!-- BARRA DE PESQUISA -->
     <div class="container-pesquisa">
         <span class="icone-lupa">🔍</span>
-        <input type="text" class="input-pesquisa" placeholder="Pesquisar por modelo ou produto...">
+        <input type="text" id="campoPesquisa" class="input-pesquisa" placeholder="Pesquisar por modelo ou produto...">
     </div>
 
-    <!-- LISTA DE VÍDEOS -->
-    <div class="lista-produtos">
+    <!-- CONTADOR DE VÍDEOS -->
+    <div id="contador" class="contador-videos">Mostrando 100 vídeos</div>
 
-        <!-- CARD 1: RELÓGIO DE LUXO -->
-        <div class="card-video">
-            <div class="video-container">
-                <!-- Substitua o src pelo link real do seu vídeo .mp4 -->
-                <video controls playsinline preload="metadata">
-                    <source src="link-do-seu-video-1.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeos.
-                </video>
-            </div>
-            <div class="titulo-video">Vídeo POV - Relógio de Luxo Prata</div>
-            <div class="descricao-video">
-                Vídeo exclusivo de 20 segundos em altíssima definição (estilo POV) focado nos reflexos e detalhes do mostrador. Perfeito para criativos de anúncios ou redes sociais.
-            </div>
-            <div class="rodape-card">
-                <div class="preco-video">R$ 9,90</div>
-                <a href="#" class="btn-comprar">Comprar Vídeo</a>
-            </div>
-        </div>
+    <!-- CONTAINER ONDE OS 100 VÍDEOS VÃO ENTRAR -->
+    <div class="lista-produtos" id="listaProdutos"></div>
 
-        <!-- CARD 2: TÊNIS STREETWEAR -->
-        <div class="card-video">
-            <div class="video-container">
-                <!-- Substitua o src pelo link real do seu vídeo .mp4 -->
-                <video controls playsinline preload="metadata">
-                    <source src="link-do-seu-video-2.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeos.
-                </video>
-            </div>
-            <div class="titulo-video">Vídeo POV - Tênis Streetwear</div>
-            <div class="descricao-video">
-                Gravação dinâmica de 20 segundos mostrando os detalhes do tênis em ambiente urbano. Ideal para Reels ou TikTok.
-            </div>
-            <div class="rodape-card">
-                <div class="preco-video">R$ 9,90</div>
-                <a href="#" class="btn-comprar">Comprar Vídeo</a>
-            </div>
-        </div>
+    <script>
+        // Modelos de produtos reais pedidos por você para simular a lista
+        const modelosBase = [
+            { titulo: "Vídeo POV - Relógio de Luxo Prata", desc: "Gravação exclusiva focada nos reflexos do mostrador de safira e pulseira de aço inoxidável. Ideal para dropshipping.", preco: "R\$ 9,90" },
+            { titulo: "Vídeo POV - Pijama Cetim Confort", desc: "Estilo estúdio POV mostrando o caimento perfeito, suavidade e brilho do tecido premium. Ótimo para anúncios.", preco: "R\$ 14,90" },
+            { titulo: "Vídeo POV - Cueca Boxer Seamless", desc: "Detalhes das costuras reforçadas e elasticidade do tecido tecnológico microfibra em alta definição.", preco: "R\$ 7,90" },
+            { titulo: "Vídeo POV - Sandália Flatform Verão", desc: "Foco nos detalhes do acabamento artesanal, textura das tiras e flexibilidade do solado.", preco: "R\$ 12,90" },
+            { titulo: "Vídeo POV - Tênis Streetwear Sport", desc: "Gravação dinâmica em ambiente urbano evidenciando os detalhes de design moderno e amortecimento.", preco: "R\$ 19,90" }
+        ];
 
-    </div>
+        const container = document.getElementById('listaProdutos');
+
+        // Loop inteligente para criar exatamente 100 cards variados com os produtos acima
+        for (let i = 1; i <= 100; i++) {
+            const modelo = modelosBase[(i - 1) % modelosBase.length];
+            
+            const card = document.createElement('div');
+            card.className = 'card-video';
+            card.innerHTML = `
+                <div class="video-container">
+                    <!-- Vídeo de teste leve para não travar o seu app durante a simulação -->
+                    <video controls playsinline preload="metadata" loop muted>
+                        <source src="https://mixkit.co" type="video/mp4">
+                    </video>
+                </div>
+                <div class="titulo-video">#${i} ${modelo.titulo}</div>
+                <div class="descricao-video">${modelo.desc} Este é o vídeo de teste número ${i} da sua galeria de fornecedores.</div>
+                <div class="rodape-card">
+                    <div class="preco-video">${modelo.preco}</div>
+                    <a href="#" class="btn-comprar" onclick="alert('Simulação de compra do vídeo #${i}')">Comprar Vídeo</a>
+                </div>
+            `;
+            container.appendChild(card);
+        }
+
+        // SISTEMA DE BUSCA DA LUPA EM TEMPO REAL
+        const campoPesquisa = document.getElementById('campoPesquisa');
+        const contador = document.getElementById('contador');
+
+        campoPesquisa.addEventListener('input', function() {
+            const termo = campoPesquisa.value.toLowerCase();
+            const cardsHtml = document.querySelectorAll('.card-video');
+            let encontrados = 0;
+
+            cardsHtml.forEach(card => {
+                const titulo = card.querySelector('.titulo-video').textContent.toLowerCase();
+                const descricao = card.querySelector('.descricao-video').textContent.toLowerCase();
+
+                if (titulo.includes(termo) || descricao.includes(termo)) {
+                    card.style.display = 'flex';
+                    encontrados++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            contador.textContent = `Mostrando ${encontrados} vídeo(s) encontrado(s)`;
+        });
+    </script>
 
 </body>
 </html>
