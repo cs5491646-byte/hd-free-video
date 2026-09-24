@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📱 HD VIDEOS POV</title>
     <style>
-        /* ESTILO VISUAL PREMIUM (TEMA ESCURO) */
+        /* ESTILO VISUAL GERAL (TEMA ESCURO) */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             user-select: none;
             -webkit-user-select: none;
         }
@@ -18,226 +18,276 @@
         body {
             background-color: #000000;
             color: #ffffff;
-            padding: 15px;
+            padding-top: 70px; /* Espaço para o topo fixo não cobrir os vídeos */
+        }
+
+        /* 🔍 TOPO FIXO COM BARRA DE PESQUISA (NUNCA SOME) */
+        .header-fixo {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0;
+            width: 100%;
+            background: #000000;
+            border-bottom: 1px solid #111;
+            padding: 10px 15px;
+            z-index: 9999 !important;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 8px;
         }
 
-        /* TÍTULO EM AZUL EXATO */
-        .titulo-pagina {
-            color: #2488ff;
-            font-size: 18px;
+        .titulo-app {
+            color: #0084ff;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
-            margin-top: 10px;
-            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        /* BARRA DE PESQUISA (LUPA) */
-        .container-pesquisa {
-            width: 100%;
-            max-width: 450px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .input-pesquisa {
-            width: 100%;
-            background-color: #0f1115;
-            border: 1px solid #1c1f26;
+        .search-container {
+            display: flex !important;
+            align-items: center;
+            background: #111;
             border-radius: 25px;
-            padding: 12px 15px 12px 45px;
-            color: #ffffff;
+            padding: 8px 15px;
+            border: 1px solid #222;
+        }
+
+        .search-bar {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #fff;
             font-size: 14px;
             outline: none;
         }
 
-        .input-pesquisa::placeholder {
-            color: #565e6d;
-        }
-
-        .icone-lupa {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
+        .lupa-icone {
+            color: #888;
+            margin-right: 8px;
             font-size: 16px;
-            color: #565e6d;
         }
 
-        /* RESULTADOS ENCONTRADOS */
-        .contador-videos {
-            width: 100%;
-            max-width: 450px;
-            font-size: 13px;
-            color: #565e6d;
-            margin-bottom: 10px;
-            padding-left: 5px;
-        }
-
-        /* CONTAINER DOS PRODUTOS */
-        .lista-produtos {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
+        /* 🎬 VITRINE DE PRODUTOS (3 POR LINHA / VERTICAL NO CELULAR) */
+        .vitrine-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* CARD DO VÍDEO COMPACTO E ORGANIZADO */
-        .card-video {
-            background-color: #0d0e12;
-            border: 1px solid #1c1f2a;
-            border-radius: 18px;
+        @media (max-width: 768px) {
+            .vitrine-container {
+                grid-template-columns: repeat(1, 1fr); /* Fica em 1 coluna vertical perfeita no celular */
+            }
+        }
+
+        .video-card {
+            background: #0c1210;
+            border-radius: 14px;
             padding: 15px;
+            border: 1px solid #161d1a;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
-        /* FORMATO VERTICAL 9:16 (TIKTOK/REELS) */
-        .video-container {
+        .video-player {
             width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: #16181f;
-            aspect-ratio: 9 / 16;
-            max-height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
+            height: 400px; /* Altura ideal para vídeo vertical de 20 segundos */
             object-fit: cover;
+            border-radius: 10px;
+            background: #000;
         }
 
-        .titulo-video {
+        .video-titulo {
             font-size: 16px;
             font-weight: bold;
-            color: #ffffff;
-            line-height: 1.3;
+            color: #fff;
         }
 
-        .descricao-video {
+        .video-desc {
             font-size: 13px;
-            color: #8a8f98;
+            color: #aaa;
             line-height: 1.4;
         }
 
-        /* RODAPÉ (PREÇO E BOTÃO) */
-        .rodape-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 5px;
-        }
-
-        .preco-video {
-            color: #39cc6c;
-            font-size: 18px;
+        .video-preco {
+            color: #00ff7f;
             font-weight: bold;
+            font-size: 18px;
+            margin-top: auto;
         }
 
         .btn-comprar {
-            background-color: #1a73e8;
-            color: #ffffff;
+            background: #0084ff;
+            color: #fff;
             border: none;
-            border-radius: 20px;
-            padding: 10px 24px;
-            font-size: 14px;
+            padding: 12px;
             font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s;
+            text-align: center;
+            font-size: 14px;
+            transition: 0.2s;
         }
 
         .btn-comprar:hover {
-            background-color: #155cb4;
+            background: #0066cc;
+        }
+
+        /* 🔐 JANELA MODAL DO PIX (ANTI-FRAUDE) */
+        .overlay-pix {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 10000;
+        }
+
+        .modal-pix {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0c1210;
+            border: 2px solid #00ff7f;
+            border-radius: 16px;
+            padding: 22px;
+            z-index: 10001;
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            color: #fff;
+        }
+
+        .modal-pix textarea {
+            width: 100%;
+            height: 80px;
+            background: #000;
+            color: #00ff7f;
+            border: 1px solid #222;
+            padding: 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 11px;
+            margin: 12px 0;
+            resize: none;
+            outline: none;
+        }
+
+        .btn-copiar {
+            background: #00ff7f;
+            color: #000;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .btn-verificar {
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 🎉 TELA DE SUCESSO RESTRITA (SÓ ABRE APÓS PAGAMENTO COMPROVADO) */
+        .tela-sucesso {
+            display: none;
+        }
+
+        .btn-sucesso-whatsapp {
+            background: #25d366;
+            color: #fff;
+            padding: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <!-- TÍTULO DA PÁGINA -->
-    <div class="titulo-pagina">PRODUTOS EXCLUSIVOS (POV) 💎</div>
-
-    <!-- BARRA DE PESQUISA -->
-    <div class="container-pesquisa">
-        <span class="icone-lupa">🔍</span>
-        <input type="text" id="campoPesquisa" class="input-pesquisa" placeholder="Pesquisar por modelo ou produto...">
+    <!-- 🔍 TOPO COM A LUPA FIXA -->
+    <div class="header-fixo">
+        <div class="titulo-app">Produtos Exclusivos (POV) 💎</div>
+        <div class="search-container">
+            <span class="lupa-icone">🔍</span>
+            <input type="text" class="search-bar" id="inputPesquisa" onkeyup="filtrarProdutos()" placeholder="Pesquisar por modelo ou produto...">
+        </div>
     </div>
 
-    <!-- CONTADOR DE VÍDEOS -->
-    <div id="contador" class="contador-videos">Mostrando 100 vídeos</div>
+    <!-- 🎬 CONTAINER ONDE APARECEM OS VÍDEOS -->
+    <div class="vitrine-container" id="vitrineProdutos"></div>
 
-    <!-- CONTAINER ONDE OS 100 VÍDEOS VÃO ENTRAR -->
-    <div class="lista-produtos" id="listaProdutos"></div>
+    <!-- 🔐 ESTRUTURA SEGURO DO PIX -->
+    <div id="pix-overlay" class="overlay-pix" onclick="fecharJanelaPix()"></div>
+    <div id="pix-modal" class="modal-pix">
+        
+        <!-- PARTE 1: MOSTRAR O PIX PARA PAGAR -->
+        <div id="bloco-pagamento">
+            <h3 style="color: #00ff7f; margin-bottom: 5px;">✓ Pix Gerado</h3>
+            <p id="pix-produto-nome" style="font-size: 14px; font-weight: bold; margin-bottom: 10px;"></p>
+            <p style="font-size: 12px; color: #aaa;">Copie o código e pague no app do seu banco:</p>
+            <textarea id="pix-codigo" readonly></textarea>
+            <button class="btn-copiar" onclick="copiarPix()">Copiar Código Pix</button>
+            <button class="btn-verificar" onclick="verificarPagamentoReal()">🔄 Já paguei! Verificar e Liberar</button>
+        </div>
+
+        <!-- PARTE 2: SUCESSO (BLOQUEADA E ESCONDIDA CONTRA FRAUDES) -->
+        <div id="bloco-sucesso" class="tela-sucesso">
+            <h2 style="color: #25d366; margin-bottom: 10px;">🎉 Pagamento Confirmado!</h2>
+            <p style="font-size: 14px; color: #fff;">Sua compra foi processada pelo Mercado Pago com sucesso.</p>
+            <a id="link-sucesso-whatsapp" href="#" target="_blank" class="btn-sucesso-whatsapp">
+                🚀 CLIQUE AQUI PARA RECEBER SEU VÍDEO NO WHATSAPP
+            </a>
+        </div>
+    </div>
 
     <script>
-        // Modelos de produtos reais pedidos por você para simular a lista
-        const modelosBase = [
-            { titulo: "Vídeo POV - Relógio de Luxo Prata", desc: "Gravação exclusiva focada nos reflexos do mostrador de safira e pulseira de aço inoxidável. Ideal para dropshipping.", preco: "R\$ 9,90" },
-            { titulo: "Vídeo POV - Pijama Cetim Confort", desc: "Estilo estúdio POV mostrando o caimento perfeito, suavidade e brilho do tecido premium. Ótimo para anúncios.", preco: "R\$ 14,90" },
-            { titulo: "Vídeo POV - Cueca Boxer Seamless", desc: "Detalhes das costuras reforçadas e elasticidade do tecido tecnológico microfibra em alta definição.", preco: "R\$ 7,90" },
-            { titulo: "Vídeo POV - Sandália Flatform Verão", desc: "Foco nos detalhes do acabamento artesanal, textura das tiras e flexibilidade do solado.", preco: "R\$ 12,90" },
-            { titulo: "Vídeo POV - Tênis Streetwear Sport", desc: "Gravação dinâmica em ambiente urbano evidenciando os detalhes de design moderno e amortecimento.", preco: "R\$ 19,90" }
+        // CONFIGURAÇÕES DO MERCADO PAGO E WHATSAPP DO SEU NEGÓCIO
+        const MP_ACCESS_TOKEN = "APP_USR-2030346022437362-092410-6ac6067c75f9a39df00132fdebcc2703-1023626070";
+        const SEU_WHATSAPP = "5581920053746";
+
+        // ID DO PIX ATUAL PARA VERIFICAÇÃO SEGREDA ANTI-FRAUDE
+        let pagamentoIdAtual = null; 
+
+        // 🗂️ BANCO DE DADOS DE 500 VÍDEOS AUTOMATIZADO
+        // Eu configurei os primeiros de exemplo. Para colocar os próximos, basta copiar a linha e mudar os dados!
+        const listaProdutos = [
+            { id: 1, titulo: "Vídeo POV - Relógio de Luxo Prata", desc: "Gravação exclusiva focada nos reflexos do mostrador de safira e pulseira de aço inoxidável. Ideal para dropshipping.", videoUrl: "links_dos_seus_videos/relogio.mp4" },
+            { id: 2, titulo: "Vídeo POV - Tênis Streetwear", desc: "Gravação dinâmica de 20 segundos mostrando os detalhes do tênis em ambiente urbano. Ideal para Reels ou TikTok.", videoUrl: "links_dos_seus_videos/tenis.mp4" },
+            { id: 3, titulo: "Vídeo POV - Óculos Aviador Black", desc: "Demonstração premium em alta definição realçando o acabamento e as lentes polarizadas do produto.", videoUrl: "links_dos_seus_videos/oculos.mp4" },
+            
+            // Adicione do 4 ao 500 seguindo o mesmo padrão exato abaixo:
+            // { id: 4, titulo: "Nome do produto 4", desc: "Descrição do produto 4", videoUrl: "link_do_video_4.mp4" },
         ];
 
-        const container = document.getElementById('listaProdutos');
-
-        // Loop inteligente para criar exatamente 100 cards variados com os produtos acima
-        for (let i = 1; i <= 100; i++) {
-            const modelo = modelosBase[(i - 1) % modelosBase.length];
+        // ⚙️ GERA OS 500 PRODUTOS NA TELA SOZINHO
+        function carregarVitrine() {
+            const container = document.getElementById("vitrineProdutos");
+            container.innerHTML = "";
             
-            const card = document.createElement('div');
-            card.className = 'card-video';
-            card.innerHTML = `
-                <div class="video-container">
-                    <!-- Vídeo de teste leve para não travar o seu app durante a simulação -->
-                    <video controls playsinline preload="metadata" loop muted>
-                        <source src="https://mixkit.co" type="video/mp4">
-                    </video>
-                </div>
-                <div class="titulo-video">#${i} ${modelo.titulo}</div>
-                <div class="descricao-video">${modelo.desc} Este é o vídeo de teste número ${i} da sua galeria de fornecedores.</div>
-                <div class="rodape-card">
-                    <div class="preco-video">${modelo.preco}</div>
-                    <a href="#" class="btn-comprar" onclick="alert('Simulação de compra do vídeo #${i}')">Comprar Vídeo</a>
-                </div>
-            `;
-            container.appendChild(card);
-        }
-
-        // SISTEMA DE BUSCA DA LUPA EM TEMPO REAL
-        const campoPesquisa = document.getElementById('campoPesquisa');
-        const contador = document.getElementById('contador');
-
-        campoPesquisa.addEventListener('input', function() {
-            const termo = campoPesquisa.value.toLowerCase();
-            const cardsHtml = document.querySelectorAll('.card-video');
-            let encontrados = 0;
-
-            cardsHtml.forEach(card => {
-                const titulo = card.querySelector('.titulo-video').textContent.toLowerCase();
-                const descricao = card.querySelector('.descricao-video').textContent.toLowerCase();
-
-                if (titulo.includes(termo) || descricao.includes(termo)) {
-                    card.style.display = 'flex';
-                    encontrados++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            contador.textContent = `Mostrando ${encontrados} vídeo(s) encontrado(s)`;
-        });
-    </script>
-
-</body>
-</html>
+            listaProdutos.forEach(prod => {
+                container.innerHTML += `
+                    <div class="video-card" data-titulo="${prod.titulo.toLowerCase()}">
+                        <video class="video-player" src="${prod.videoUrl}" controls playsinline muted loop></video>
+                        <div class="video-titulo">#${prod.id} ${prod.titulo}</div>
+                        <div class="video-desc">${prod.desc}</div>
+                        <div class="video-preco">R$ 9,90</div>
