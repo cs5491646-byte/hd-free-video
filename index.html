@@ -68,7 +68,7 @@
             font-size: 16px;
         }
 
-        /* 🎬 VITRINE DE VÍDEOS VERTICAIS (3 LADO A LADO / 1 POR LINHA NO CELULAR) */
+        /* 🎬 VITRINE COM 3 COLUNAS (FICA EM 1 VERTICAL NO CELULAR) */
         .vitrine-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -133,7 +133,7 @@
             font-size: 14px;
         }
 
-        /* 🔐 JANELA DO PIX */
+        /* 🔐 JANELA DO PIX REFORÇADA */
         .overlay-pix {
             display: none;
             position: fixed;
@@ -226,10 +226,39 @@
         </div>
     </div>
 
-    <!-- 🎬 VITRINE -->
-    <div class="vitrine-container" id="vitrineProdutos"></div>
+    <!-- 🎬 VITRINE DE PRODUTOS DIRETA (SEM TRAVAMENTO) -->
+    <div class="vitrine-container">
 
-    <!-- 🔐 ESTRUTURA DO PIX -->
+        <!-- PRODUTO 1 -->
+        <div class="video-card" data-titulo="exemplo relogio">
+            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
+            <div class="video-titulo">#1 Vídeo POV - Exemplo Relógio</div>
+            <div class="video-desc">Gravação teste com link de vídeo leve e compatível com o robô do Telegram.</div>
+            <div class="video-preco">R$ 9,90</div>
+            <button class="btn-comprar" onclick="gerarPixMercadoPago('1', 'Exemplo Relógio')">Comprar Vídeo</button>
+        </div>
+
+        <!-- PRODUTO 2 -->
+        <div class="video-card" data-titulo="exemplo tenis">
+            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
+            <div class="video-titulo">#2 Vídeo POV - Exemplo Tênis</div>
+            <div class="video-desc">Segundo card configurado em código nativo, eliminando falhas de exibição na tela.</div>
+            <div class="video-preco">R$ 9,90</div>
+            <button class="btn-comprar" onclick="gerarPixMercadoPago('2', 'Exemplo Tênis')">Comprar Vídeo</button>
+        </div>
+
+        <!-- PRODUTO 3 -->
+        <div class="video-card" data-titulo="exemplo oculos">
+            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
+            <div class="video-titulo">#3 Vídeo POV - Exemplo Óculos</div>
+            <div class="video-desc">Terceiro item da fileira. O formato responde e se adapta perfeitamente ao celular.</div>
+            <div class="video-preco">R$ 9,90</div>
+            <button class="btn-comprar" onclick="gerarPixMercadoPago('3', 'Exemplo Óculos')">Comprar Vídeo</button>
+        </div>
+
+    </div>
+
+    <!-- 🔐 JANELA FLUTUANTE DO PIX -->
     <div id="pix-overlay" class="overlay-pix" onclick="fecharJanelaPix()"></div>
     <div id="pix-modal" class="modal-pix">
         
@@ -256,46 +285,6 @@
         const SEU_WHATSAPP = "5581920053746";
         let pagamentoIdAtual = null; 
 
-        // 🗂️ BANCO DE DADOS - VÍDEOS REAIS DA INTERNET PARA TESTE
-        const listaProdutos = [
-            { 
-                id: 1, 
-                titulo: "Vídeo POV - Exemplo Relógio", 
-                desc: "Gravação teste com link real ativo para validação de carregamento e funcionamento em ambiente móvel.", 
-                videoUrl: "https://mixkit.co" 
-            },
-            { 
-                id: 2, 
-                titulo: "Vídeo POV - Exemplo Tênis", 
-                desc: "Segundo vídeo teste ativo na vitrine para demonstrar o alinhamento responsivo em colunas.", 
-                videoUrl: "https://mixkit.co" 
-            },
-            { 
-                id: 3, 
-                titulo: "Vídeo POV - Exemplo Óculos", 
-                desc: "Terceiro vídeo de teste público rodando de forma fluída no catálogo automático.", 
-                videoUrl: "https://mixkit.co" 
-            }
-        ];
-
-        // MONTA OS CARDS NA TELA
-        function carregarVitrine() {
-            const container = document.getElementById("vitrineProdutos");
-            container.innerHTML = "";
-            
-            listaProdutos.forEach(prod => {
-                container.innerHTML += `
-                    <div class="video-card" data-titulo="${prod.titulo.toLowerCase()}">
-                        <video class="video-player" src="${prod.videoUrl}" controls playsinline muted loop></video>
-                        <div class="video-titulo">#${prod.id} ${prod.titulo}</div>
-                        <div class="video-desc">${prod.desc}</div>
-                        <div class="video-preco">R$ 9,90</div>
-                        <button class="btn-comprar" onclick="gerarPixMercadoPago('${prod.id}', '${prod.titulo}')">Comprar Vídeo</button>
-                    </div>
-                `;
-            });
-        }
-
         function filtrarProdutos() {
             const termo = document.getElementById("inputPesquisa").value.toLowerCase();
             const cards = document.querySelectorAll(".video-card");
@@ -306,3 +295,12 @@
                     card.style.display = "flex";
                 } else {
                     card.style.display = "none";
+                }
+            });
+        }
+
+        async function gerarPixMercadoPago(id, titulo) {
+            alert("Aguarde... Solicitando código Pix ao Mercado Pago.");
+            
+            const payload = {
+                transaction_amount: 9.90,
