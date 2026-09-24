@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vitrine Exclusiva POV</title>
+    <!-- Script oficial do Telegram Mini Apps -->
+    <script src="https://telegram.org"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #000000);
+            color: var(--tg-theme-text-color, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .header-title {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2481cc;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid #222;
+        }
+        .feed {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--tg-theme-secondary-bg-color, #111111);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #222;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            display: block;
+            object-fit: contain;
+        }
+        .info-box {
+            padding: 20px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .description {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .footer-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #222;
+            padding-top: 15px;
+        }
+        .price {
+            font-size: 22px;
+            color: #4caf50;
+            font-weight: 800;
+        }
+        .btn-buy {
+            background-color: #2481cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-buy:active { background-color: #1a66a4; }
+        
+        /* Estilo para quando estiver vendido */
+        .sold-out {
+            color: #ff4d4d !important;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-sold {
+            background-color: #333 !important;
+            color: #777 !important;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-title">PRODUTOS EXCLUSIVOS (POV) 💎</div>
+
+    <div class="feed">
+        
+        <!-- PRODUTO 1: RELÓGIO (DISPONÍVEL) -->
+        <div class="card">
+            <div class="video-container">
+                <!-- Vídeo demonstrativo (substituiremos pelo seu depois) -->
+                <video src="https://w3schools.com" controls loop muted playsinline></video>
+            </div>
+            <div class="info-box">
+                <div class="title">Vídeo POV - Relógio de Luxo Prata</div>
+                <div class="description">Vídeo exclusivo de 20 segundos em altíssima definição (estilo POV) focado nos reflexos e detalhes do mostrador. Perfeito para criativos de anúncios ou redes sociais.</div>
+                <div class="footer-card">
+                    <div class="price">R$ 9,90</div>
+                    <!-- Mais para frente colocaremos seu link real de Pix aqui -->
+                    <button class="btn-buy" onclick="abrirPagamento('https://google.com')">Comprar Vídeo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 2: SAPATO (EXEMPLO DE COMO FICA QUANDO FOR VENDIDO) -->
+        <div class="card">
+            <div class="video-container">
+                <video src="https://w3schools.com" controls loop muted playsinline></video>
+            </div>
+            <div class="info-box">
+                <div class="title">Vídeo POV - Tênis Streetwear</div>
+                <div class="description">Gravação dinâmica de 20 segundos mostrando os detalhes do tênis em ambiente urbano. Ideal para Reels ou TikTok.</div>
+                <div class="footer-card">
+                    <!-- Configuração manual de produto esgotado -->
+                    <div class="sold-out">❌ ESGOTADO / VENDIDO</div>
+                    <button class="btn-buy btn-sold" disabled>Indisponível</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Faz o mini app abrir ocupando a tela toda no celular
+
+        function abrirPagamento(url) {
+            // Abre o link com segurança dentro do ecossistema do Telegram
+            tg.openLink(url);
+        }
+    </script>
+</body>
+</html>
