@@ -20,6 +20,7 @@
             padding-top: 85px;
         }
 
+        /* 🔍 LUPA FIXA NO TOPO - NUNCA SUMIR */
         .header-fixo {
             position: fixed !important;
             top: 0 !important;
@@ -67,6 +68,7 @@
             font-size: 16px;
         }
 
+        /* 🎬 VITRINE DE VÍDEOS VERTICAIS (3 LADO A LADO / 1 POR LINHA NO CELULAR) */
         .vitrine-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -131,6 +133,7 @@
             font-size: 14px;
         }
 
+        /* 🔐 JANELA DO PIX */
         .overlay-pix {
             display: none;
             position: fixed;
@@ -214,6 +217,7 @@
 </head>
 <body>
 
+    <!-- 🔍 TOPO COM A LUPA FIXA -->
     <div class="header-fixo">
         <div class="titulo-app">Produtos Exclusivos (POV) 💎</div>
         <div class="search-container">
@@ -222,8 +226,10 @@
         </div>
     </div>
 
+    <!-- 🎬 VITRINE -->
     <div class="vitrine-container" id="vitrineProdutos"></div>
 
+    <!-- 🔐 ESTRUTURA DO PIX -->
     <div id="pix-overlay" class="overlay-pix" onclick="fecharJanelaPix()"></div>
     <div id="pix-modal" class="modal-pix">
         
@@ -250,6 +256,7 @@
         const SEU_WHATSAPP = "5581920053746";
         let pagamentoIdAtual = null; 
 
+        // 🗂️ BANCO DE DADOS - VÍDEOS REAIS DA INTERNET PARA TESTE
         const listaProdutos = [
             { 
                 id: 1, 
@@ -271,6 +278,7 @@
             }
         ];
 
+        // MONTA OS CARDS NA TELA
         function carregarVitrine() {
             const container = document.getElementById("vitrineProdutos");
             container.innerHTML = "";
@@ -298,14 +306,3 @@
                     card.style.display = "flex";
                 } else {
                     card.style.display = "none";
-                }
-            });
-        }
-
-        async function gerarPixMercadoPago(id, titulo) {
-            alert("Aguarde... Solicitando código Pix ao Mercado Pago.");
-            
-            const payload = {
-                transaction_amount: 9.90,
-                description: `Produto #${id} - ${titulo}`,
-                payment_method_id: "pix",
