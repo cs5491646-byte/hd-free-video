@@ -131,87 +131,9 @@
             cursor: pointer;
             text-align: center;
             font-size: 14px;
-        }
-
-        /* 🔐 JANELA DO PIX REFORÇADA */
-        .overlay-pix {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 10000;
-        }
-
-        .modal-pix {
-            display: none;
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            background: #0c1210;
-            border: 2px solid #00ff7f;
-            border-radius: 16px;
-            padding: 22px;
-            z-index: 10001;
-            text-align: center;
-            width: 90%;
-            max-width: 380px;
-            color: #fff;
-        }
-
-        .modal-pix textarea {
             width: 100%;
-            height: 80px;
-            background: #000;
-            color: #00ff7f;
-            border: 1px solid #222;
-            padding: 8px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 11px;
-            margin: 12px 0;
-            resize: none;
-            outline: none;
-        }
-
-        .btn-copiar {
-            background: #00ff7f;
-            color: #000;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .btn-verificar {
-            background: #ffcc00;
-            color: #000;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .tela-sucesso {
-            display: none;
-        }
-
-        .btn-sucesso-whatsapp {
-            background: #25d366;
-            color: #fff;
-            padding: 14px;
-            font-weight: bold;
-            border-radius: 8px;
             text-decoration: none;
             display: block;
-            margin-top: 15px;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -226,26 +148,25 @@
         </div>
     </div>
 
-    <!-- 🎬 VITRINE DE PRODUTOS DIRETA (SEM TRAVAMENTO) -->
+    <!-- 🎬 VITRINE DE PRODUTOS DIRETA -->
     <div class="vitrine-container">
 
-       <!-- PRODUTO 1 -->
-<div class="video-card" data-titulo="exemplo relogio">
-    <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
-    <div class="video-titulo">#1 Vídeo POV - Exemplo Relógio</div>
-    <div class="video-desc">Gravação teste com link de vídeo leve e compatível com o robô do Telegram.</div>
-    <div class="video-preco">R$ 9,90</div>
-    <button class="btn-comprar" onclick="gerarPixMercadoPago('1', 'Exemplo Relógio')">Comprar Vídeo</button>
-</div>
-
+        <!-- PRODUTO 1 -->
+        <div class="video-card" data-titulo="exemplo relogio">
+            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
+            <div class="video-titulo">#1 Vídeo POV - Exemplo Relógio</div>
+            <div class="video-desc">Gravação teste com link de vídeo leve e compatível com o robô do Telegram.</div>
+            <div class="video-preco">R\$ 9,90</div>
+            <button class="btn-comprar" onclick="irParaPagamento('1', 'Exemplo Relógio')">Comprar Vídeo</button>
+        </div>
 
         <!-- PRODUTO 2 -->
         <div class="video-card" data-titulo="exemplo tenis">
             <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
             <div class="video-titulo">#2 Vídeo POV - Exemplo Tênis</div>
             <div class="video-desc">Segundo card configurado em código nativo, eliminando falhas de exibição na tela.</div>
-            <div class="video-preco">R$ 9,90</div>
-            <button class="btn-comprar" onclick="gerarPixMercadoPago('2', 'Exemplo Tênis')">Comprar Vídeo</button>
+            <div class="video-preco">R\$ 9,90</div>
+            <button class="btn-comprar" onclick="irParaPagamento('2', 'Exemplo Tênis')">Comprar Vídeo</button>
         </div>
 
         <!-- PRODUTO 3 -->
@@ -253,55 +174,46 @@
             <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
             <div class="video-titulo">#3 Vídeo POV - Exemplo Óculos</div>
             <div class="video-desc">Terceiro item da fileira. O formato responde e se adapta perfeitamente ao celular.</div>
-            <div class="video-preco">R$ 9,90</div>
-            <button class="btn-comprar" onclick="gerarPixMercadoPago('3', 'Exemplo Óculos')">Comprar Vídeo</button>
+            <div class="video-preco">R\$ 9,90</div>
+            <button class="btn-comprar" onclick="irParaPagamento('3', 'Exemplo Óculos')">Comprar Vídeo</button>
         </div>
 
     </div>
 
-    <!-- 🔐 JANELA FLUTUANTE DO PIX -->
-    <div id="pix-overlay" class="overlay-pix" onclick="fecharJanelaPix()"></div>
-    <div id="pix-modal" class="modal-pix">
-        
-        <div id="bloco-pagamento">
-            <h3 style="color: #00ff7f; margin-bottom: 5px;">✓ Pix Gerado</h3>
-            <p id="pix-produto-nome" style="font-size: 14px; font-weight: bold; margin-bottom: 10px;"></p>
-            <p style="font-size: 12px; color: #aaa;">Copie o código e pague no app do seu banco:</p>
-            <textarea id="pix-codigo" readonly></textarea>
-            <button class="btn-copiar" onclick="copiarPix()">Copiar Código Pix</button>
-            <button class="btn-verificar" onclick="verificarPagamentoReal()">🔄 Já paguei! Verificar e Liberar</button>
-        </div>
-
-        <div id="bloco-sucesso" class="tela-sucesso">
-            <h2 style="color: #25d366; margin-bottom: 10px;">🎉 Pagamento Confirmado!</h2>
-            <p style="font-size: 14px; color: #fff;">Sua compra foi processada pelo Mercado Pago com sucesso.</p>
-            <a id="link-sucesso-whatsapp" href="#" target="_blank" class="btn-sucesso-whatsapp">
-                🚀 CLIQUE AQUI PARA RECEBER SEU VIDEO E LINK
-            </a>
-        </div>
-    </div>
+    <!-- SCRIPT OFICIAL DO TELEGRAM -->
+    <script src="https://telegram.org"></script>
 
     <script>
-        const MP_ACCESS_TOKEN = "APP_USR-2030346022437362-092410-6ac6067c75f9a39df00132fdebcc2703-1023626070";
-        const SEU_WHATSAPP = "5581920053746";
-        let pagamentoIdAtual = null; 
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Deixa o Web App em tela cheia no celular
 
-        function filtrarProdutos() {
-            const termo = document.getElementById("inputPesquisa").value.toLowerCase();
-            const cards = document.querySelectorAll(".video-card");
+        // Seu número com o código do Brasil (55) adicionado automaticamente
+        const SEU_WHATSAPP_REAL = "5581920053746"; 
+
+        function irParaPagamento(idProduto, nomeProduto) {
+            // 1. Mensagem automática que vai preenchida para o seu WhatsApp
+            const textoMensagem = `Olá! Estou na sua vitrine do Telegram e quero comprar o vídeo do produto:\n\n📦 *Pedido:* #${idProduto} - ${nomeProduto}\n💰 *Valor:* R$ 9,90\n\nPor favor, me envie o Pix de R$ 9,90 do Mercado Pago para eu pagar e receber o link do fornecedor!`;
             
-            cards.forEach(card => {
-                const titulo = card.getAttribute("data-titulo");
-                if (titulo.includes(termo)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+            // 2. Transforma o texto em um formato de link válido para a internet
+            const linkWhatsAppFinal = `https://wa.me{SEU_WHATSAPP_REAL}?text=${encodeURIComponent(textoMensagem)}`;
+            
+            // 3. O comando oficial do Telegram abre o seu WhatsApp direto por cima da tela
+            tg.openLink(linkWhatsAppFinal);
         }
 
-        async function gerarPixMercadoPago(id, titulo) {
-            alert("Aguarde... Solicitando código Pix ao Mercado Pago.");
-            
-            const payload = {
-                transaction_amount: 9.90,
+        // Sistema da sua barra de pesquisa do topo
+        function filtrarProdutos() {
+            const input = document.getElementById('inputPesquisa').value.toLowerCase();
+            const cards = document.getElementsByClassName('video-card');
+            for (let i = 0; i < cards.length; i++) {
+                const titulo = cards[i].getAttribute('data-titulo');
+                if (titulo.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
