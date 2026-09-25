@@ -1,219 +1,717 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📱 HD VIDEOS POV</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            user-select: none;
-            -webkit-user-select: none;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            padding-top: 85px;
-        }
+<title>HD VIDEOS POV 💎</title>
 
-        /* 🔍 LUPA FIXA NO TOPO - NUNCA SUMIR */
-        .header-fixo {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0;
-            width: 100%;
-            background: #000000;
-            border-bottom: 1px solid #111;
-            padding: 10px 15px;
-            z-index: 9999 !important;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .titulo-app {
-            color: #0084ff;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+body {
+    margin: 0;
+    background: #050505;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        .search-container {
-            display: flex !important;
-            align-items: center;
-            background: #111;
-            border-radius: 25px;
-            padding: 8px 15px;
-            border: 1px solid #222;
-        }
+/* TOPO */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #050505;
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid #222;
+}
 
-        .search-bar {
-            width: 100%;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-        }
+.titulo {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 800;
+    color: #168cff;
+    margin-bottom: 15px;
+    letter-spacing: .5px;
+}
 
-        .lupa-icone {
-            color: #888;
-            margin-right: 8px;
-            font-size: 16px;
-        }
+/* PESQUISA */
+.search-box {
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+}
 
-        /* 🎬 VITRINE COM 3 COLUNAS (FICA EM 1 VERTICAL NO CELULAR) */
-        .vitrine-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 13px;
+    font-size: 21px;
+}
 
-        @media (max-width: 768px) {
-            .vitrine-container {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
+#search {
+    width: 100%;
+    height: 52px;
+    border: 1px solid #292929;
+    border-radius: 30px;
+    background: #121212;
+    color: white;
+    padding: 0 20px 0 50px;
+    font-size: 16px;
+    outline: none;
+}
 
-        .video-card {
-            background: #0c1210;
-            border-radius: 14px;
-            padding: 15px;
-            border: 1px solid #161d1a;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+#search:focus {
+    border-color: #168cff;
+}
 
-        .video-player {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #000;
-        }
+/* CATEGORIAS */
+.categorias {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding: 14px 0 2px;
+    scrollbar-width: none;
+}
 
-        .video-titulo {
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-        }
+.categorias::-webkit-scrollbar {
+    display: none;
+}
 
-        .video-desc {
-            font-size: 13px;
-            color: #aaa;
-            line-height: 1.4;
-        }
+.categoria {
+    flex: 0 0 auto;
+    background: #151515;
+    border: 1px solid #292929;
+    color: #ddd;
+    padding: 9px 15px;
+    border-radius: 22px;
+    font-size: 14px;
+    cursor: pointer;
+}
 
-        .video-preco {
-            color: #00ff7f;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: auto;
-        }
+.categoria.ativa {
+    background: #168cff;
+    border-color: #168cff;
+    color: white;
+}
 
-        .btn-comprar {
-            background: #0084ff;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 14px;
-            width: 100%;
-            text-decoration: none;
-            display: block;
-        }
-    </style>
+/* GALERIA */
+.galeria {
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px 14px 40px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+/* CARD */
+.card {
+    background: #0c1210;
+    border: 1px solid #17201d;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,.35);
+}
+
+.preview {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    overflow: hidden;
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(20,140,255,.95);
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 25px rgba(0,0,0,.5);
+}
+
+.conteudo {
+    padding: 14px;
+}
+
+.titulo-video {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.descricao {
+    color: #a9a9a9;
+    font-size: 14px;
+    line-height: 1.45;
+    min-height: 42px;
+}
+
+.preco {
+    color: #00ef72;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 13px 0;
+}
+
+.comprar {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #168cff;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.comprar:active {
+    transform: scale(.98);
+}
+
+.sem-resultados {
+    display: none;
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+}
+
+.modal video {
+    width: 100%;
+    max-height: 80vh;
+    background: #000;
+    border-radius: 15px;
+}
+
+.fechar {
+    position: absolute;
+    right: 0;
+    top: -45px;
+
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+
+    background: #222;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* RODAPÉ */
+.footer {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    padding: 25px;
+}
+
+/* CELULAR */
+@media (max-width: 650px) {
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo {
+        font-size: 21px;
+    }
+
+    .preview {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 900px) {
+
+    .galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+</style>
 </head>
+
 <body>
 
-    <!-- 🔍 TOPO COM A LUPA FIXA -->
-    <div class="header-fixo">
-        <div class="titulo-app">Produtos Exclusivos (POV) 💎</div>
-        <div class="search-container">
-            <span class="lupa-icone">🔍</span>
-            <input type="text" class="search-bar" id="inputPesquisa" onkeyup="filtrarProdutos()" placeholder="Pesquisar por modelo ou produto...">
-        </div>
+<!-- TOPO -->
+<header class="header">
+
+    <div class="titulo">
+        📱 HD VIDEOS POV 💎
     </div>
 
-    <!-- 🎬 VITRINE DE PRODUTOS DIRETA -->
-    <div class="vitrine-container">
+    <div class="search-box">
+        <span class="search-icon">🔎</span>
 
-        <!-- PRODUTO 1 -->
-        <div class="video-card" data-titulo="exemplo relogio">
-            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
-            <div class="video-titulo">#1 Vídeo POV - Exemplo Relógio</div>
-            <div class="video-desc">Gravação teste com link de vídeo leve e compatível com o robô do Telegram.</div>
-            <div class="video-preco">R\$ 9,90</div>
-            <button class="btn-comprar" onclick="irParaPagamento('1', 'Exemplo Relógio')">Comprar Vídeo</button>
-        </div>
+        <input
+            type="text"
+            id="search"
+            placeholder="Pesquisar por modelo ou produto..."
+        >
+    </div>
 
-        <!-- PRODUTO 2 -->
-        <div class="video-card" data-titulo="exemplo tenis">
-            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
-            <div class="video-titulo">#2 Vídeo POV - Exemplo Tênis</div>
-            <div class="video-desc">Segundo card configurado em código nativo, eliminando falhas de exibição na tela.</div>
-            <div class="video-preco">R\$ 9,90</div>
-            <button class="btn-comprar" onclick="irParaPagamento('2', 'Exemplo Tênis')">Comprar Vídeo</button>
-        </div>
+    <!-- CATEGORIAS -->
+    <div class="categorias">
 
-        <!-- PRODUTO 3 -->
-        <div class="video-card" data-titulo="exemplo oculos">
-            <video class="video-player" src="https://zencdn.net" controls playsinline muted loop></video>
-            <div class="video-titulo">#3 Vídeo POV - Exemplo Óculos</div>
-            <div class="video-desc">Terceiro item da fileira. O formato responde e se adapta perfeitamente ao celular.</div>
-            <div class="video-preco">R\$ 9,90</div>
-            <button class="btn-comprar" onclick="irParaPagamento('3', 'Exemplo Óculos')">Comprar Vídeo</button>
-        </div>
+        <button class="categoria ativa" data-cat="todos">
+            Todos
+        </button>
+
+        <button class="categoria" data-cat="moda">
+            👗 Moda
+        </button>
+
+        <button class="categoria" data-cat="calcados">
+            👟 Calçados
+        </button>
+
+        <button class="categoria" data-cat="beleza">
+            💄 Beleza
+        </button>
+
+        <button class="categoria" data-cat="pov">
+            🎥 POV
+        </button>
+
+        <button class="categoria" data-cat="novos">
+            🔥 Novos
+        </button>
 
     </div>
 
-    <!-- SCRIPT OFICIAL DO TELEGRAM -->
-    <script src="https://telegram.org"></script>
+</header>
 
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand(); // Deixa o Web App em tela cheia no celular
 
-        // Seu número com o código do Brasil (55) adicionado automaticamente
-        const SEU_WHATSAPP_REAL = "5581920053746"; 
+<!-- GALERIA -->
+<main>
 
-        function irParaPagamento(idProduto, nomeProduto) {
-            // 1. Mensagem automática que vai preenchida para o seu WhatsApp
-            const textoMensagem = `Olá! Estou na sua vitrine do Telegram e quero comprar o vídeo do produto:\n\n📦 *Pedido:* #${idProduto} - ${nomeProduto}\n💰 *Valor:* R$ 9,90\n\nPor favor, me envie o Pix de R$ 9,90 do Mercado Pago para eu pagar e receber o link do fornecedor!`;
-            
-            // 2. Transforma o texto em um formato de link válido para a internet
-            const linkWhatsAppFinal = `https://wa.me{SEU_WHATSAPP_REAL}?text=${encodeURIComponent(textoMensagem)}`;
-            
-            // 3. O comando oficial do Telegram abre o seu WhatsApp direto por cima da tela
-            tg.openLink(linkWhatsAppFinal);
+<div class="galeria" id="galeria">
+
+
+    <!-- PRODUTO 1 -->
+    <article
+        class="card"
+        data-categoria="pov novos"
+        data-titulo="relogio"
+    >
+
+        <div class="preview">
+
+            <!-- TROQUE ESTA IMAGEM PELA CAPA DO SEU VÍDEO -->
+            <img
+                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+01"
+                alt="Vídeo POV Relógio"
+            >
+
+            <button
+                class="play"
+                onclick="abrirPreview('VIDEO_01_URL')"
+            >
+                ▶
+            </button>
+
+        </div>
+
+        <div class="conteudo">
+
+            <div class="titulo-video">
+                #1 Vídeo POV - Exemplo Relógio
+            </div>
+
+            <div class="descricao">
+                Vídeo POV para divulgação de produto.
+            </div>
+
+            <div class="preco">
+                R$ 9,90
+            </div>
+
+            <button
+                class="comprar"
+                onclick="comprarVideo('VIDEO_01','R$ 9,90')"
+            >
+                🛒 Comprar Vídeo
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- PRODUTO 2 -->
+    <article
+        class="card"
+        data-categoria="moda novos"
+        data-titulo="tenis"
+    >
+
+        <div class="preview">
+
+            <img
+                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+02"
+                alt="Vídeo POV 2"
+            >
+
+            <button
+                class="play"
+                onclick="abrirPreview('VIDEO_02_URL')"
+            >
+                ▶
+            </button>
+
+        </div>
+
+        <div class="conteudo">
+
+            <div class="titulo-video">
+                #2 Vídeo POV - Exemplo Tênis
+            </div>
+
+            <div class="descricao">
+                Vídeo pronto para divulgação no TikTok Shop.
+            </div>
+
+            <div class="preco">
+                R$ 9,90
+            </div>
+
+            <button
+                class="comprar"
+                onclick="comprarVideo('VIDEO_02','R$ 9,90')"
+            >
+                🛒 Comprar Vídeo
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- PRODUTO 3 -->
+    <article
+        class="card"
+        data-categoria="beleza pov"
+        data-titulo="perfume"
+    >
+
+        <div class="preview">
+
+            <img
+                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+03"
+                alt="Vídeo POV Perfume"
+            >
+
+            <button
+                class="play"
+                onclick="abrirPreview('VIDEO_03_URL')"
+            >
+                ▶
+            </button>
+
+        </div>
+
+        <div class="conteudo">
+
+            <div class="titulo-video">
+                #3 Vídeo POV - Perfume
+            </div>
+
+            <div class="descricao">
+                Vídeo para divulgação de perfume e produtos de beleza.
+            </div>
+
+            <div class="preco">
+                R$ 9,90
+            </div>
+
+            <button
+                class="comprar"
+                onclick="comprarVideo('VIDEO_03','R$ 9,90')"
+            >
+                🛒 Comprar Vídeo
+            </button>
+
+        </div>
+
+    </article>
+
+
+</div>
+
+<div
+    class="sem-resultados"
+    id="semResultados"
+>
+    😕 Nenhum vídeo encontrado.
+</div>
+
+</main>
+
+
+<footer class="footer">
+    HD VIDEOS POV 💎<br>
+    Conteúdos exclusivos
+</footer>
+
+
+<!-- MODAL DE PRÉVIA -->
+<div
+    class="modal"
+    id="modal"
+    onclick="fecharModal(event)"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="fechar"
+            onclick="fecharPreview()"
+        >
+            ✕
+        </button>
+
+        <video
+            id="videoPreview"
+            controls
+            playsinline
+        ></video>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PESQUISA
+========================= */
+
+const pesquisa = document.getElementById("search");
+
+pesquisa.addEventListener("input", filtrar);
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+let categoriaAtual = "todos";
+
+document.querySelectorAll(".categoria").forEach(botao => {
+
+    botao.addEventListener("click", () => {
+
+        document
+            .querySelectorAll(".categoria")
+            .forEach(b => b.classList.remove("ativa"));
+
+        botao.classList.add("ativa");
+
+        categoriaAtual = botao.dataset.cat;
+
+        filtrar();
+
+    });
+
+});
+
+
+/* =========================
+   FILTRO
+========================= */
+
+function filtrar() {
+
+    const texto =
+        pesquisa.value
+        .toLowerCase()
+        .trim();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    let encontrados = 0;
+
+    cards.forEach(card => {
+
+        const titulo =
+            card.dataset.titulo.toLowerCase();
+
+        const categorias =
+            card.dataset.categoria.toLowerCase();
+
+        const bateTexto =
+            titulo.includes(texto);
+
+        const bateCategoria =
+            categoriaAtual === "todos" ||
+            categorias.includes(categoriaAtual);
+
+        if (bateTexto && bateCategoria) {
+
+            card.style.display = "";
+
+            encontrados++;
+
+        } else {
+
+            card.style.display = "none";
+
         }
 
-        // Sistema da sua barra de pesquisa do topo
-        function filtrarProdutos() {
-            const input = document.getElementById('inputPesquisa').value.toLowerCase();
-            const cards = document.getElementsByClassName('video-card');
-            for (let i = 0; i < cards.length; i++) {
-                const titulo = cards[i].getAttribute('data-titulo');
-                if (titulo.includes(input)) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+    });
+
+    document.getElementById("semResultados").style.display =
+        encontrados === 0 ? "block" : "none";
+
+}
+
+
+/* =========================
+   PRÉVIA DO VÍDEO
+========================= */
+
+function abrirPreview(url) {
+
+    /*
+      IMPORTANTE:
+      Troque VIDEO_01_URL pelo endereço
+      real do vídeo.
+    */
+
+    if (
+        !url ||
+        url.includes("_URL")
+    ) {
+
+        alert(
+            "A prévia deste vídeo ainda não foi configurada."
+        );
+
+        return;
+    }
+
+    const video =
+        document.getElementById("videoPreview");
+
+    video.src = url;
+
+    document
+        .getElementById("modal")
+        .classList.add("ativo");
+
+    video.play().catch(() => {});
+
+}
+
+
+function fecharPreview() {
+
+    const modal =
+        document.getElementById("modal");
+
+    const video =
+        document.getElementById("videoPreview");
+
+    video.pause();
+
+    video.removeAttribute("src");
+
+    video.load();
+
+    modal.classList.remove("ativo");
+
+}
+
+
+function fecharModal(event) {
+
+    if (
+        event.target.id === "modal"
+    ) {
+
+        fecharPreview();
+
+    }
+
+}
+
+
+/* =========================
+   COMPRAR
+========================= */
+
+function comprarVideo(id, preco) {
+
+    /*
+      AQUI VAI A INTEGRAÇÃO
+      COM O MERCADO PAGO.
+
+      NÃO coloque sua ACCESS TOKEN
+      do Mercado Pago aqui.
+
+      A chave secreta deve ficar
+      no servidor/Make.
+    */
+
+    alert(
+        "Você selecionou o vídeo " +
+        id +
+        " por " +
+        preco +
+        ".\n\nA integração do Mercado Pago será conectada aqui."
+    );
+
+}
+
+</script>
+
 </body>
 </html>
