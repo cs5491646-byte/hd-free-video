@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+>
 
 <title>HD VIDEOS POV 💎</title>
 
+<!-- TELEGRAM WEB APP -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -15,64 +25,102 @@ body {
     margin: 0;
     background: #050505;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /* TOPO */
+
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
+
     background: #050505;
-    padding: 18px 16px 14px;
+
+    padding: 15px;
+
     border-bottom: 1px solid #222;
 }
 
-.titulo {
+.logo {
     text-align: center;
-    font-size: 23px;
+
+    font-size: 22px;
     font-weight: 800;
+
     color: #168cff;
-    margin-bottom: 15px;
-    letter-spacing: .5px;
+
+    margin-bottom: 14px;
+}
+
+/* USUARIO */
+
+.usuario {
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
 }
 
 /* PESQUISA */
-.search-box {
+
+.search {
     position: relative;
-    max-width: 700px;
-    margin: auto;
 }
 
-.search-icon {
-    position: absolute;
-    left: 16px;
-    top: 13px;
-    font-size: 21px;
-}
+.search input {
 
-#search {
     width: 100%;
-    height: 52px;
+
+    height: 50px;
+
+    border-radius: 28px;
+
     border: 1px solid #292929;
-    border-radius: 30px;
+
     background: #121212;
+
     color: white;
-    padding: 0 20px 0 50px;
+
     font-size: 16px;
+
+    padding: 0 18px 0 48px;
+
     outline: none;
 }
 
-#search:focus {
+.search input:focus {
+
     border-color: #168cff;
+
+}
+
+.search span {
+
+    position: absolute;
+
+    left: 16px;
+
+    top: 13px;
+
+    font-size: 20px;
 }
 
 /* CATEGORIAS */
+
 .categorias {
+
     display: flex;
-    gap: 9px;
+
+    gap: 8px;
+
     overflow-x: auto;
-    padding: 14px 0 2px;
+
+    padding-top: 12px;
+
     scrollbar-width: none;
 }
 
@@ -81,245 +129,332 @@ body {
 }
 
 .categoria {
+
     flex: 0 0 auto;
-    background: #151515;
+
     border: 1px solid #292929;
+
+    background: #151515;
+
     color: #ddd;
+
     padding: 9px 15px;
-    border-radius: 22px;
+
+    border-radius: 20px;
+
     font-size: 14px;
-    cursor: pointer;
 }
 
 .categoria.ativa {
+
     background: #168cff;
+
     border-color: #168cff;
+
     color: white;
 }
 
 /* GALERIA */
-.galeria {
-    max-width: 1100px;
-    margin: auto;
-    padding: 18px 14px 40px;
 
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+.galeria {
+
+    padding: 15px;
+
+    max-width: 1000px;
+
+    margin: auto;
 }
 
 /* CARD */
+
 .card {
+
     background: #0c1210;
-    border: 1px solid #17201d;
+
+    border: 1px solid #19201d;
+
     border-radius: 18px;
+
     overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0,0,0,.35);
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.35);
 }
 
-.preview {
+/* CAPA */
+
+.capa {
+
     position: relative;
-    aspect-ratio: 9 / 16;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
     background: #000;
+
     overflow: hidden;
 }
 
-.preview img {
+.capa img {
+
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
-    display: block;
 }
+
+/* PLAY */
 
 .play {
+
     position: absolute;
+
     left: 50%;
+
     top: 50%;
+
     transform: translate(-50%, -50%);
 
-    width: 62px;
-    height: 62px;
+    width: 65px;
+
+    height: 65px;
+
     border-radius: 50%;
+
     border: none;
 
-    background: rgba(20,140,255,.95);
+    background: #168cff;
+
     color: white;
+
     font-size: 27px;
+
     cursor: pointer;
-
-    box-shadow: 0 4px 25px rgba(0,0,0,.5);
 }
 
-.conteudo {
-    padding: 14px;
+/* CONTEUDO */
+
+.info {
+
+    padding: 15px;
 }
 
-.titulo-video {
-    font-size: 17px;
-    font-weight: 700;
+.titulo {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
     margin-bottom: 8px;
 }
 
 .descricao {
-    color: #a9a9a9;
+
+    color: #999;
+
     font-size: 14px;
-    line-height: 1.45;
-    min-height: 42px;
+
+    line-height: 1.5;
 }
 
 .preco {
+
     color: #00ef72;
+
     font-size: 24px;
-    font-weight: 800;
+
+    font-weight: bold;
+
     margin: 13px 0;
 }
 
+/* COMPRAR */
+
 .comprar {
+
     width: 100%;
-    border: none;
-    border-radius: 10px;
-    background: #168cff;
-    color: white;
+
     padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #168cff;
+
+    color: white;
+
     font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-}
 
-.comprar:active {
-    transform: scale(.98);
-}
-
-.sem-resultados {
-    display: none;
-    text-align: center;
-    color: #999;
-    padding: 40px 20px;
+    font-weight: bold;
 }
 
 /* MODAL */
+
 .modal {
+
     display: none;
+
     position: fixed;
-    z-index: 999;
+
     inset: 0;
-    background: rgba(0,0,0,.92);
-    padding: 20px;
+
+    z-index: 999;
+
+    background: rgba(0,0,0,.95);
+
     align-items: center;
+
     justify-content: center;
+
+    padding: 15px;
 }
 
-.modal.ativo {
+.modal.aberto {
+
     display: flex;
 }
 
-.modal-content {
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-}
-
 .modal video {
+
     width: 100%;
+
     max-height: 80vh;
-    background: #000;
-    border-radius: 15px;
+
+    border-radius: 12px;
+
+    background: black;
 }
 
 .fechar {
-    position: absolute;
-    right: 0;
-    top: -45px;
 
-    width: 38px;
-    height: 38px;
+    position: absolute;
+
+    right: 15px;
+
+    top: 15px;
+
+    width: 40px;
+
+    height: 40px;
+
     border: none;
+
     border-radius: 50%;
 
     background: #222;
+
     color: white;
-    font-size: 22px;
-    cursor: pointer;
+
+    font-size: 20px;
 }
 
-/* RODAPÉ */
-.footer {
+/* SEM RESULTADO */
+
+.sem-resultados {
+
+    display: none;
+
     text-align: center;
+
+    color: #888;
+
+    padding: 50px 20px;
+}
+
+/* RODAPE */
+
+.footer {
+
+    text-align: center;
+
     color: #666;
+
+    padding: 30px;
+
     font-size: 13px;
-    padding: 25px;
 }
 
-/* CELULAR */
-@media (max-width: 650px) {
-
-    .galeria {
-        grid-template-columns: 1fr;
-    }
-
-    .titulo {
-        font-size: 21px;
-    }
-
-    .preview {
-        aspect-ratio: 16 / 10;
-    }
-}
-
-/* DESKTOP */
-@media (min-width: 900px) {
-
-    .galeria {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-}
 </style>
+
 </head>
+
 
 <body>
 
+
 <!-- TOPO -->
+
 <header class="header">
 
-    <div class="titulo">
+    <div class="logo">
         📱 HD VIDEOS POV 💎
     </div>
 
-    <div class="search-box">
-        <span class="search-icon">🔎</span>
-
-        <input
-            type="text"
-            id="search"
-            placeholder="Pesquisar por modelo ou produto..."
-        >
+    <div
+        class="usuario"
+        id="usuario"
+    >
+        Carregando...
     </div>
 
-    <!-- CATEGORIAS -->
+    <div class="search">
+
+        <span>🔎</span>
+
+        <input
+            id="pesquisa"
+            type="text"
+            placeholder="Pesquisar por modelo ou produto..."
+        >
+
+    </div>
+
+
     <div class="categorias">
 
-        <button class="categoria ativa" data-cat="todos">
+        <button
+            class="categoria ativa"
+            data-categoria="todos"
+        >
             Todos
         </button>
 
-        <button class="categoria" data-cat="moda">
+        <button
+            class="categoria"
+            data-categoria="moda"
+        >
             👗 Moda
         </button>
 
-        <button class="categoria" data-cat="calcados">
+        <button
+            class="categoria"
+            data-categoria="calcados"
+        >
             👟 Calçados
         </button>
 
-        <button class="categoria" data-cat="beleza">
+        <button
+            class="categoria"
+            data-categoria="beleza"
+        >
             💄 Beleza
         </button>
 
-        <button class="categoria" data-cat="pov">
+        <button
+            class="categoria"
+            data-categoria="pov"
+        >
             🎥 POV
         </button>
 
-        <button class="categoria" data-cat="novos">
+        <button
+            class="categoria"
+            data-categoria="novos"
+        >
             🔥 Novos
         </button>
 
@@ -329,243 +464,310 @@ body {
 
 
 <!-- GALERIA -->
+
 <main>
 
-<div class="galeria" id="galeria">
+<div
+    class="galeria"
+    id="galeria"
+>
 
 
-    <!-- PRODUTO 1 -->
-    <article
-        class="card"
-        data-categoria="pov novos"
-        data-titulo="relogio"
-    >
+<!-- =========================
+     VIDEO 1
+========================= -->
 
-        <div class="preview">
+<article
+    class="card"
+    data-categoria="pov novos"
+    data-titulo="relogio"
+>
 
-            <!-- TROQUE ESTA IMAGEM PELA CAPA DO SEU VÍDEO -->
-            <img
-                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+01"
-                alt="Vídeo POV Relógio"
-            >
+    <div class="capa">
 
-            <button
-                class="play"
-                onclick="abrirPreview('VIDEO_01_URL')"
-            >
-                ▶
-            </button>
+        <!-- COLOQUE A CAPA DO VIDEO AQUI -->
 
+        <img
+            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+01"
+            alt="Vídeo POV"
+        >
+
+        <button
+            class="play"
+            onclick="abrirPreview('URL_PREVIEW_1')"
+        >
+            ▶
+        </button>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="titulo">
+            #1 Vídeo POV - Relógio
         </div>
 
-        <div class="conteudo">
-
-            <div class="titulo-video">
-                #1 Vídeo POV - Exemplo Relógio
-            </div>
-
-            <div class="descricao">
-                Vídeo POV para divulgação de produto.
-            </div>
-
-            <div class="preco">
-                R$ 9,90
-            </div>
-
-            <button
-                class="comprar"
-                onclick="comprarVideo('VIDEO_01','R$ 9,90')"
-            >
-                🛒 Comprar Vídeo
-            </button>
-
+        <div class="descricao">
+            Vídeo POV pronto para divulgação do produto.
         </div>
 
-    </article>
-
-
-    <!-- PRODUTO 2 -->
-    <article
-        class="card"
-        data-categoria="moda novos"
-        data-titulo="tenis"
-    >
-
-        <div class="preview">
-
-            <img
-                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+02"
-                alt="Vídeo POV 2"
-            >
-
-            <button
-                class="play"
-                onclick="abrirPreview('VIDEO_02_URL')"
-            >
-                ▶
-            </button>
-
+        <div class="preco">
+            R$ 9,90
         </div>
 
-        <div class="conteudo">
+        <button
+            class="comprar"
+            onclick="comprar('video_001', 'Vídeo POV - Relógio', 9.90)"
+        >
+            🛒 Comprar Vídeo
+        </button>
 
-            <div class="titulo-video">
-                #2 Vídeo POV - Exemplo Tênis
-            </div>
+    </div>
 
-            <div class="descricao">
-                Vídeo pronto para divulgação no TikTok Shop.
-            </div>
+</article>
 
-            <div class="preco">
-                R$ 9,90
-            </div>
 
-            <button
-                class="comprar"
-                onclick="comprarVideo('VIDEO_02','R$ 9,90')"
-            >
-                🛒 Comprar Vídeo
-            </button>
+<!-- =========================
+     VIDEO 2
+========================= -->
 
+<article
+    class="card"
+    data-categoria="moda novos"
+    data-titulo="tenis"
+>
+
+    <div class="capa">
+
+        <img
+            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+02"
+            alt="Vídeo POV"
+        >
+
+        <button
+            class="play"
+            onclick="abrirPreview('URL_PREVIEW_2')"
+        >
+            ▶
+        </button>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="titulo">
+            #2 Vídeo POV - Tênis
         </div>
 
-    </article>
-
-
-    <!-- PRODUTO 3 -->
-    <article
-        class="card"
-        data-categoria="beleza pov"
-        data-titulo="perfume"
-    >
-
-        <div class="preview">
-
-            <img
-                src="https://placehold.co/600x1000/111111/ffffff?text=VIDEO+POV+03"
-                alt="Vídeo POV Perfume"
-            >
-
-            <button
-                class="play"
-                onclick="abrirPreview('VIDEO_03_URL')"
-            >
-                ▶
-            </button>
-
+        <div class="descricao">
+            Vídeo pronto para conteúdo e divulgação.
         </div>
 
-        <div class="conteudo">
-
-            <div class="titulo-video">
-                #3 Vídeo POV - Perfume
-            </div>
-
-            <div class="descricao">
-                Vídeo para divulgação de perfume e produtos de beleza.
-            </div>
-
-            <div class="preco">
-                R$ 9,90
-            </div>
-
-            <button
-                class="comprar"
-                onclick="comprarVideo('VIDEO_03','R$ 9,90')"
-            >
-                🛒 Comprar Vídeo
-            </button>
-
+        <div class="preco">
+            R$ 9,90
         </div>
 
-    </article>
+        <button
+            class="comprar"
+            onclick="comprar('video_002', 'Vídeo POV - Tênis', 9.90)"
+        >
+            🛒 Comprar Vídeo
+        </button>
+
+    </div>
+
+</article>
+
+
+<!-- =========================
+     VIDEO 3
+========================= -->
+
+<article
+    class="card"
+    data-categoria="beleza pov"
+    data-titulo="perfume"
+>
+
+    <div class="capa">
+
+        <img
+            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+03"
+            alt="Vídeo POV"
+        >
+
+        <button
+            class="play"
+            onclick="abrirPreview('URL_PREVIEW_3')"
+        >
+            ▶
+        </button>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="titulo">
+            #3 Vídeo POV - Perfume
+        </div>
+
+        <div class="descricao">
+            Vídeo POV para produtos de beleza.
+        </div>
+
+        <div class="preco">
+            R$ 9,90
+        </div>
+
+        <button
+            class="comprar"
+            onclick="comprar('video_003', 'Vídeo POV - Perfume', 9.90)"
+        >
+            🛒 Comprar Vídeo
+        </button>
+
+    </div>
+
+</article>
 
 
 </div>
+
 
 <div
     class="sem-resultados"
     id="semResultados"
 >
-    😕 Nenhum vídeo encontrado.
+    Nenhum vídeo encontrado.
 </div>
 
 </main>
 
 
 <footer class="footer">
+
     HD VIDEOS POV 💎<br>
+
     Conteúdos exclusivos
+
 </footer>
 
 
-<!-- MODAL DE PRÉVIA -->
+<!-- MODAL -->
+
 <div
     class="modal"
     id="modal"
-    onclick="fecharModal(event)"
 >
 
-    <div class="modal-content">
+    <button
+        class="fechar"
+        onclick="fecharPreview()"
+    >
+        ✕
+    </button>
 
-        <button
-            class="fechar"
-            onclick="fecharPreview()"
-        >
-            ✕
-        </button>
-
-        <video
-            id="videoPreview"
-            controls
-            playsinline
-        ></video>
-
-    </div>
+    <video
+        id="preview"
+        controls
+        playsinline
+    ></video>
 
 </div>
 
 
 <script>
 
-/* =========================
+
+/* ==========================
+   TELEGRAM
+========================== */
+
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+
+tg.expand();
+
+
+/* ==========================
+   USUARIO
+========================== */
+
+const telegramUser =
+    tg.initDataUnsafe?.user;
+
+
+if (telegramUser) {
+
+    const nome =
+        telegramUser.first_name || "Usuário";
+
+    document.getElementById("usuario").innerText =
+        "Olá, " + nome + " 👋";
+
+} else {
+
+    document.getElementById("usuario").innerText =
+        "HD VIDEOS POV 💎";
+
+}
+
+
+/* ==========================
    PESQUISA
-========================= */
+========================== */
 
-const pesquisa = document.getElementById("search");
+const pesquisa =
+    document.getElementById("pesquisa");
 
-pesquisa.addEventListener("input", filtrar);
+
+pesquisa.addEventListener(
+    "input",
+    filtrar
+);
 
 
-/* =========================
+/* ==========================
    CATEGORIAS
-========================= */
+========================== */
 
 let categoriaAtual = "todos";
 
-document.querySelectorAll(".categoria").forEach(botao => {
 
-    botao.addEventListener("click", () => {
+document
+.querySelectorAll(".categoria")
+.forEach(botao => {
 
-        document
+    botao.addEventListener(
+        "click",
+        () => {
+
+            document
             .querySelectorAll(".categoria")
-            .forEach(b => b.classList.remove("ativa"));
+            .forEach(b =>
+                b.classList.remove("ativa")
+            );
 
-        botao.classList.add("ativa");
+            botao.classList.add("ativa");
 
-        categoriaAtual = botao.dataset.cat;
+            categoriaAtual =
+                botao.dataset.categoria;
 
-        filtrar();
+            filtrar();
 
-    });
+        }
+    );
 
 });
 
 
-/* =========================
+/* ==========================
    FILTRO
-========================= */
+========================== */
 
 function filtrar() {
 
@@ -579,22 +781,28 @@ function filtrar() {
 
     let encontrados = 0;
 
+
     cards.forEach(card => {
 
         const titulo =
-            card.dataset.titulo.toLowerCase();
+            card.dataset.titulo
+            .toLowerCase();
 
         const categorias =
-            card.dataset.categoria.toLowerCase();
+            card.dataset.categoria
+            .toLowerCase();
 
-        const bateTexto =
+
+        const textoOK =
             titulo.includes(texto);
 
-        const bateCategoria =
+
+        const categoriaOK =
             categoriaAtual === "todos" ||
             categorias.includes(categoriaAtual);
 
-        if (bateTexto && bateCategoria) {
+
+        if (textoOK && categoriaOK) {
 
             card.style.display = "";
 
@@ -608,27 +816,26 @@ function filtrar() {
 
     });
 
-    document.getElementById("semResultados").style.display =
-        encontrados === 0 ? "block" : "none";
+
+    document.getElementById(
+        "semResultados"
+    ).style.display =
+        encontrados === 0
+        ? "block"
+        : "none";
 
 }
 
 
-/* =========================
-   PRÉVIA DO VÍDEO
-========================= */
+/* ==========================
+   PREVIEW
+========================== */
 
 function abrirPreview(url) {
 
-    /*
-      IMPORTANTE:
-      Troque VIDEO_01_URL pelo endereço
-      real do vídeo.
-    */
-
     if (
         !url ||
-        url.includes("_URL")
+        url.includes("URL_PREVIEW")
     ) {
 
         alert(
@@ -636,16 +843,21 @@ function abrirPreview(url) {
         );
 
         return;
+
     }
 
+
     const video =
-        document.getElementById("videoPreview");
+        document.getElementById("preview");
+
 
     video.src = url;
 
+
     document
-        .getElementById("modal")
-        .classList.add("ativo");
+    .getElementById("modal")
+    .classList.add("aberto");
+
 
     video.play().catch(() => {});
 
@@ -654,11 +866,9 @@ function abrirPreview(url) {
 
 function fecharPreview() {
 
-    const modal =
-        document.getElementById("modal");
-
     const video =
-        document.getElementById("videoPreview");
+        document.getElementById("preview");
+
 
     video.pause();
 
@@ -666,52 +876,95 @@ function fecharPreview() {
 
     video.load();
 
-    modal.classList.remove("ativo");
+
+    document
+    .getElementById("modal")
+    .classList.remove("aberto");
 
 }
 
 
-function fecharModal(event) {
+/* ==========================
+   COMPRAR
+========================== */
 
-    if (
-        event.target.id === "modal"
-    ) {
+function comprar(
+    produtoId,
+    produtoNome,
+    preco
+) {
 
-        fecharPreview();
+
+    const user =
+        tg.initDataUnsafe?.user;
+
+
+    if (!user) {
+
+        alert(
+            "Abra esta página dentro do Telegram."
+        );
+
+        return;
+
+    }
+
+
+    const pedido = {
+
+        action: "comprar",
+
+        produto_id: produtoId,
+
+        produto_nome: produtoNome,
+
+        preco: preco,
+
+        telegram_id: user.id,
+
+        username:
+            user.username || "",
+
+        nome:
+            user.first_name || "",
+
+        initData:
+            tg.initData
+
+    };
+
+
+    /*
+      ENVIA O PEDIDO PARA O BOT
+
+      Isso funciona quando o Mini App
+      foi aberto pelo tipo de botão
+      Web App que permite sendData.
+    */
+
+    try {
+
+        tg.sendData(
+            JSON.stringify(pedido)
+        );
+
+        tg.close();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        alert(
+            "Não foi possível enviar o pedido ao bot."
+        );
 
     }
 
 }
 
 
-/* =========================
-   COMPRAR
-========================= */
-
-function comprarVideo(id, preco) {
-
-    /*
-      AQUI VAI A INTEGRAÇÃO
-      COM O MERCADO PAGO.
-
-      NÃO coloque sua ACCESS TOKEN
-      do Mercado Pago aqui.
-
-      A chave secreta deve ficar
-      no servidor/Make.
-    */
-
-    alert(
-        "Você selecionou o vídeo " +
-        id +
-        " por " +
-        preco +
-        ".\n\nA integração do Mercado Pago será conectada aqui."
-    );
-
-}
-
 </script>
 
 </body>
-</html>
+
+            </html>
