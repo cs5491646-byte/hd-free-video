@@ -2,1250 +2,597 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>HD VIDEOS POV 💎</title>
-
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background: radial-gradient(circle at top, #10243d 0%, #050505 35%);
-    color: #fff;
-    font-family: Arial, sans-serif;
-}
-
-button,
-input {
-    font-family: inherit;
-}
-
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5,5,5,.96);
-    backdrop-filter: blur(12px);
-    padding: 15px;
-    border-bottom: 1px solid #202020;
-}
-
-.logo {
-    text-align: center;
-    font-size: 23px;
-    font-weight: 900;
-    color: #168cff;
-    margin-bottom: 5px;
-}
-
-.sublogo {
-    text-align: center;
-    color: #777;
-    font-size: 11px;
-    margin-bottom: 12px;
-}
-
-.usuario {
-    text-align: center;
-    color: #aaa;
-    font-size: 13px;
-    margin-bottom: 12px;
-}
-
-.search {
-    position: relative;
-}
-
-.search input {
-    width: 100%;
-    height: 50px;
-    border-radius: 28px;
-    border: 1px solid #292929;
-    background: #111;
-    color: white;
-    font-size: 15px;
-    padding: 0 18px 0 48px;
-    outline: none;
-}
-
-.search span {
-    position: absolute;
-    left: 16px;
-    top: 13px;
-    font-size: 20px;
-}
-
-.banner {
-    margin: 15px;
-    padding: 18px;
-    border-radius: 18px;
-    background: linear-gradient(135deg,#126fd0,#082b52);
-    border: 1px solid #248fff;
-    box-shadow: 0 8px 30px rgba(0,100,255,.18);
-}
-
-.banner-alerta {
-    font-size: 11px;
-    font-weight: bold;
-    color: #bfe2ff;
-    margin-bottom: 7px;
-}
-
-.banner-titulo {
-    font-size: 21px;
-    font-weight: 900;
-    margin-bottom: 7px;
-}
-
-.banner-texto {
-    color: #dceeff;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.categorias {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 0 15px 5px;
-    scrollbar-width: none;
-}
-
-.categorias::-webkit-scrollbar {
-    display: none;
-}
-
-.categoria {
-    flex: 0 0 auto;
-    border: 1px solid #292929;
-    background: #151515;
-    color: #ccc;
-    padding: 9px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.categoria.ativa {
-    background: #168cff;
-    border-color: #168cff;
-    color: white;
-}
-
-.secao {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 15px 5px;
-}
-
-.secao h2 {
-    margin: 0;
-    font-size: 20px;
-}
-
-.contador {
-    color: #777;
-    font-size: 12px;
-}
-
-.galeria {
-    padding: 10px 15px 130px;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.card {
-    background: linear-gradient(145deg,#101615,#090b0a);
-    border: 1px solid #1d2824;
-    border-radius: 18px;
-    overflow: hidden;
-    margin-bottom: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.35);
-}
-
-.capa {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-}
-
-.capa img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.etiqueta {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    background: #168cff;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 6px 9px;
-    border-radius: 8px;
-}
-
-.play {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,.85);
-    background: rgba(22,140,255,.92);
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.info {
-    padding: 15px;
-}
-
-.titulo {
-    font-size: 18px;
-    font-weight: 800;
-    margin-bottom: 7px;
-}
-
-.descricao {
-    color: #999;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.preco {
-    color: #00ef72;
-    font-size: 22px;
-    font-weight: 900;
-    margin: 13px 0;
-}
-
-.selecionar {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 11px;
-    background: #151515;
-    border: 1px solid #168cff;
-    color: white;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.selecionar.selecionado {
-    background: linear-gradient(135deg,#168cff,#0064c8);
-}
-
-.carregar {
-    display: block;
-    margin: 5px auto 25px;
-    padding: 13px 25px;
-    border-radius: 25px;
-    border: 1px solid #168cff;
-    background: #101820;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.sem-resultados {
-    display: none;
-    text-align: center;
-    color: #888;
-    padding: 50px 20px;
-}
-
-.aviso {
-    margin: 5px 15px 20px;
-    padding: 14px;
-    background: #17130b;
-    border: 1px solid #493b1c;
-    border-radius: 13px;
-    color: #bdb39a;
-    font-size: 11px;
-    line-height: 1.5;
-}
-
-.aviso strong {
-    color: #e5d19c;
-}
-
-.footer {
-    text-align: center;
-    color: #666;
-    padding: 30px 20px;
-    font-size: 12px;
-    border-top: 1px solid #151515;
-}
-
-/* =========================
-   CARRINHO
-========================= */
-
-.carrinho {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 500;
-    background: rgba(12,12,12,.97);
-    border: 1px solid #168cff;
-    border-radius: 18px;
-    padding: 14px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.65);
-    backdrop-filter: blur(12px);
-}
-
-.carrinho-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.carrinho-titulo {
-    font-weight: 900;
-    font-size: 15px;
-}
-
-.carrinho-total {
-    color: #00ef72;
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.carrinho-info {
-    color: #aaa;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.comprar {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 11px;
-    background: linear-gradient(135deg,#168cff,#0064c8);
-    color: white;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.comprar:disabled {
-    opacity: .45;
-    cursor: not-allowed;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    background: rgba(0,0,0,.96);
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
-
-.modal.aberto {
-    display: flex;
-}
-
-.modal video {
-    width: 100%;
-    max-height: 80vh;
-    border-radius: 12px;
-    background: black;
-}
-
-.fechar {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: #222;
-    color: white;
-    font-size: 20px;
-    z-index: 1000;
-}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#10243d 0%,#050505 35%);color:#fff;font-family:Arial,sans-serif;padding-bottom:72px}
+button,input{font-family:inherit}.header{position:sticky;top:0;z-index:100;background:rgba(5,5,5,.96);backdrop-filter:blur(12px);padding:12px;border-bottom:1px solid #202020}
+.logo{text-align:center;font-size:22px;font-weight:900;color:#168cff}.sublogo{text-align:center;color:#777;font-size:11px;margin:4px 0 9px}.usuario{text-align:center;color:#aaa;font-size:13px;margin-bottom:9px}
+.search{position:relative}.search input{width:100%;height:46px;border-radius:24px;border:1px solid #292929;background:#111;color:white;font-size:15px;padding:0 18px 0 45px;outline:none}.search span{position:absolute;left:15px;top:11px;font-size:19px}
+.sugestoes{display:none;position:absolute;left:0;right:0;top:50px;background:#151515;border:1px solid #292929;border-radius:12px;max-height:220px;overflow:auto;z-index:200}.sugestoes button{display:block;width:100%;padding:11px 13px;text-align:left;background:none;border:0;border-bottom:1px solid #222;color:#ddd}.sugestoes button:last-child{border:0}
+.banner{margin:12px;padding:16px;border-radius:16px;background:linear-gradient(135deg,#126fd0,#082b52);border:1px solid #248fff}.banner-alerta{font-size:11px;font-weight:bold;color:#bfe2ff}.banner-titulo{font-size:20px;font-weight:900;margin:6px 0}.banner-texto{color:#dceeff;font-size:13px;line-height:1.45}
+.categorias{display:flex;gap:7px;overflow-x:auto;padding:0 12px 5px;scrollbar-width:none}.categorias::-webkit-scrollbar{display:none}.categoria{flex:0 0 auto;border:1px solid #292929;background:#151515;color:#ccc;padding:8px 13px;border-radius:20px;font-size:12px}.categoria.ativa{background:#168cff;border-color:#168cff;color:#fff}
+.secao{display:flex;align-items:center;justify-content:space-between;padding:12px}.secao h2{margin:0;font-size:19px}.contador{color:#777;font-size:12px}.galeria{padding:6px 12px 15px;max-width:1000px;margin:auto}
+.card{background:linear-gradient(145deg,#101615,#090b0a);border:1px solid #1d2824;border-radius:16px;overflow:hidden;margin-bottom:14px}.capa{position:relative;width:100%;aspect-ratio:16/9;background:#000}.capa img{width:100%;height:100%;object-fit:cover;display:block}.etiqueta{position:absolute;left:9px;top:9px;background:#168cff;color:#fff;font-size:10px;font-weight:bold;padding:5px 8px;border-radius:7px}.info{padding:13px}.titulo{font-size:17px;font-weight:800;margin-bottom:5px}.descricao{color:#999;font-size:12px}.preco{color:#00ef72;font-size:22px;font-weight:900;margin:10px 0}.comprar{width:100%;padding:12px;border:0;border-radius:10px;background:linear-gradient(135deg,#168cff,#0064c8);color:#fff;font-size:15px;font-weight:800}.sem-resultados{text-align:center;color:#888;padding:40px 20px;display:none}.carregar{display:block;margin:5px auto 20px;padding:11px 22px;border-radius:22px;border:1px solid #168cff;background:#101820;color:#fff;font-weight:bold}
+.aviso{margin:5px 12px 18px;padding:12px;background:#17130b;border:1px solid #493b1c;border-radius:12px;color:#bdb39a;font-size:11px;line-height:1.5}.aviso strong{color:#e5d19c}.footer{text-align:center;color:#666;padding:25px 15px;font-size:12px;border-top:1px solid #151515}
+.carrinho{position:fixed;left:10px;right:10px;bottom:9px;height:50px;z-index:500;background:#111;border:1px solid #168cff;border-radius:15px;box-shadow:0 5px 25px #000;padding:0 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}.carrinho-info{font-size:12px;line-height:1.15}.carrinho-total{font-size:16px;font-weight:900;color:#00ef72}.carrinho button{border:0;border-radius:10px;background:#168cff;color:#fff;font-weight:800;padding:9px 12px}
+.modal{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.96);align-items:center;justify-content:center;padding:15px}.modal.aberto{display:flex}.modal video{width:100%;max-height:80vh;border-radius:12px;background:#000}.fechar{position:absolute;right:15px;top:15px;width:42px;height:42px;border:0;border-radius:50%;background:#222;color:#fff;font-size:20px;z-index:1000}
 </style>
 </head>
-
 <body>
-
 <header class="header">
-
-    <div class="logo">
-        📱 HD VIDEOS POV 💎
-    </div>
-
-    <div class="sublogo">
-        Conteúdos POV para criadores
-    </div>
-
-    <div class="usuario" id="usuario">
-        Carregando...
-    </div>
-
-    <div class="search">
-        <span>🔎</span>
-
-        <input
-            id="pesquisa"
-            type="text"
-            placeholder="Pesquisar vídeo..."
-        >
-    </div>
-
+<div class="logo">📱 HD VIDEOS POV 💎</div>
+<div class="sublogo">Conteúdos POV para criadores</div>
+<div class="usuario" id="usuario">Carregando...</div>
+<div class="search">
+<span>🔎</span><input id="pesquisa" type="text" placeholder="Pesquisar vídeo ou produto..." autocomplete="off">
+<div class="sugestoes" id="sugestoes"></div>
+</div>
 </header>
 
 <section class="banner">
-
-    <div class="banner-alerta">
-        🚨 ESCOLHA SEUS VÍDEOS
-    </div>
-
-    <div class="banner-titulo">
-        Monte seu pacote!
-    </div>
-
-    <div class="banner-texto">
-        Selecione os vídeos que você deseja.
-        O valor é calculado automaticamente de acordo
-        com a quantidade escolhida.
-    </div>
-
+<div class="banner-alerta">🚨 ATENÇÃO • NOVIDADES</div>
+<div class="banner-titulo">Seja o primeiro a conferir!</div>
+<div class="banner-texto">Novos vídeos POV são adicionados ao catálogo. Encontre seu conteúdo, confira a prévia e compre seu acesso de forma rápida.</div>
 </section>
 
-<div class="categorias">
+<div class="categorias" id="categorias"></div>
+<div class="secao"><h2>🎬 Vídeos disponíveis</h2><div class="contador" id="contador">0 vídeos</div></div>
+<main><div class="galeria" id="galeria"></div><div class="sem-resultados" id="semResultados">😕<br><br>Nenhum vídeo encontrado.</div><button class="carregar" id="carregarMais">⬇️ Carregar mais vídeos</button></main>
 
-    <button class="categoria ativa" data-categoria="todos">
-        ✨ Todos
-    </button>
-
-    <button class="categoria" data-categoria="moda">
-        👗 Moda
-    </button>
-
-    <button class="categoria" data-categoria="calcados">
-        👟 Calçados
-    </button>
-
-    <button class="categoria" data-categoria="beleza">
-        💄 Beleza
-    </button>
-
-    <button class="categoria" data-categoria="pov">
-        🎥 POV
-    </button>
-
-    <button class="categoria" data-categoria="novos">
-        🔥 Novos
-    </button>
-
-</div>
-
-<div class="secao">
-
-    <h2>
-        🎬 Vídeos disponíveis
-    </h2>
-
-    <div class="contador" id="contador">
-        0 vídeos
-    </div>
-
-</div>
-
-<main>
-
-    <div class="galeria" id="galeria"></div>
-
-    <div class="sem-resultados" id="semResultados">
-        😕<br><br>
-        Nenhum vídeo encontrado.
-    </div>
-
-    <button
-        class="carregar"
-        id="carregarMais"
-        onclick="carregarMais()"
-    >
-        ⬇️ Carregar mais vídeos
-    </button>
-
-</main>
-
-<div class="aviso">
-
-    <strong>⚠️ Aviso importante</strong><br><br>
-
-    A compra deste conteúdo não transfere automaticamente
-    propriedade de marcas, imagens, produtos ou outros
-    direitos pertencentes a terceiros. Verifique as
-    condições de uso do conteúdo antes de publicar.
-
-</div>
-
-<footer class="footer">
-
-    HD VIDEOS POV 💎<br><br>
-
-    Conteúdos exclusivos para criadores
-
-</footer>
-
-<!-- CARRINHO -->
+<div class="aviso"><strong>⚠️ Aviso importante</strong><br><br>A compra deste conteúdo não transfere automaticamente propriedade de marcas, imagens, produtos ou outros direitos pertencentes a terceiros. Verifique as condições de uso do conteúdo antes de publicar.</div>
+<footer class="footer">HD VIDEOS POV 💎<br><br>Conteúdos exclusivos para criadores</footer>
 
 <div class="carrinho">
-
-    <div class="carrinho-topo">
-
-        <div class="carrinho-titulo">
-            🛒 Seu pedido
-        </div>
-
-        <div
-            class="carrinho-total"
-            id="carrinhoTotal"
-        >
-            R$ 0,00
-        </div>
-
-    </div>
-
-    <div
-        class="carrinho-info"
-        id="carrinhoInfo"
-    >
-        Nenhum vídeo selecionado.
-    </div>
-
-    <button
-        class="comprar"
-        id="botaoComprar"
-        onclick="comprarSelecionados()"
-        disabled
-    >
-        🛒 Comprar vídeos selecionados
-    </button>
-
+<div class="carrinho-info"><b>🛒 Carrinho</b><br><span id="qtdCarrinho">0 vídeos</span></div>
+<div class="carrinho-total" id="totalCarrinho">R$ 0,00</div>
+<button id="finalizar">Comprar</button>
 </div>
 
-<!-- MODAL PREVIEW -->
-
-<div class="modal" id="modal">
-
-    <button
-        class="fechar"
-        onclick="fecharPreview()"
-    >
-        ✕
-    </button>
-
-    <video
-        id="preview"
-        controls
-        playsinline
-    ></video>
-
-</div>
+<div class="modal" id="modal"><button class="fechar" onclick="fecharPreview()">✕</button><video id="preview" controls playsinline></video></div>
 
 <script>
+const tg=window.Telegram.WebApp; tg.ready(); tg.expand();
+const telegramUser=tg.initDataUnsafe?.user;
+document.getElementById("usuario").innerText=telegramUser ? "Olá, "+(telegramUser.first_name||"Usuário")+" 👋" : "HD VIDEOS POV 💎";
 
-/* =====================================================
-   TELEGRAM
-===================================================== */
+const WEBHOOK_URL="https://hook.us2.make.com/5fjkpgbtcrpf6xo7motrnaxak1xvb7aa";
 
-const tg = window.Telegram.WebApp;
+const videos=[
+  {id:"video_001",titulo:'Vestido • Vídeo POV',categoria:'Moda feminina',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+001"},
+  {id:"video_002",titulo:'Conjunto • Vídeo POV',categoria:'Moda feminina',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+002"},
+  {id:"video_003",titulo:'Blusa • Vídeo POV',categoria:'Moda feminina',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+003"},
+  {id:"video_004",titulo:'Calça • Vídeo POV',categoria:'Moda feminina',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+004"},
+  {id:"video_005",titulo:'Saia • Vídeo POV',categoria:'Moda feminina',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+005"},
+  {id:"video_006",titulo:'Short • Vídeo POV',categoria:'Moda feminina',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+006"},
+  {id:"video_007",titulo:'Body • Vídeo POV',categoria:'Moda feminina',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+007"},
+  {id:"video_008",titulo:'Cropped • Vídeo POV',categoria:'Moda feminina',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+008"},
+  {id:"video_009",titulo:'Macacão • Vídeo POV',categoria:'Moda feminina',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+009"},
+  {id:"video_010",titulo:'Jaqueta • Vídeo POV',categoria:'Moda feminina',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+010"},
+  {id:"video_011",titulo:'Camisa • Vídeo POV',categoria:'Moda masculina',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+011"},
+  {id:"video_012",titulo:'Camiseta • Vídeo POV',categoria:'Moda masculina',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+012"},
+  {id:"video_013",titulo:'Calça • Vídeo POV',categoria:'Moda masculina',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+013"},
+  {id:"video_014",titulo:'Bermuda • Vídeo POV',categoria:'Moda masculina',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+014"},
+  {id:"video_015",titulo:'Short • Vídeo POV',categoria:'Moda masculina',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+015"},
+  {id:"video_016",titulo:'Jaqueta • Vídeo POV',categoria:'Moda masculina',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+016"},
+  {id:"video_017",titulo:'Moletom • Vídeo POV',categoria:'Moda masculina',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+017"},
+  {id:"video_018",titulo:'Polo • Vídeo POV',categoria:'Moda masculina',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+018"},
+  {id:"video_019",titulo:'Regata • Vídeo POV',categoria:'Moda masculina',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+019"},
+  {id:"video_020",titulo:'Conjunto • Vídeo POV',categoria:'Moda masculina',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+020"},
+        {id:"video_021",titulo:'Tênis feminino • Vídeo POV',categoria:'Calçados',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+021"},
+  {id:"video_022",titulo:'Tênis masculino • Vídeo POV',categoria:'Calçados',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+022"},
+  {id:"video_023",titulo:'Sandália • Vídeo POV',categoria:'Calçados',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+023"},
+  {id:"video_024",titulo:'Rasteirinha • Vídeo POV',categoria:'Calçados',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+024"},
+  {id:"video_025",titulo:'Chinelo • Vídeo POV',categoria:'Calçados',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+025"},
+  {id:"video_026",titulo:'Sapatilha • Vídeo POV',categoria:'Calçados',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+026"},
+  {id:"video_027",titulo:'Bota • Vídeo POV',categoria:'Calçados',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+027"},
+  {id:"video_028",titulo:'Papete • Vídeo POV',categoria:'Calçados',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+028"},
+  {id:"video_029",titulo:'Mocassim • Vídeo POV',categoria:'Calçados',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+029"},
+  {id:"video_030",titulo:'Slip-on • Vídeo POV',categoria:'Calçados',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+030"},
+  {id:"video_031",titulo:'Bolsa • Vídeo POV',categoria:'Acessórios',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+031"},
+  {id:"video_032",titulo:'Mochila • Vídeo POV',categoria:'Acessórios',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+032"},
+  {id:"video_033",titulo:'Carteira • Vídeo POV',categoria:'Acessórios',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+033"},
+  {id:"video_034",titulo:'Óculos • Vídeo POV',categoria:'Acessórios',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+034"},
+  {id:"video_035",titulo:'Relógio • Vídeo POV',categoria:'Acessórios',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+035"},
+  {id:"video_036",titulo:'Boné • Vídeo POV',categoria:'Acessórios',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+036"},
+  {id:"video_037",titulo:'Cinto • Vídeo POV',categoria:'Acessórios',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+037"},
+  {id:"video_038",titulo:'Colar • Vídeo POV',categoria:'Acessórios',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+038"},
+  {id:"video_039",titulo:'Brinco • Vídeo POV',categoria:'Acessórios',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+039"},
+  {id:"video_040",titulo:'Pulseira • Vídeo POV',categoria:'Acessórios',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+040"},
+  {id:"video_041",titulo:'Air fryer • Vídeo POV',categoria:'Cozinha',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+041"},
+  {id:"video_042",titulo:'Liquidificador • Vídeo POV',categoria:'Cozinha',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+042"},
+  {id:"video_043",titulo:'Batedeira • Vídeo POV',categoria:'Cozinha',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+043"},
+  {id:"video_044",titulo:'Sanduicheira • Vídeo POV',categoria:'Cozinha',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+044"},
+  {id:"video_045",titulo:'Cafeteira • Vídeo POV',categoria:'Cozinha',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+045"},
+  {id:"video_046",titulo:'Panela elétrica • Vídeo POV',categoria:'Cozinha',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+046"},
+  {id:"video_047",titulo:'Frigideira • Vídeo POV',categoria:'Cozinha',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+047"},
+  {id:"video_048",titulo:'Jogo de panelas • Vídeo POV',categoria:'Cozinha',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+048"},
+  {id:"video_049",titulo:'Pote hermético • Vídeo POV',categoria:'Cozinha',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+049"},
+  {id:"video_050",titulo:'Porta-temperos • Vídeo POV',categoria:'Cozinha',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+050"},
+  {id:"video_051",titulo:'Perfume feminino • Vídeo POV',categoria:'Beleza',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+051"},
+  {id:"video_052",titulo:'Perfume masculino • Vídeo POV',categoria:'Beleza',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+052"},
+  {id:"video_053",titulo:'Body splash • Vídeo POV',categoria:'Beleza',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+053"},
+  {id:"video_054",titulo:'Kit maquiagem • Vídeo POV',categoria:'Beleza',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+054"},
+  {id:"video_055",titulo:'Batom • Vídeo POV',categoria:'Beleza',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+055"},
+  {id:"video_056",titulo:'Gloss • Vídeo POV',categoria:'Beleza',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+056"},
+  {id:"video_057",titulo:'Base facial • Vídeo POV',categoria:'Beleza',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+057"},
+  {id:"video_058",titulo:'Corretivo • Vídeo POV',categoria:'Beleza',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+058"},
+  {id:"video_059",titulo:'Paleta de sombras • Vídeo POV',categoria:'Beleza',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+059"},
+  {id:"video_060",titulo:'Kit skincare • Vídeo POV',categoria:'Beleza',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+060"},
+  {id:"video_061",titulo:'Secador • Vídeo POV',categoria:'Cabelo',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+061"},
+  {id:"video_062",titulo:'Modelador de cachos • Vídeo POV',categoria:'Cabelo',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+062"},
+  {id:"video_063",titulo:'Prancha • Vídeo POV',categoria:'Cabelo',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+063"},
+  {id:"video_064",titulo:'Escova secadora • Vídeo POV',categoria:'Cabelo',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+064"},
+  {id:"video_065",titulo:'Kit cabelo • Vídeo POV',categoria:'Cabelo',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+065"},
+  {id:"video_066",titulo:'Escova modeladora • Vídeo POV',categoria:'Cabelo',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+066"},
+  {id:"video_067",titulo:'Touca de cetim • Vídeo POV',categoria:'Cabelo',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+067"},
+  {id:"video_068",titulo:'Pente • Vídeo POV',categoria:'Cabelo',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+068"},
+  {id:"video_069",titulo:'Escova • Vídeo POV',categoria:'Cabelo',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+069"},
+  {id:"video_070",titulo:'Finalizador • Vídeo POV',categoria:'Cabelo',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+070"},
+        {id:"video_071",titulo:'Smartphone • Vídeo POV',categoria:'Eletrônicos',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+071"},
+  {id:"video_072",titulo:'Fone Bluetooth • Vídeo POV',categoria:'Eletrônicos',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+072"},
+  {id:"video_073",titulo:'Caixa de som • Vídeo POV',categoria:'Eletrônicos',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+073"},
+  {id:"video_074",titulo:'Smartwatch • Vídeo POV',categoria:'Eletrônicos',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+074"},
+  {id:"video_075",titulo:'Carregador rápido • Vídeo POV',categoria:'Eletrônicos',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+075"},
+  {id:"video_076",titulo:'Cabo USB • Vídeo POV',categoria:'Eletrônicos',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+076"},
+  {id:"video_077",titulo:'Power bank • Vídeo POV',categoria:'Eletrônicos',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+077"},
+  {id:"video_078",titulo:'Suporte para celular • Vídeo POV',categoria:'Eletrônicos',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+078"},
+  {id:"video_079",titulo:'Ring light • Vídeo POV',categoria:'Eletrônicos',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+079"},
+  {id:"video_080",titulo:'Microfone • Vídeo POV',categoria:'Eletrônicos',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+080"},
 
-tg.ready();
-tg.expand();
+  {id:"video_081",titulo:'Luminária • Vídeo POV',categoria:'Casa',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+081"},
+  {id:"video_082",titulo:'Organizador • Vídeo POV',categoria:'Casa',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+082"},
+  {id:"video_083",titulo:'Almofada • Vídeo POV',categoria:'Casa',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+083"},
+  {id:"video_084",titulo:'Tapete • Vídeo POV',categoria:'Casa',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+084"},
+  {id:"video_085",titulo:'Cortina • Vídeo POV',categoria:'Casa',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+085"},
+  {id:"video_086",titulo:'Jogo de cama • Vídeo POV',categoria:'Casa',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+086"},
+  {id:"video_087",titulo:'Espelho • Vídeo POV',categoria:'Casa',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+087"},
+  {id:"video_088",titulo:'Prateleira • Vídeo POV',categoria:'Casa',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+088"},
+  {id:"video_089",titulo:'Aspirador • Vídeo POV',categoria:'Casa',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+089"},
+  {id:"video_090",titulo:'Kit organização • Vídeo POV',categoria:'Casa',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+090"},
 
-const telegramUser =
-    tg.initDataUnsafe?.user;
+  {id:"video_091",titulo:'Cama para pet • Vídeo POV',categoria:'Pets',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+091"},
+  {id:"video_092",titulo:'Brinquedo para cachorro • Vídeo POV',categoria:'Pets',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+092"},
+  {id:"video_093",titulo:'Brinquedo para gato • Vídeo POV',categoria:'Pets',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+093"},
+  {id:"video_094",titulo:'Coleira • Vídeo POV',categoria:'Pets',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+094"},
+  {id:"video_095",titulo:'Guia para pet • Vídeo POV',categoria:'Pets',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+095"},
+  {id:"video_096",titulo:'Comedouro • Vídeo POV',categoria:'Pets',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+096"},
+  {id:"video_097",titulo:'Bebedouro • Vídeo POV',categoria:'Pets',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+097"},
+  {id:"video_098",titulo:'Kit higiene pet • Vídeo POV',categoria:'Pets',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+098"},
+  {id:"video_099",titulo:'Casinha pet • Vídeo POV',categoria:'Pets',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+099"},
+  {id:"video_100",titulo:'Kit passeio pet • Vídeo POV',categoria:'Pets',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+100"},
 
-if (telegramUser) {
+  {id:"video_101",titulo:'Halteres • Vídeo POV',categoria:'Fitness',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+101"},
+  {id:"video_102",titulo:'Corda de pular • Vídeo POV',categoria:'Fitness',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+102"},
+  {id:"video_103",titulo:'Tapete fitness • Vídeo POV',categoria:'Fitness',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+103"},
+  {id:"video_104",titulo:'Faixa elástica • Vídeo POV',categoria:'Fitness',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+104"},
+  {id:"video_105",titulo:'Garrafa esportiva • Vídeo POV',categoria:'Fitness',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+105"},
+  {id:"video_106",titulo:'Luvas de treino • Vídeo POV',categoria:'Fitness',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+106"},
+  {id:"video_107",titulo:'Caneleira • Vídeo POV',categoria:'Fitness',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+107"},
+  {id:"video_108",titulo:'Banco de treino • Vídeo POV',categoria:'Fitness',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+108"},
+  {id:"video_109",titulo:'Kit musculação • Vídeo POV',categoria:'Fitness',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+109"},
+  {id:"video_110",titulo:'Acessórios fitness • Vídeo POV',categoria:'Fitness',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+110"},
 
-    const nome =
-        telegramUser.first_name ||
-        "Usuário";
+  {id:"video_111",titulo:'Kit festa • Vídeo POV',categoria:'Festa',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+111"},
+  {id:"video_112",titulo:'Balões • Vídeo POV',categoria:'Festa',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+112"},
+  {id:"video_113",titulo:'Painel decorativo • Vídeo POV',categoria:'Festa',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+113"},
+  {id:"video_114",titulo:'Topo de bolo • Vídeo POV',categoria:'Festa',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+114"},
+  {id:"video_115",titulo:'Descartáveis • Vídeo POV',categoria:'Festa',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+115"},
+  {id:"video_116",titulo:'Luzes decorativas • Vídeo POV',categoria:'Festa',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+116"},
+  {id:"video_117",titulo:'Cortina metalizada • Vídeo POV',categoria:'Festa',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+117"},
+  {id:"video_118",titulo:'Kit aniversário • Vídeo POV',categoria:'Festa',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+118"},
+  {id:"video_119",titulo:'Decoração temática • Vídeo POV',categoria:'Festa',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+119"},
+  {id:"video_120",titulo:'Kit decoração • Vídeo POV',categoria:'Festa',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+120"},
+     {id:"video_121",titulo:'Furadeira • Vídeo POV',categoria:'Ferramentas',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+121"},
+  {id:"video_122",titulo:'Parafusadeira • Vídeo POV',categoria:'Ferramentas',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+122"},
+  {id:"video_123",titulo:'Jogo de ferramentas • Vídeo POV',categoria:'Ferramentas',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+123"},
+  {id:"video_124",titulo:'Alicate • Vídeo POV',categoria:'Ferramentas',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+124"},
+  {id:"video_125",titulo:'Chave de fenda • Vídeo POV',categoria:'Ferramentas',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+125"},
+  {id:"video_126",titulo:'Trena • Vídeo POV',categoria:'Ferramentas',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+126"},
+  {id:"video_127",titulo:'Martelo • Vídeo POV',categoria:'Ferramentas',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+127"},
+  {id:"video_128",titulo:'Serrote • Vídeo POV',categoria:'Ferramentas',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+128"},
+  {id:"video_129",titulo:'Caixa de ferramentas • Vídeo POV',categoria:'Ferramentas',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+129"},
+  {id:"video_130",titulo:'Kit ferramentas • Vídeo POV',categoria:'Ferramentas',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+130"},
 
-    document.getElementById("usuario").innerText =
-        "Olá, " + nome + " 👋";
+  {id:"video_131",titulo:'Caderno • Vídeo POV',categoria:'Escritório',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+131"},
+  {id:"video_132",titulo:'Canetas • Vídeo POV',categoria:'Escritório',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+132"},
+  {id:"video_133",titulo:'Planner • Vídeo POV',categoria:'Escritório',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+133"},
+  {id:"video_134",titulo:'Agenda • Vídeo POV',categoria:'Escritório',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+134"},
+  {id:"video_135",titulo:'Estojo • Vídeo POV',categoria:'Escritório',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+135"},
+  {id:"video_136",titulo:'Organizador de mesa • Vídeo POV',categoria:'Escritório',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+136"},
+  {id:"video_137",titulo:'Luminária de mesa • Vídeo POV',categoria:'Escritório',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+137"},
+  {id:"video_138",titulo:'Suporte para notebook • Vídeo POV',categoria:'Escritório',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+138"},
+  {id:"video_139",titulo:'Teclado • Vídeo POV',categoria:'Escritório',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+139"},
+  {id:"video_140",titulo:'Mouse • Vídeo POV',categoria:'Escritório',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+140"},
 
-} else {
+  {id:"video_141",titulo:'Capa para celular • Vídeo POV',categoria:'Celular',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+141"},
+  {id:"video_142",titulo:'Película • Vídeo POV',categoria:'Celular',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+142"},
+  {id:"video_143",titulo:'Suporte veicular • Vídeo POV',categoria:'Celular',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+143"},
+  {id:"video_144",titulo:'Pop socket • Vídeo POV',categoria:'Celular',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+144"},
+  {id:"video_145",titulo:'Cabo Lightning • Vídeo POV',categoria:'Celular',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+145"},
+  {id:"video_146",titulo:'Cabo USB-C • Vídeo POV',categoria:'Celular',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+146"},
+  {id:"video_147",titulo:'Carregador sem fio • Vídeo POV',categoria:'Celular',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+147"},
+  {id:"video_148",titulo:'Tripé para celular • Vídeo POV',categoria:'Celular',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+148"},
+  {id:"video_149",titulo:'Kit acessórios celular • Vídeo POV',categoria:'Celular',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+149"},
+  {id:"video_150",titulo:'Kit criador de conteúdo • Vídeo POV',categoria:'Celular',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+150"},
 
-    document.getElementById("usuario").innerText =
-        "HD VIDEOS POV 💎";
+  {id:"video_151",titulo:'Vídeo POV • Unboxing',categoria:'POV',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+151"},
+  {id:"video_152",titulo:'Vídeo POV • Compras',categoria:'POV',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+152"},
+  {id:"video_153",titulo:'Vídeo POV • Produto',categoria:'POV',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+153"},
+  {id:"video_154",titulo:'Vídeo POV • Review',categoria:'POV',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+154"},
+  {id:"video_155",titulo:'Vídeo POV • Demonstração',categoria:'POV',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+155"},
+  {id:"video_156",titulo:'Vídeo POV • Lifestyle',categoria:'POV',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+156"},
+  {id:"video_157",titulo:'Vídeo POV • Moda',categoria:'POV',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+157"},
+  {id:"video_158",titulo:'Vídeo POV • Beleza',categoria:'POV',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+158"},
+  {id:"video_159",titulo:'Vídeo POV • Tecnologia',categoria:'POV',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+159"},
+  {id:"video_160",titulo:'Vídeo POV • Viral',categoria:'POV',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+160"},
 
+  {id:"video_161",titulo:'Vídeo POV • Cozinha',categoria:'POV',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+161"},
+  {id:"video_162",titulo:'Vídeo POV • Casa',categoria:'POV',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+162"},
+  {id:"video_163",titulo:'Vídeo POV • Pets',categoria:'POV',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+163"},
+  {id:"video_164",titulo:'Vídeo POV • Fitness',categoria:'POV',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+164"},
+  {id:"video_165",titulo:'Vídeo POV • Festa',categoria:'POV',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+165"},
+  {id:"video_166",titulo:'Vídeo POV • Ferramentas',categoria:'POV',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+166"},
+  {id:"video_167",titulo:'Vídeo POV • Escritório',categoria:'POV',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+167"},
+  {id:"video_168",titulo:'Vídeo POV • Celular',categoria:'POV',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+168"},
+  {id:"video_169",titulo:'Vídeo POV • Achadinhos',categoria:'POV',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+169"},
+  {id:"video_170",titulo:'Vídeo POV • Tendência',categoria:'POV',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+170"},
+
+  {id:"video_171",titulo:'Vídeo POV • Produto barato',categoria:'Achadinhos',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+171"},
+  {id:"video_172",titulo:'Vídeo POV • Oferta',categoria:'Achadinhos',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+172"},
+  {id:"video_173",titulo:'Vídeo POV • Promoção',categoria:'Achadinhos',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+173"},
+  {id:"video_174",titulo:'Vídeo POV • Novidade',categoria:'Achadinhos',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+174"},
+  {id:"video_175",titulo:'Vídeo POV • Testando produto',categoria:'Achadinhos',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+175"},
+  {id:"video_176",titulo:'Vídeo POV • Comprinha',categoria:'Achadinhos',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+176"},
+  {id:"video_177",titulo:'Vídeo POV • Lista de produtos',categoria:'Achadinhos',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+177"},
+  {id:"video_178",titulo:'Vídeo POV • Top produtos',categoria:'Achadinhos',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+178"},
+  {id:"video_179",titulo:'Vídeo POV • Produtos em alta',categoria:'Achadinhos',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+179"},
+  {id:"video_180",titulo:'Vídeo POV • Seleção especial',categoria:'Achadinhos',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+180"},
+
+  {id:"video_181",titulo:'Vídeo POV • Relógio',categoria:'Vídeos POV',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+181"},
+  {id:"video_182",titulo:'Vídeo POV • Tênis',categoria:'Vídeos POV',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+182"},
+  {id:"video_183",titulo:'Vídeo POV • Perfume',categoria:'Vídeos POV',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+183"},
+  {id:"video_184",titulo:'Vídeo POV • Bolsa',categoria:'Vídeos POV',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+184"},
+  {id:"video_185",titulo:'Vídeo POV • Maquiagem',categoria:'Vídeos POV',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+185"},
+  {id:"video_186",titulo:'Vídeo POV • Eletrônico',categoria:'Vídeos POV',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+186"},
+  {id:"video_187",titulo:'Vídeo POV • Cozinha',categoria:'Vídeos POV',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+187"},
+  {id:"video_188",titulo:'Vídeo POV • Decoração',categoria:'Vídeos POV',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+188"},
+  {id:"video_189",titulo:'Vídeo POV • Acessórios',categoria:'Vídeos POV',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+189"},
+  {id:"video_190",titulo:'Vídeo POV • Unboxing especial',categoria:'Vídeos POV',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+190"},
+
+  {id:"video_191",titulo:'Vídeo POV • Moda viral',categoria:'Vídeos POV',preco:0.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+191"},
+  {id:"video_192",titulo:'Vídeo POV • Beleza viral',categoria:'Vídeos POV',preco:0.70,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+192"},
+  {id:"video_193",titulo:'Vídeo POV • Casa viral',categoria:'Vídeos POV',preco:0.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+193"},
+  {id:"video_194",titulo:'Vídeo POV • Produto viral',categoria:'Vídeos POV',preco:1.50,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+194"},
+  {id:"video_195",titulo:'Vídeo POV • Achadinho viral',categoria:'Vídeos POV',preco:2.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+195"},
+  {id:"video_196",titulo:'Vídeo POV • Review viral',categoria:'Vídeos POV',preco:4.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+196"},
+  {id:"video_197",titulo:'Vídeo POV • Demonstração viral',categoria:'Vídeos POV',preco:6.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+197"},
+  {id:"video_198",titulo:'Vídeo POV • Tendência viral',categoria:'Vídeos POV',preco:8.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+198"},
+  {id:"video_199",titulo:'Vídeo POV • Conteúdo premium',categoria:'Vídeos POV',preco:9.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+199"},
+  {id:"video_200",titulo:'Vídeo POV • Coleção especial',categoria:'Vídeos POV',preco:12.90,capa:"https://placehold.co/800x450/111111/ffffff?text=VIDEO+200"}
+];   
+ const galeria = document.getElementById("galeria");
+const pesquisa = document.getElementById("pesquisa");
+const sugestoes = document.getElementById("sugestoes");
+const categoriasBox = document.getElementById("categorias");
+const contador = document.getElementById("contador");
+const semResultados = document.getElementById("semResultados");
+const carregarMais = document.getElementById("carregarMais");
+
+let categoriaAtual = "Todos";
+let quantidadeExibida = 30;
+
+const carrinho = [];
+
+const categorias = ["Todos", ...new Set(videos.map(v => v.categoria))];
+
+categoriasBox.innerHTML = categorias.map(c =>
+  `<button class="categoria ${c === "Todos" ? "ativa" : ""}" onclick="filtrarCategoria('${c.replace(/'/g,"\\'")}')">${c}</button>`
+).join("");
+
+function dinheiro(valor) {
+  return Number(valor).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
 }
 
+function produtosFiltrados() {
+  const termo = pesquisa.value.toLowerCase().trim();
 
-/* =====================================================
-   WEBHOOK MAKE
-===================================================== */
+  return videos.filter(v => {
+    const bateCategoria =
+      categoriaAtual === "Todos" || v.categoria === categoriaAtual;
 
-const WEBHOOK_URL =
-    "https://hook.us2.make.com/5fjkpgbtcrpf6xo7motrnaxak1xvb7aa";
+    const batePesquisa =
+      !termo ||
+      v.titulo.toLowerCase().includes(termo) ||
+      v.categoria.toLowerCase().includes(termo);
 
-
-/* =====================================================
-   PREÇO POR VÍDEO
-=====================================================
-
-   Você pode mudar somente este número.
-
-   9.90 = R$ 9,90 por vídeo.
-===================================================== */
-
-const PRECO_POR_VIDEO = 9.90;
-
-
-/* =====================================================
-   CATÁLOGO
-===================================================== */
-
-const videos = [
-
-    {
-        id: "video_001",
-        titulo: "Vídeo POV - Relógio",
-        descricao: "Vídeo POV pronto para divulgação.",
-        categoria: "pov novos",
-        busca: "relogio relógio",
-        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+01",
-        preview: "URL_PREVIEW_1",
-        etiqueta: "🔥 NOVO"
-    },
-
-    {
-        id: "video_002",
-        titulo: "Vídeo POV - Tênis",
-        descricao: "Vídeo pronto para conteúdo e divulgação.",
-        categoria: "moda calcados novos",
-        busca: "tenis tênis calcado calçado",
-        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+02",
-        preview: "URL_PREVIEW_2",
-        etiqueta: "🔥 NOVO"
-    },
-
-    {
-        id: "video_003",
-        titulo: "Vídeo POV - Perfume",
-        descricao: "Vídeo POV para produtos de beleza.",
-        categoria: "beleza pov",
-        busca: "perfume beleza",
-        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+03",
-        preview: "URL_PREVIEW_3",
-        etiqueta: "✨ POV"
-    }
-
-];
-
-
-/* =====================================================
-   CONFIGURAÇÕES
-===================================================== */
-
-const POR_PAGINA = 10;
-
-let quantidadeExibida = POR_PAGINA;
-
-let categoriaAtual = "todos";
-
-let selecionados = [];
-
-
-/* =====================================================
-   ELEMENTOS
-===================================================== */
-
-const galeria =
-    document.getElementById("galeria");
-
-const pesquisa =
-    document.getElementById("pesquisa");
-
-const contador =
-    document.getElementById("contador");
-
-const semResultados =
-    document.getElementById("semResultados");
-
-const carregarBotao =
-    document.getElementById("carregarMais");
-
-const carrinhoTotal =
-    document.getElementById("carrinhoTotal");
-
-const carrinhoInfo =
-    document.getElementById("carrinhoInfo");
-
-const botaoComprar =
-    document.getElementById("botaoComprar");
-
-
-/* =====================================================
-   PESQUISA
-===================================================== */
-
-pesquisa.addEventListener("input", () => {
-
-    quantidadeExibida = POR_PAGINA;
-
-    renderizar();
-
-});
-
-
-/* =====================================================
-   CATEGORIAS
-===================================================== */
-
-document
-.querySelectorAll(".categoria")
-.forEach(botao => {
-
-    botao.addEventListener("click", () => {
-
-        document
-        .querySelectorAll(".categoria")
-        .forEach(b =>
-            b.classList.remove("ativa")
-        );
-
-        botao.classList.add("ativa");
-
-        categoriaAtual =
-            botao.dataset.categoria;
-
-        quantidadeExibida =
-            POR_PAGINA;
-
-        renderizar();
-
-    });
-
-});
-
-
-/* =====================================================
-   FILTRAR
-===================================================== */
-
-function filtrarVideos() {
-
-    const texto =
-        pesquisa.value
-        .toLowerCase()
-        .trim();
-
-    return videos.filter(video => {
-
-        const textoOK =
-            !texto ||
-            video.titulo
-            .toLowerCase()
-            .includes(texto) ||
-            video.busca
-            .toLowerCase()
-            .includes(texto);
-
-        const categoriaOK =
-            categoriaAtual === "todos" ||
-            video.categoria
-            .toLowerCase()
-            .includes(categoriaAtual);
-
-        return textoOK && categoriaOK;
-
-    });
-
+    return bateCategoria && batePesquisa;
+  });
 }
-
-
-/* =====================================================
-   VERIFICAR SE ESTÁ SELECIONADO
-===================================================== */
-
-function estaSelecionado(id) {
-
-    return selecionados.includes(id);
-
-}
-
-
-/* =====================================================
-   SELECIONAR / DESSELECIONAR
-===================================================== */
-
-function alternarVideo(id) {
-
-    if (selecionados.includes(id)) {
-
-        selecionados =
-            selecionados.filter(
-                item => item !== id
-            );
-
-    } else {
-
-        selecionados.push(id);
-
-    }
-
-    renderizar();
-
-    atualizarCarrinho();
-
-}
-
-
-/* =====================================================
-   RENDERIZAR
-===================================================== */
 
 function renderizar() {
+  const lista = produtosFiltrados();
+  const mostrar = lista.slice(0, quantidadeExibida);
 
-    const lista =
-        filtrarVideos();
+  contador.innerText = lista.length + " vídeos";
 
+  if (lista.length === 0) {
     galeria.innerHTML = "";
+    semResultados.style.display = "block";
+    carregarMais.style.display = "none";
+    return;
+  }
 
-    contador.innerText =
-        lista.length +
-        (
-            lista.length === 1
-            ? " vídeo"
-            : " vídeos"
-        );
+  semResultados.style.display = "none";
 
+  galeria.innerHTML = mostrar.map(v => `
+    <article class="card">
+      <div class="capa">
+        <img src="${v.capa}" alt="${v.titulo}" loading="lazy">
+        <div class="etiqueta">${v.categoria}</div>
+      </div>
 
-    if (lista.length === 0) {
+      <div class="info">
+        <div class="titulo">${v.titulo}</div>
+        <div class="descricao">Conteúdo POV em HD para criadores.</div>
+        <div class="preco">${dinheiro(v.preco)}</div>
 
-        semResultados.style.display =
-            "block";
+        <button class="comprar" onclick="adicionarCarrinho('${v.id}')">
+          🛒 Adicionar ao carrinho
+        </button>
+      </div>
+    </article>
+  `).join("");
 
-        carregarBotao.style.display =
-            "none";
+  carregarMais.style.display =
+    mostrar.length < lista.length ? "block" : "none";
+}
 
-        return;
+function filtrarCategoria(categoria) {
+  categoriaAtual = categoria;
+  quantidadeExibida = 30;
 
-    }
+  document.querySelectorAll(".categoria").forEach(btn => {
+    btn.classList.toggle("ativa", btn.innerText === categoria);
+  });
 
+  renderizar();
+}
 
-    semResultados.style.display =
-        "none";
+function adicionarCarrinho(id) {
+  const produto = videos.find(v => v.id === id);
+  if (!produto) return;
 
+  const existente = carrinho.find(v => v.id === id);
 
-    const mostrar =
-        lista.slice(
-            0,
-            quantidadeExibida
-        );
-
-
-    mostrar.forEach(video => {
-
-        const selecionado =
-            estaSelecionado(video.id);
-
-        const card =
-            document.createElement("article");
-
-        card.className = "card";
-
-
-        card.innerHTML = `
-
-            <div class="capa">
-
-                <img
-                    src="${video.capa}"
-                    alt="${video.titulo}"
-                >
-
-                <div class="etiqueta">
-                    ${video.etiqueta}
-                </div>
-
-                <button
-                    class="play"
-                    onclick="abrirPreview('${video.preview}')"
-                >
-                    ▶
-                </button>
-
-            </div>
-
-            <div class="info">
-
-                <div class="titulo">
-                    ${video.titulo}
-                </div>
-
-                <div class="descricao">
-                    ${video.descricao}
-                </div>
-
-                <div class="preco">
-                    R$ ${PRECO_POR_VIDEO
-                        .toFixed(2)
-                        .replace(".", ",")}
-                </div>
-
-                <button
-                    class="selecionar ${selecionado ? "selecionado" : ""}"
-                    onclick="alternarVideo('${video.id}')"
-                >
-                    ${
-                        selecionado
-                        ? "✅ Vídeo selecionado"
-                        : "➕ Selecionar vídeo"
-                    }
-                </button>
-
-            </div>
-        `;
-
-
-        galeria.appendChild(card);
-
+  if (existente) {
+    existente.quantidade++;
+  } else {
+    carrinho.push({
+      id: produto.id,
+      titulo: produto.titulo,
+      preco: produto.preco,
+      quantidade: 1
     });
+  }
 
+  atualizarCarrinho();
 
-    if (quantidadeExibida < lista.length) {
-
-        carregarBotao.style.display =
-            "block";
-
-    } else {
-
-        carregarBotao.style.display =
-            "none";
-
-    }
-
+  alert(
+    produto.titulo +
+    "\n\nAdicionado ao carrinho por " +
+    dinheiro(produto.preco)
+  );
 }
-
-
-/* =====================================================
-   CARREGAR MAIS
-===================================================== */
-
-function carregarMais() {
-
-    quantidadeExibida += POR_PAGINA;
-
-    renderizar();
-
-}
-
-
-/* =====================================================
-   ATUALIZAR CARRINHO
-===================================================== */
 
 function atualizarCarrinho() {
+  const quantidade = carrinho.reduce(
+    (total, item) => total + item.quantidade,
+    0
+  );
 
-    const quantidade =
-        selecionados.length;
+  const total = carrinho.reduce(
+    (total, item) => total + item.preco * item.quantidade,
+    0
+  );
 
-    const total =
-        quantidade *
-        PRECO_POR_VIDEO;
+  document.getElementById("qtdCarrinho").innerText =
+    quantidade + (quantidade === 1 ? " vídeo" : " vídeos");
 
-
-    carrinhoTotal.innerText =
-        "R$ " +
-        total
-        .toFixed(2)
-        .replace(".", ",");
-
-
-    if (quantidade === 0) {
-
-        carrinhoInfo.innerText =
-            "Nenhum vídeo selecionado.";
-
-        botaoComprar.disabled =
-            true;
-
-        return;
-
-    }
-
-
-    carrinhoInfo.innerText =
-        quantidade +
-        (
-            quantidade === 1
-            ? " vídeo selecionado"
-            : " vídeos selecionados"
-        ) +
-        " • R$ " +
-        PRECO_POR_VIDEO
-        .toFixed(2)
-        .replace(".", ",") +
-        " por vídeo";
-
-
-    botaoComprar.disabled =
-        false;
-
+  document.getElementById("totalCarrinho").innerText =
+    dinheiro(total);
 }
 
+carregarMais.addEventListener("click", () => {
+  quantidadeExibida += 30;
+  renderizar();
+});
 
-/* =====================================================
-   COMPRAR SELECIONADOS
-===================================================== */
+pesquisa.addEventListener("input", () => {
+  quantidadeExibida = 30;
+  mostrarSugestoes();
+  renderizar();
+});
 
-async function comprarSelecionados() {
+function mostrarSugestoes() {
+  const termo = pesquisa.value.toLowerCase().trim();
 
-    const user =
-        tg.initDataUnsafe?.user;
+  if (!termo) {
+    sugestoes.style.display = "none";
+    sugestoes.innerHTML = "";
+    return;
+  }
 
+  const resultados = videos
+    .filter(v =>
+      v.titulo.toLowerCase().includes(termo) ||
+      v.categoria.toLowerCase().includes(termo)
+    )
+    .slice(0, 8);
 
-    if (!user) {
+  if (!resultados.length) {
+    sugestoes.innerHTML =
+      `<div style="padding:12px;color:#777">Nenhum resultado</div>`;
+  } else {
+    sugestoes.innerHTML = resultados.map(v => `
+      <button onclick="selecionarSugestao('${v.id}')">
+        🎬 ${v.titulo}
+        <small style="display:block;color:#777;margin-top:3px">
+          ${v.categoria} • ${dinheiro(v.preco)}
+        </small>
+      </button>
+    `).join("");
+  }
 
-        alert(
-            "Abra esta página dentro do Telegram."
-        );
+  sugestoes.style.display = "block";
+}
 
-        return;
+function selecionarSugestao(id) {
+  const produto = videos.find(v => v.id === id);
+  if (!produto) return;
 
+  pesquisa.value = produto.titulo;
+  sugestoes.style.display = "none";
+
+  categoriaAtual = "Todos";
+  quantidadeExibida = 30;
+
+  renderizar();
+
+  setTimeout(() => {
+    const cards = [...document.querySelectorAll(".card")];
+    const card = cards.find(c =>
+      c.innerText.includes(produto.titulo)
+    );
+
+    if (card) {
+      card.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  }, 100);
+}
+
+document.addEventListener("click", e => {
+  if (!e.target.closest(".search")) {
+    sugestoes.style.display = "none";
+  }
+});
+
+document.getElementById("finalizar").addEventListener("click", async () => {
+
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
+  }
+
+  const quantidade = carrinho.reduce(
+    (total, item) => total + item.quantidade,
+    0
+  );
+
+  const total = carrinho.reduce(
+    (total, item) => total + item.preco * item.quantidade,
+    0
+  );
+
+  const pedido = {
+    action: "comprar",
+    quantidade: quantidade,
+    total: Number(total.toFixed(2)),
+    moeda: "BRL",
+
+    telegram_id: telegramUser?.id || "",
+    username: telegramUser?.username || "",
+    nome: telegramUser?.first_name || "",
+    initData: tg.initData,
+
+    produtos: carrinho.map(item => ({
+      produto_id: item.id,
+      produto_nome: item.titulo,
+      preco: Number(item.preco),
+      quantidade: item.quantidade
+    }))
+  };
+
+  try {
+
+    const botao = document.getElementById("finalizar");
+
+    botao.disabled = true;
+    botao.innerText = "Enviando...";
+
+    const resposta = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(pedido)
+    });
+
+    if (!resposta.ok) {
+      throw new Error("Erro HTTP " + resposta.status);
     }
 
+    const texto = await resposta.text();
 
-    if (selecionados.length === 0) {
-
-        alert(
-            "Selecione pelo menos 1 vídeo."
-        );
-
-        return;
-
-    }
-
-
-    const produtos =
-        selecionados
-        .map(id =>
-            videos.find(
-                video => video.id === id
-            )
-        )
-        .filter(Boolean);
-
-
-    const quantidade =
-        produtos.length;
-
-
-    const total =
-        quantidade *
-        PRECO_POR_VIDEO;
-
-
-    const pedido = {
-
-        action:
-            "comprar",
-
-        quantidade:
-            quantidade,
-
-        preco_unitario:
-            PRECO_POR_VIDEO,
-
-        total:
-            Number(total.toFixed(2)),
-
-        moeda:
-            "BRL",
-
-        telegram_id:
-            user.id,
-
-        username:
-            user.username || "",
-
-        nome:
-            user.first_name || "",
-
-        initData:
-            tg.initData,
-
-        produtos:
-            produtos.map(video => ({
-
-                produto_id:
-                    video.id,
-
-                produto_nome:
-                    video.titulo
-
-            }))
-
-    };
-
+    let dados = {};
 
     try {
-
-        botaoComprar.disabled = true;
-
-        botaoComprar.innerText =
-            "⏳ Enviando pedido...";
-
-
-        const resposta =
-            await fetch(
-                WEBHOOK_URL,
-                {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:
-                        JSON.stringify(pedido)
-
-                }
-            );
-
-
-        if (!resposta.ok) {
-
-            throw new Error(
-                "Webhook não respondeu corretamente."
-            );
-
-        }
-
-
-        alert(
-            "✅ Pedido enviado!\n\n" +
-            "Vídeos: " +
-            quantidade +
-            "\nTotal: R$ " +
-            total
-            .toFixed(2)
-            .replace(".", ",")
-        );
-
-
-    } catch (erro) {
-
-        console.error(erro);
-
-        alert(
-            "❌ Não foi possível enviar o pedido. Tente novamente."
-        );
-
+      dados = texto ? JSON.parse(texto) : {};
+    } catch(e) {
+      dados = {};
     }
 
+    if (dados.init_point) {
+      window.location.href = dados.init_point;
+      return;
+    }
 
+    alert(
+      "Pedido enviado!\n\n" +
+      "Quantidade: " + quantidade + "\n" +
+      "Total: " + dinheiro(total)
+    );
+
+    carrinho.length = 0;
     atualizarCarrinho();
 
-    botaoComprar.innerText =
-        "🛒 Comprar vídeos selecionados";
+  } catch (erro) {
 
-}
+    console.error(erro);
 
+    alert(
+      "Não foi possível enviar o pedido.\n\n" +
+      "Verifique a conexão com o pagamento."
+    );
 
-/* =====================================================
-   PREVIEW
-===================================================== */
+  } finally {
 
-function abrirPreview(url) {
+    const botao = document.getElementById("finalizar");
 
-    if (
-        !url ||
-        url.includes("URL_PREVIEW")
-    ) {
-
-        alert(
-            "A prévia deste vídeo ainda não foi configurada."
-        );
-
-        return;
-
-    }
-
-
-    const video =
-        document.getElementById("preview");
-
-    video.src = url;
-
-
-    document
-    .getElementById("modal")
-    .classList.add("aberto");
-
-
-    video.play().catch(() => {});
-
-}
-
-
-/* =====================================================
-   FECHAR PREVIEW
-===================================================== */
+    botao.disabled = false;
+    botao.innerText = "Comprar";
+  }
+});
 
 function fecharPreview() {
+  const modal = document.getElementById("modal");
+  const video = document.getElementById("preview");
 
-    const video =
-        document.getElementById("preview");
-
-    video.pause();
-
-    video.removeAttribute("src");
-
-    video.load();
-
-
-    document
-    .getElementById("modal")
-    .classList.remove("aberto");
-
+  video.pause();
+  video.src = "";
+  modal.classList.remove("aberto");
 }
 
-
-/* =====================================================
-   INICIAR
-===================================================== */
-
 renderizar();
-
 atualizarCarrinho();
 
 </script>
-
 </body>
-</html>
+</html>     
