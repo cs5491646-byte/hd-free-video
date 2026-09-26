@@ -12,7 +12,6 @@
 
 <title>HD VIDEOS POV 💎</title>
 
-<!-- TELEGRAM WEB APP -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
@@ -23,37 +22,56 @@
 
 body {
     margin: 0;
-    background: #050505;
+    background:
+        radial-gradient(circle at top, #10243d 0%, #050505 35%);
     color: #fff;
     font-family: Arial, sans-serif;
 }
 
-/* TOPO */
+button,
+input {
+    font-family: inherit;
+}
+
+/* =========================
+   TOPO
+========================= */
 
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
 
-    background: #050505;
+    background: rgba(5,5,5,.96);
+
+    backdrop-filter: blur(12px);
 
     padding: 15px;
 
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #202020;
 }
 
 .logo {
     text-align: center;
 
-    font-size: 22px;
-    font-weight: 800;
+    font-size: 23px;
+
+    font-weight: 900;
 
     color: #168cff;
 
-    margin-bottom: 14px;
+    margin-bottom: 5px;
 }
 
-/* USUARIO */
+.sublogo {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
 
 .usuario {
     text-align: center;
@@ -65,7 +83,9 @@ body {
     margin-bottom: 12px;
 }
 
-/* PESQUISA */
+/* =========================
+   PESQUISA
+========================= */
 
 .search {
     position: relative;
@@ -81,11 +101,11 @@ body {
 
     border: 1px solid #292929;
 
-    background: #121212;
+    background: #111;
 
     color: white;
 
-    font-size: 16px;
+    font-size: 15px;
 
     padding: 0 18px 0 48px;
 
@@ -95,6 +115,8 @@ body {
 .search input:focus {
 
     border-color: #168cff;
+
+    box-shadow: 0 0 15px rgba(22,140,255,.15);
 
 }
 
@@ -109,7 +131,88 @@ body {
     font-size: 20px;
 }
 
-/* CATEGORIAS */
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+
+    margin: 15px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #126fd0,
+            #082b52
+        );
+
+    border: 1px solid #248fff;
+
+    box-shadow:
+        0 8px 30px rgba(0,100,255,.18);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.banner::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.07);
+
+    right: -40px;
+
+    top: -50px;
+}
+
+.banner-alerta {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #bfe2ff;
+
+    margin-bottom: 7px;
+}
+
+.banner-titulo {
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    margin-bottom: 7px;
+}
+
+.banner-texto {
+
+    color: #dceeff;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    max-width: 500px;
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
 
 .categorias {
 
@@ -119,7 +222,7 @@ body {
 
     overflow-x: auto;
 
-    padding-top: 12px;
+    padding: 0 15px 5px;
 
     scrollbar-width: none;
 }
@@ -136,13 +239,15 @@ body {
 
     background: #151515;
 
-    color: #ddd;
+    color: #ccc;
 
     padding: 9px 15px;
 
     border-radius: 20px;
 
-    font-size: 14px;
+    font-size: 13px;
+
+    cursor: pointer;
 }
 
 .categoria.ativa {
@@ -152,26 +257,67 @@ body {
     border-color: #168cff;
 
     color: white;
+
+    box-shadow:
+        0 5px 15px rgba(22,140,255,.25);
 }
 
-/* GALERIA */
+/* =========================
+   TITULO DA GALERIA
+========================= */
+
+.secao {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 15px 5px;
+}
+
+.secao h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+}
+
+.contador {
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+/* =========================
+   GALERIA
+========================= */
 
 .galeria {
 
-    padding: 15px;
+    padding: 10px 15px 20px;
 
     max-width: 1000px;
 
     margin: auto;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card {
 
-    background: #0c1210;
+    background:
+        linear-gradient(
+            145deg,
+            #101615,
+            #090b0a
+        );
 
-    border: 1px solid #19201d;
+    border: 1px solid #1d2824;
 
     border-radius: 18px;
 
@@ -179,10 +325,21 @@ body {
 
     margin-bottom: 18px;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,.35);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35);
+
+    transition: .2s;
 }
 
-/* CAPA */
+.card:hover {
+
+    border-color: #275e88;
+
+}
+
+/* =========================
+   CAPA
+========================= */
 
 .capa {
 
@@ -204,6 +361,31 @@ body {
     height: 100%;
 
     object-fit: cover;
+
+    display: block;
+}
+
+/* ETIQUETA */
+
+.etiqueta {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 10px;
+
+    background: #168cff;
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
 }
 
 /* PLAY */
@@ -216,26 +398,32 @@ body {
 
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
-    width: 65px;
+    width: 62px;
 
-    height: 65px;
+    height: 62px;
 
     border-radius: 50%;
 
-    border: none;
+    border: 3px solid rgba(255,255,255,.85);
 
-    background: #168cff;
+    background: rgba(22,140,255,.92);
 
     color: white;
 
-    font-size: 27px;
+    font-size: 25px;
 
     cursor: pointer;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.5);
 }
 
-/* CONTEUDO */
+/* =========================
+   INFO
+========================= */
 
 .info {
 
@@ -246,16 +434,16 @@ body {
 
     font-size: 18px;
 
-    font-weight: bold;
+    font-weight: 800;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
 .descricao {
 
     color: #999;
 
-    font-size: 14px;
+    font-size: 13px;
 
     line-height: 1.5;
 }
@@ -266,12 +454,10 @@ body {
 
     font-size: 24px;
 
-    font-weight: bold;
+    font-weight: 900;
 
     margin: 13px 0;
 }
-
-/* COMPRAR */
 
 .comprar {
 
@@ -281,18 +467,103 @@ body {
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
-    background: #168cff;
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #0064c8
+        );
 
     color: white;
 
     font-size: 16px;
 
-    font-weight: bold;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 18px rgba(0,100,255,.2);
 }
 
-/* MODAL */
+.comprar:active {
+
+    transform: scale(.98);
+}
+
+/* =========================
+   AVISO
+========================= */
+
+.aviso {
+
+    margin: 5px 15px 20px;
+
+    padding: 14px;
+
+    background: #17130b;
+
+    border: 1px solid #493b1c;
+
+    border-radius: 13px;
+
+    color: #bdb39a;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+.aviso strong {
+
+    color: #e5d19c;
+}
+
+/* =========================
+   CARREGAR MAIS
+========================= */
+
+.carregar {
+
+    display: block;
+
+    margin: 5px auto 25px;
+
+    padding: 13px 25px;
+
+    border-radius: 25px;
+
+    border: 1px solid #168cff;
+
+    background: #101820;
+
+    color: #fff;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* =========================
+   SEM RESULTADO
+========================= */
+
+.sem-resultados {
+
+    display: none;
+
+    text-align: center;
+
+    color: #888;
+
+    padding: 50px 20px;
+}
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
 
@@ -304,7 +575,7 @@ body {
 
     z-index: 999;
 
-    background: rgba(0,0,0,.95);
+    background: rgba(0,0,0,.96);
 
     align-items: center;
 
@@ -337,9 +608,9 @@ body {
 
     top: 15px;
 
-    width: 40px;
+    width: 42px;
 
-    height: 40px;
+    height: 42px;
 
     border: none;
 
@@ -350,22 +621,13 @@ body {
     color: white;
 
     font-size: 20px;
+
+    z-index: 1000;
 }
 
-/* SEM RESULTADO */
-
-.sem-resultados {
-
-    display: none;
-
-    text-align: center;
-
-    color: #888;
-
-    padding: 50px 20px;
-}
-
-/* RODAPE */
+/* =========================
+   RODAPE
+========================= */
 
 .footer {
 
@@ -373,9 +635,11 @@ body {
 
     color: #666;
 
-    padding: 30px;
+    padding: 30px 20px;
 
-    font-size: 13px;
+    font-size: 12px;
+
+    border-top: 1px solid #151515;
 }
 
 </style>
@@ -386,12 +650,18 @@ body {
 <body>
 
 
-<!-- TOPO -->
+<!-- =========================
+     TOPO
+========================= -->
 
 <header class="header">
 
     <div class="logo">
         📱 HD VIDEOS POV 💎
+    </div>
+
+    <div class="sublogo">
+        Conteúdos POV para criadores
     </div>
 
     <div
@@ -408,255 +678,173 @@ body {
         <input
             id="pesquisa"
             type="text"
-            placeholder="Pesquisar por modelo ou produto..."
+            placeholder="Pesquisar vídeo ou produto..."
         >
-
-    </div>
-
-
-    <div class="categorias">
-
-        <button
-            class="categoria ativa"
-            data-categoria="todos"
-        >
-            Todos
-        </button>
-
-        <button
-            class="categoria"
-            data-categoria="moda"
-        >
-            👗 Moda
-        </button>
-
-        <button
-            class="categoria"
-            data-categoria="calcados"
-        >
-            👟 Calçados
-        </button>
-
-        <button
-            class="categoria"
-            data-categoria="beleza"
-        >
-            💄 Beleza
-        </button>
-
-        <button
-            class="categoria"
-            data-categoria="pov"
-        >
-            🎥 POV
-        </button>
-
-        <button
-            class="categoria"
-            data-categoria="novos"
-        >
-            🔥 Novos
-        </button>
 
     </div>
 
 </header>
 
 
-<!-- GALERIA -->
+<!-- =========================
+     BANNER
+========================= -->
+
+<section class="banner">
+
+    <div class="banner-alerta">
+        🚨 ATENÇÃO • NOVIDADES
+    </div>
+
+    <div class="banner-titulo">
+        Seja o primeiro a conferir!
+    </div>
+
+    <div class="banner-texto">
+        Novos vídeos POV são adicionados ao catálogo.
+        Encontre seu conteúdo, confira a prévia e
+        compre seu acesso de forma rápida.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIAS
+========================= -->
+
+<div class="categorias">
+
+    <button
+        class="categoria ativa"
+        data-categoria="todos"
+    >
+        ✨ Todos
+    </button>
+
+    <button
+        class="categoria"
+        data-categoria="moda"
+    >
+        👗 Moda
+    </button>
+
+    <button
+        class="categoria"
+        data-categoria="calcados"
+    >
+        👟 Calçados
+    </button>
+
+    <button
+        class="categoria"
+        data-categoria="beleza"
+    >
+        💄 Beleza
+    </button>
+
+    <button
+        class="categoria"
+        data-categoria="pov"
+    >
+        🎥 POV
+    </button>
+
+    <button
+        class="categoria"
+        data-categoria="novos"
+    >
+        🔥 Novos
+    </button>
+
+</div>
+
+
+<!-- =========================
+     TITULO
+========================= -->
+
+<div class="secao">
+
+    <h2>
+        🎬 Vídeos disponíveis
+    </h2>
+
+    <div
+        class="contador"
+        id="contador"
+    >
+        0 vídeos
+    </div>
+
+</div>
+
+
+<!-- =========================
+     GALERIA
+========================= -->
 
 <main>
 
 <div
     class="galeria"
     id="galeria"
->
-
-
-<!-- =========================
-     VIDEO 1
-========================= -->
-
-<article
-    class="card"
-    data-categoria="pov novos"
-    data-titulo="relogio"
->
-
-    <div class="capa">
-
-        <!-- COLOQUE A CAPA DO VIDEO AQUI -->
-
-        <img
-            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+01"
-            alt="Vídeo POV"
-        >
-
-        <button
-            class="play"
-            onclick="abrirPreview('URL_PREVIEW_1')"
-        >
-            ▶
-        </button>
-
-    </div>
-
-
-    <div class="info">
-
-        <div class="titulo">
-            #1 Vídeo POV - Relógio
-        </div>
-
-        <div class="descricao">
-            Vídeo POV pronto para divulgação do produto.
-        </div>
-
-        <div class="preco">
-            R$ 9,90
-        </div>
-
-        <button
-            class="comprar"
-            onclick="comprar('video_001', 'Vídeo POV - Relógio', 9.90)"
-        >
-            🛒 Comprar Vídeo
-        </button>
-
-    </div>
-
-</article>
-
-
-<!-- =========================
-     VIDEO 2
-========================= -->
-
-<article
-    class="card"
-    data-categoria="moda novos"
-    data-titulo="tenis"
->
-
-    <div class="capa">
-
-        <img
-            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+02"
-            alt="Vídeo POV"
-        >
-
-        <button
-            class="play"
-            onclick="abrirPreview('URL_PREVIEW_2')"
-        >
-            ▶
-        </button>
-
-    </div>
-
-
-    <div class="info">
-
-        <div class="titulo">
-            #2 Vídeo POV - Tênis
-        </div>
-
-        <div class="descricao">
-            Vídeo pronto para conteúdo e divulgação.
-        </div>
-
-        <div class="preco">
-            R$ 9,90
-        </div>
-
-        <button
-            class="comprar"
-            onclick="comprar('video_002', 'Vídeo POV - Tênis', 9.90)"
-        >
-            🛒 Comprar Vídeo
-        </button>
-
-    </div>
-
-</article>
-
-
-<!-- =========================
-     VIDEO 3
-========================= -->
-
-<article
-    class="card"
-    data-categoria="beleza pov"
-    data-titulo="perfume"
->
-
-    <div class="capa">
-
-        <img
-            src="https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+03"
-            alt="Vídeo POV"
-        >
-
-        <button
-            class="play"
-            onclick="abrirPreview('URL_PREVIEW_3')"
-        >
-            ▶
-        </button>
-
-    </div>
-
-
-    <div class="info">
-
-        <div class="titulo">
-            #3 Vídeo POV - Perfume
-        </div>
-
-        <div class="descricao">
-            Vídeo POV para produtos de beleza.
-        </div>
-
-        <div class="preco">
-            R$ 9,90
-        </div>
-
-        <button
-            class="comprar"
-            onclick="comprar('video_003', 'Vídeo POV - Perfume', 9.90)"
-        >
-            🛒 Comprar Vídeo
-        </button>
-
-    </div>
-
-</article>
-
-
-</div>
+></div>
 
 
 <div
     class="sem-resultados"
     id="semResultados"
 >
+    😕<br><br>
     Nenhum vídeo encontrado.
 </div>
+
+
+<button
+    class="carregar"
+    id="carregarMais"
+    onclick="carregarMais()"
+>
+    ⬇️ Carregar mais vídeos
+</button>
+
 
 </main>
 
 
+<!-- =========================
+     AVISO
+========================= -->
+
+<div class="aviso">
+
+    <strong>⚠️ Aviso importante</strong><br><br>
+
+    A compra deste conteúdo não transfere automaticamente
+    propriedade de marcas, imagens, produtos ou outros
+    direitos pertencentes a terceiros. Verifique as
+    condições de uso do conteúdo antes de publicar.
+
+</div>
+
+
+<!-- =========================
+     RODAPE
+========================= -->
+
 <footer class="footer">
 
-    HD VIDEOS POV 💎<br>
+    HD VIDEOS POV 💎<br><br>
 
-    Conteúdos exclusivos
+    Conteúdos exclusivos para criadores
 
 </footer>
 
 
-<!-- MODAL -->
+<!-- =========================
+     MODAL
+========================= -->
 
 <div
     class="modal"
@@ -681,21 +869,21 @@ body {
 
 <script>
 
-
-/* ==========================
+/* =====================================================
    TELEGRAM
-========================== */
+===================================================== */
 
-const tg = window.Telegram.WebApp;
+const tg =
+    window.Telegram.WebApp;
 
 tg.ready();
 
 tg.expand();
 
 
-/* ==========================
-   USUARIO
-========================== */
+/* =====================================================
+   USUÁRIO
+===================================================== */
 
 const telegramUser =
     tg.initDataUnsafe?.user;
@@ -704,39 +892,147 @@ const telegramUser =
 if (telegramUser) {
 
     const nome =
-        telegramUser.first_name || "Usuário";
+        telegramUser.first_name ||
+        "Usuário";
 
-    document.getElementById("usuario").innerText =
+    document.getElementById(
+        "usuario"
+    ).innerText =
         "Olá, " + nome + " 👋";
 
 } else {
 
-    document.getElementById("usuario").innerText =
+    document.getElementById(
+        "usuario"
+    ).innerText =
         "HD VIDEOS POV 💎";
 
 }
 
 
-/* ==========================
-   PESQUISA
-========================== */
+/* =====================================================
+   WEBHOOK MAKE
+===================================================== */
+
+const WEBHOOK_URL =
+    "https://hook.us2.make.com/5fjkpgbtcrpf6xo7motrnaxak1xvb7aa";
+
+
+/* =====================================================
+   CATÁLOGO
+=====================================================
+
+   Para adicionar novos vídeos,
+   você vai colocar novos itens nesta lista.
+
+   O sistema suporta até 200 vídeos
+   sem precisar criar os cards manualmente.
+===================================================== */
+
+const videos = [
+
+    {
+        id: "video_001",
+        titulo: "Vídeo POV - Relógio",
+        descricao: "Vídeo POV pronto para divulgação.",
+        preco: 9.90,
+        categoria: "pov novos",
+        busca: "relogio relógio",
+        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+01",
+        preview: "URL_PREVIEW_1",
+        etiqueta: "🔥 NOVO"
+    },
+
+    {
+        id: "video_002",
+        titulo: "Vídeo POV - Tênis",
+        descricao: "Vídeo pronto para conteúdo e divulgação.",
+        preco: 9.90,
+        categoria: "moda calcados novos",
+        busca: "tenis tênis calcado calçado",
+        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+02",
+        preview: "URL_PREVIEW_2",
+        etiqueta: "🔥 NOVO"
+    },
+
+    {
+        id: "video_003",
+        titulo: "Vídeo POV - Perfume",
+        descricao: "Vídeo POV para produtos de beleza.",
+        preco: 9.90,
+        categoria: "beleza pov",
+        busca: "perfume beleza",
+        capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+03",
+        preview: "URL_PREVIEW_3",
+        etiqueta: "✨ POV"
+    }
+
+];
+
+
+/* =====================================================
+   CONFIGURAÇÃO DE EXIBIÇÃO
+===================================================== */
+
+const POR_PAGINA = 10;
+
+let quantidadeExibida =
+    POR_PAGINA;
+
+let categoriaAtual =
+    "todos";
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const galeria =
+    document.getElementById(
+        "galeria"
+    );
 
 const pesquisa =
-    document.getElementById("pesquisa");
+    document.getElementById(
+        "pesquisa"
+    );
 
+const contador =
+    document.getElementById(
+        "contador"
+    );
+
+const semResultados =
+    document.getElementById(
+        "semResultados"
+    );
+
+const carregarBotao =
+    document.getElementById(
+        "carregarMais"
+    );
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
 
 pesquisa.addEventListener(
     "input",
-    filtrar
+    () => {
+
+        quantidadeExibida =
+            POR_PAGINA;
+
+        renderizar();
+
+    }
 );
 
 
-/* ==========================
+/* =====================================================
    CATEGORIAS
-========================== */
-
-let categoriaAtual = "todos";
-
+===================================================== */
 
 document
 .querySelectorAll(".categoria")
@@ -749,15 +1045,22 @@ document
             document
             .querySelectorAll(".categoria")
             .forEach(b =>
-                b.classList.remove("ativa")
+                b.classList.remove(
+                    "ativa"
+                )
             );
 
-            botao.classList.add("ativa");
+            botao.classList.add(
+                "ativa"
+            );
 
             categoriaAtual =
                 botao.dataset.categoria;
 
-            filtrar();
+            quantidadeExibida =
+                POR_PAGINA;
+
+            renderizar();
 
         }
     );
@@ -765,77 +1068,207 @@ document
 });
 
 
-/* ==========================
-   FILTRO
-========================== */
+/* =====================================================
+   FILTRAR
+===================================================== */
 
-function filtrar() {
+function filtrarVideos() {
 
     const texto =
         pesquisa.value
         .toLowerCase()
         .trim();
 
-    const cards =
-        document.querySelectorAll(".card");
+    return videos.filter(
+        video => {
 
-    let encontrados = 0;
+            const textoOK =
+                !texto ||
+                video.titulo
+                .toLowerCase()
+                .includes(texto) ||
+                video.busca
+                .toLowerCase()
+                .includes(texto);
 
+            const categoriaOK =
+                categoriaAtual ===
+                "todos" ||
+                video.categoria
+                .toLowerCase()
+                .includes(
+                    categoriaAtual
+                );
 
-    cards.forEach(card => {
-
-        const titulo =
-            card.dataset.titulo
-            .toLowerCase();
-
-        const categorias =
-            card.dataset.categoria
-            .toLowerCase();
-
-
-        const textoOK =
-            titulo.includes(texto);
-
-
-        const categoriaOK =
-            categoriaAtual === "todos" ||
-            categorias.includes(categoriaAtual);
-
-
-        if (textoOK && categoriaOK) {
-
-            card.style.display = "";
-
-            encontrados++;
-
-        } else {
-
-            card.style.display = "none";
+            return (
+                textoOK &&
+                categoriaOK
+            );
 
         }
-
-    });
-
-
-    document.getElementById(
-        "semResultados"
-    ).style.display =
-        encontrados === 0
-        ? "block"
-        : "none";
+    );
 
 }
 
 
-/* ==========================
+/* =====================================================
+   RENDERIZAR VÍDEOS
+===================================================== */
+
+function renderizar() {
+
+    const lista =
+        filtrarVideos();
+
+    galeria.innerHTML = "";
+
+    contador.innerText =
+        lista.length +
+        (
+            lista.length === 1
+            ? " vídeo"
+            : " vídeos"
+        );
+
+
+    if (lista.length === 0) {
+
+        semResultados.style.display =
+            "block";
+
+        carregarBotao.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    semResultados.style.display =
+        "none";
+
+
+    const mostrar =
+        lista.slice(
+            0,
+            quantidadeExibida
+        );
+
+
+    mostrar.forEach(
+        video => {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+            card.className =
+                "card";
+
+
+            card.innerHTML = `
+
+                <div class="capa">
+
+                    <img
+                        src="${video.capa}"
+                        alt="${video.titulo}"
+                    >
+
+                    <div class="etiqueta">
+                        ${video.etiqueta}
+                    </div>
+
+                    <button
+                        class="play"
+                        onclick="abrirPreview('${video.preview}')"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+                <div class="info">
+
+                    <div class="titulo">
+                        ${video.titulo}
+                    </div>
+
+                    <div class="descricao">
+                        ${video.descricao}
+                    </div>
+
+                    <div class="preco">
+                        R$ ${video.preco.toFixed(2).replace(".", ",")}
+                    </div>
+
+                    <button
+                        class="comprar"
+                        onclick="comprar(
+                            '${video.id}',
+                            '${video.titulo.replace(/'/g, "\\'")}',
+                            ${video.preco}
+                        )"
+                    >
+                        🛒 Comprar Vídeo
+                    </button>
+
+                </div>
+            `;
+
+
+            galeria.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    if (
+        quantidadeExibida <
+        lista.length
+    ) {
+
+        carregarBotao.style.display =
+            "block";
+
+    } else {
+
+        carregarBotao.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   CARREGAR MAIS
+===================================================== */
+
+function carregarMais() {
+
+    quantidadeExibida +=
+        POR_PAGINA;
+
+    renderizar();
+
+}
+
+
+/* =====================================================
    PREVIEW
-========================== */
+===================================================== */
 
 function abrirPreview(url) {
 
     if (
         !url ||
-        url.includes("URL_PREVIEW")
+        url.includes(
+            "URL_PREVIEW"
+        )
     ) {
 
         alert(
@@ -848,52 +1281,73 @@ function abrirPreview(url) {
 
 
     const video =
-        document.getElementById("preview");
+        document.getElementById(
+            "preview"
+        );
 
 
-    video.src = url;
+    video.src =
+        url;
 
 
     document
-    .getElementById("modal")
-    .classList.add("aberto");
+    .getElementById(
+        "modal"
+    )
+    .classList.add(
+        "aberto"
+    );
 
 
-    video.play().catch(() => {});
+    video.play()
+    .catch(
+        () => {}
+    );
 
 }
 
 
+/* =====================================================
+   FECHAR PREVIEW
+===================================================== */
+
 function fecharPreview() {
 
     const video =
-        document.getElementById("preview");
+        document.getElementById(
+            "preview"
+        );
 
 
     video.pause();
 
-    video.removeAttribute("src");
+    video.removeAttribute(
+        "src"
+    );
 
     video.load();
 
 
     document
-    .getElementById("modal")
-    .classList.remove("aberto");
+    .getElementById(
+        "modal"
+    )
+    .classList.remove(
+        "aberto"
+    );
 
 }
 
 
-/* ==========================
+/* =====================================================
    COMPRAR
-========================== */
+===================================================== */
 
-function comprar(
+async function comprar(
     produtoId,
     produtoNome,
     preco
 ) {
-
 
     const user =
         tg.initDataUnsafe?.user;
@@ -912,15 +1366,20 @@ function comprar(
 
     const pedido = {
 
-        action: "comprar",
+        action:
+            "comprar",
 
-        produto_id: produtoId,
+        produto_id:
+            produtoId,
 
-        produto_nome: produtoNome,
+        produto_nome:
+            produtoNome,
 
-        preco: preco,
+        preco:
+            preco,
 
-        telegram_id: user.id,
+        telegram_id:
+            user.id,
 
         username:
             user.username || "",
@@ -934,28 +1393,59 @@ function comprar(
     };
 
 
-    /*
-      ENVIA O PEDIDO PARA O BOT
-
-      Isso funciona quando o Mini App
-      foi aberto pelo tipo de botão
-      Web App que permite sendData.
-    */
-
     try {
 
-        tg.sendData(
-            JSON.stringify(pedido)
+        alert(
+            "⏳ Enviando pedido..."
         );
 
-        tg.close();
+
+        const resposta =
+            await fetch(
+                WEBHOOK_URL,
+                {
+
+                    method:
+                        "POST",
+
+                    headers:
+                        {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                    body:
+                        JSON.stringify(
+                            pedido
+                        )
+
+                }
+            );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Webhook não respondeu corretamente."
+            );
+
+        }
+
+
+        alert(
+            "✅ Pedido enviado com sucesso!"
+        );
+
 
     } catch (erro) {
 
-        console.log(erro);
+        console.error(
+            erro
+        );
+
 
         alert(
-            "Não foi possível enviar o pedido ao bot."
+            "❌ Não foi possível enviar o pedido. Tente novamente."
         );
 
     }
@@ -963,8 +1453,14 @@ function comprar(
 }
 
 
+/* =====================================================
+   INICIAR
+===================================================== */
+
+renderizar();
+
 </script>
 
 </body>
 
-            </html>
+</html>
