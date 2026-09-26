@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <title>HD VIDEOS POV 💎</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    background:
-        radial-gradient(circle at top, #10243d 0%, #050505 35%);
+    background: radial-gradient(circle at top, #10243d 0%, #050505 35%);
     color: #fff;
     font-family: Arial, sans-serif;
 }
@@ -33,197 +27,94 @@ input {
     font-family: inherit;
 }
 
-/* =========================
-   TOPO
-========================= */
-
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
-
     background: rgba(5,5,5,.96);
-
     backdrop-filter: blur(12px);
-
     padding: 15px;
-
     border-bottom: 1px solid #202020;
 }
 
 .logo {
     text-align: center;
-
     font-size: 23px;
-
     font-weight: 900;
-
     color: #168cff;
-
     margin-bottom: 5px;
 }
 
 .sublogo {
     text-align: center;
-
     color: #777;
-
     font-size: 11px;
-
     margin-bottom: 12px;
 }
 
 .usuario {
     text-align: center;
-
     color: #aaa;
-
     font-size: 13px;
-
     margin-bottom: 12px;
 }
-
-/* =========================
-   PESQUISA
-========================= */
 
 .search {
     position: relative;
 }
 
 .search input {
-
     width: 100%;
-
     height: 50px;
-
     border-radius: 28px;
-
     border: 1px solid #292929;
-
     background: #111;
-
     color: white;
-
     font-size: 15px;
-
     padding: 0 18px 0 48px;
-
     outline: none;
 }
 
-.search input:focus {
-
-    border-color: #168cff;
-
-    box-shadow: 0 0 15px rgba(22,140,255,.15);
-
-}
-
 .search span {
-
     position: absolute;
-
     left: 16px;
-
     top: 13px;
-
     font-size: 20px;
 }
 
-/* =========================
-   BANNER
-========================= */
-
 .banner {
-
     margin: 15px;
-
     padding: 18px;
-
     border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #126fd0,
-            #082b52
-        );
-
+    background: linear-gradient(135deg,#126fd0,#082b52);
     border: 1px solid #248fff;
-
-    box-shadow:
-        0 8px 30px rgba(0,100,255,.18);
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.banner::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-
-    height: 130px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.07);
-
-    right: -40px;
-
-    top: -50px;
+    box-shadow: 0 8px 30px rgba(0,100,255,.18);
 }
 
 .banner-alerta {
-
     font-size: 11px;
-
     font-weight: bold;
-
     color: #bfe2ff;
-
     margin-bottom: 7px;
 }
 
 .banner-titulo {
-
     font-size: 21px;
-
     font-weight: 900;
-
     margin-bottom: 7px;
 }
 
 .banner-texto {
-
     color: #dceeff;
-
     font-size: 13px;
-
     line-height: 1.5;
-
-    max-width: 500px;
 }
 
-/* =========================
-   CATEGORIAS
-========================= */
-
 .categorias {
-
     display: flex;
-
     gap: 8px;
-
     overflow-x: auto;
-
     padding: 0 15px 5px;
-
     scrollbar-width: none;
 }
 
@@ -232,427 +123,276 @@ input {
 }
 
 .categoria {
-
     flex: 0 0 auto;
-
     border: 1px solid #292929;
-
     background: #151515;
-
     color: #ccc;
-
     padding: 9px 15px;
-
     border-radius: 20px;
-
     font-size: 13px;
-
     cursor: pointer;
 }
 
 .categoria.ativa {
-
     background: #168cff;
-
     border-color: #168cff;
-
     color: white;
-
-    box-shadow:
-        0 5px 15px rgba(22,140,255,.25);
 }
 
-/* =========================
-   TITULO DA GALERIA
-========================= */
-
 .secao {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 15px 15px 5px;
 }
 
 .secao h2 {
-
     margin: 0;
-
     font-size: 20px;
 }
 
 .contador {
-
     color: #777;
-
     font-size: 12px;
 }
 
-/* =========================
-   GALERIA
-========================= */
-
 .galeria {
-
-    padding: 10px 15px 20px;
-
+    padding: 10px 15px 130px;
     max-width: 1000px;
-
     margin: auto;
 }
 
-/* =========================
-   CARD
-========================= */
-
 .card {
-
-    background:
-        linear-gradient(
-            145deg,
-            #101615,
-            #090b0a
-        );
-
+    background: linear-gradient(145deg,#101615,#090b0a);
     border: 1px solid #1d2824;
-
     border-radius: 18px;
-
     overflow: hidden;
-
     margin-bottom: 18px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.35);
-
-    transition: .2s;
+    box-shadow: 0 8px 25px rgba(0,0,0,.35);
 }
-
-.card:hover {
-
-    border-color: #275e88;
-
-}
-
-/* =========================
-   CAPA
-========================= */
 
 .capa {
-
     position: relative;
-
     width: 100%;
-
     aspect-ratio: 16 / 9;
-
     background: #000;
-
     overflow: hidden;
 }
 
 .capa img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
 
-/* ETIQUETA */
-
 .etiqueta {
-
     position: absolute;
-
     left: 10px;
-
     top: 10px;
-
     background: #168cff;
-
     color: white;
-
     font-size: 11px;
-
     font-weight: bold;
-
     padding: 6px 9px;
-
     border-radius: 8px;
 }
 
-/* PLAY */
-
 .play {
-
     position: absolute;
-
     left: 50%;
-
     top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
+    transform: translate(-50%,-50%);
     width: 62px;
-
     height: 62px;
-
     border-radius: 50%;
-
     border: 3px solid rgba(255,255,255,.85);
-
     background: rgba(22,140,255,.92);
-
     color: white;
-
     font-size: 25px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.5);
 }
 
-/* =========================
-   INFO
-========================= */
-
 .info {
-
     padding: 15px;
 }
 
 .titulo {
-
     font-size: 18px;
-
     font-weight: 800;
-
     margin-bottom: 7px;
 }
 
 .descricao {
-
     color: #999;
-
     font-size: 13px;
-
     line-height: 1.5;
 }
 
 .preco {
-
     color: #00ef72;
-
-    font-size: 24px;
-
+    font-size: 22px;
     font-weight: 900;
-
     margin: 13px 0;
 }
 
-.comprar {
-
+.selecionar {
     width: 100%;
-
     padding: 14px;
-
     border: none;
-
     border-radius: 11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #168cff,
-            #0064c8
-        );
-
+    background: #151515;
+    border: 1px solid #168cff;
     color: white;
-
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 800;
-
     cursor: pointer;
-
-    box-shadow:
-        0 6px 18px rgba(0,100,255,.2);
 }
 
-.comprar:active {
-
-    transform: scale(.98);
+.selecionar.selecionado {
+    background: linear-gradient(135deg,#168cff,#0064c8);
 }
 
-/* =========================
-   AVISO
-========================= */
+.carregar {
+    display: block;
+    margin: 5px auto 25px;
+    padding: 13px 25px;
+    border-radius: 25px;
+    border: 1px solid #168cff;
+    background: #101820;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sem-resultados {
+    display: none;
+    text-align: center;
+    color: #888;
+    padding: 50px 20px;
+}
 
 .aviso {
-
     margin: 5px 15px 20px;
-
     padding: 14px;
-
     background: #17130b;
-
     border: 1px solid #493b1c;
-
     border-radius: 13px;
-
     color: #bdb39a;
-
     font-size: 11px;
-
     line-height: 1.5;
 }
 
 .aviso strong {
-
     color: #e5d19c;
 }
 
+.footer {
+    text-align: center;
+    color: #666;
+    padding: 30px 20px;
+    font-size: 12px;
+    border-top: 1px solid #151515;
+}
+
 /* =========================
-   CARREGAR MAIS
+   CARRINHO
 ========================= */
 
-.carregar {
-
-    display: block;
-
-    margin: 5px auto 25px;
-
-    padding: 13px 25px;
-
-    border-radius: 25px;
-
+.carrinho {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 500;
+    background: rgba(12,12,12,.97);
     border: 1px solid #168cff;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.65);
+    backdrop-filter: blur(12px);
+}
 
-    background: #101820;
+.carrinho-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
 
-    color: #fff;
+.carrinho-titulo {
+    font-weight: 900;
+    font-size: 15px;
+}
 
-    font-weight: bold;
+.carrinho-total {
+    color: #00ef72;
+    font-size: 20px;
+    font-weight: 900;
+}
 
+.carrinho-info {
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.comprar {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(135deg,#168cff,#0064c8);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
     cursor: pointer;
 }
 
-/* =========================
-   SEM RESULTADO
-========================= */
-
-.sem-resultados {
-
-    display: none;
-
-    text-align: center;
-
-    color: #888;
-
-    padding: 50px 20px;
+.comprar:disabled {
+    opacity: .45;
+    cursor: not-allowed;
 }
 
-/* =========================
-   MODAL
-========================= */
-
 .modal {
-
     display: none;
-
     position: fixed;
-
     inset: 0;
-
     z-index: 999;
-
     background: rgba(0,0,0,.96);
-
     align-items: center;
-
     justify-content: center;
-
     padding: 15px;
 }
 
 .modal.aberto {
-
     display: flex;
 }
 
 .modal video {
-
     width: 100%;
-
     max-height: 80vh;
-
     border-radius: 12px;
-
     background: black;
 }
 
 .fechar {
-
     position: absolute;
-
     right: 15px;
-
     top: 15px;
-
     width: 42px;
-
     height: 42px;
-
     border: none;
-
     border-radius: 50%;
-
     background: #222;
-
     color: white;
-
     font-size: 20px;
-
     z-index: 1000;
 }
-
-/* =========================
-   RODAPE
-========================= */
-
-.footer {
-
-    text-align: center;
-
-    color: #666;
-
-    padding: 30px 20px;
-
-    font-size: 12px;
-
-    border-top: 1px solid #151515;
-}
-
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     TOPO
-========================= -->
 
 <header class="header">
 
@@ -664,105 +404,67 @@ input {
         Conteúdos POV para criadores
     </div>
 
-    <div
-        class="usuario"
-        id="usuario"
-    >
+    <div class="usuario" id="usuario">
         Carregando...
     </div>
 
     <div class="search">
-
         <span>🔎</span>
 
         <input
             id="pesquisa"
             type="text"
-            placeholder="Pesquisar vídeo ou produto..."
+            placeholder="Pesquisar vídeo..."
         >
-
     </div>
 
 </header>
 
-
-<!-- =========================
-     BANNER
-========================= -->
-
 <section class="banner">
 
     <div class="banner-alerta">
-        🚨 ATENÇÃO • NOVIDADES
+        🚨 ESCOLHA SEUS VÍDEOS
     </div>
 
     <div class="banner-titulo">
-        Seja o primeiro a conferir!
+        Monte seu pacote!
     </div>
 
     <div class="banner-texto">
-        Novos vídeos POV são adicionados ao catálogo.
-        Encontre seu conteúdo, confira a prévia e
-        compre seu acesso de forma rápida.
+        Selecione os vídeos que você deseja.
+        O valor é calculado automaticamente de acordo
+        com a quantidade escolhida.
     </div>
 
 </section>
 
-
-<!-- =========================
-     CATEGORIAS
-========================= -->
-
 <div class="categorias">
 
-    <button
-        class="categoria ativa"
-        data-categoria="todos"
-    >
+    <button class="categoria ativa" data-categoria="todos">
         ✨ Todos
     </button>
 
-    <button
-        class="categoria"
-        data-categoria="moda"
-    >
+    <button class="categoria" data-categoria="moda">
         👗 Moda
     </button>
 
-    <button
-        class="categoria"
-        data-categoria="calcados"
-    >
+    <button class="categoria" data-categoria="calcados">
         👟 Calçados
     </button>
 
-    <button
-        class="categoria"
-        data-categoria="beleza"
-    >
+    <button class="categoria" data-categoria="beleza">
         💄 Beleza
     </button>
 
-    <button
-        class="categoria"
-        data-categoria="pov"
-    >
+    <button class="categoria" data-categoria="pov">
         🎥 POV
     </button>
 
-    <button
-        class="categoria"
-        data-categoria="novos"
-    >
+    <button class="categoria" data-categoria="novos">
         🔥 Novos
     </button>
 
 </div>
-
-
-<!-- =========================
-     TITULO
-========================= -->
 
 <div class="secao">
 
@@ -770,52 +472,30 @@ input {
         🎬 Vídeos disponíveis
     </h2>
 
-    <div
-        class="contador"
-        id="contador"
-    >
+    <div class="contador" id="contador">
         0 vídeos
     </div>
 
 </div>
 
-
-<!-- =========================
-     GALERIA
-========================= -->
-
 <main>
 
-<div
-    class="galeria"
-    id="galeria"
-></div>
+    <div class="galeria" id="galeria"></div>
 
+    <div class="sem-resultados" id="semResultados">
+        😕<br><br>
+        Nenhum vídeo encontrado.
+    </div>
 
-<div
-    class="sem-resultados"
-    id="semResultados"
->
-    😕<br><br>
-    Nenhum vídeo encontrado.
-</div>
-
-
-<button
-    class="carregar"
-    id="carregarMais"
-    onclick="carregarMais()"
->
-    ⬇️ Carregar mais vídeos
-</button>
-
+    <button
+        class="carregar"
+        id="carregarMais"
+        onclick="carregarMais()"
+    >
+        ⬇️ Carregar mais vídeos
+    </button>
 
 </main>
-
-
-<!-- =========================
-     AVISO
-========================= -->
 
 <div class="aviso">
 
@@ -828,11 +508,6 @@ input {
 
 </div>
 
-
-<!-- =========================
-     RODAPE
-========================= -->
-
 <footer class="footer">
 
     HD VIDEOS POV 💎<br><br>
@@ -841,15 +516,46 @@ input {
 
 </footer>
 
+<!-- CARRINHO -->
 
-<!-- =========================
-     MODAL
-========================= -->
+<div class="carrinho">
 
-<div
-    class="modal"
-    id="modal"
->
+    <div class="carrinho-topo">
+
+        <div class="carrinho-titulo">
+            🛒 Seu pedido
+        </div>
+
+        <div
+            class="carrinho-total"
+            id="carrinhoTotal"
+        >
+            R$ 0,00
+        </div>
+
+    </div>
+
+    <div
+        class="carrinho-info"
+        id="carrinhoInfo"
+    >
+        Nenhum vídeo selecionado.
+    </div>
+
+    <button
+        class="comprar"
+        id="botaoComprar"
+        onclick="comprarSelecionados()"
+        disabled
+    >
+        🛒 Comprar vídeos selecionados
+    </button>
+
+</div>
+
+<!-- MODAL PREVIEW -->
+
+<div class="modal" id="modal">
 
     <button
         class="fechar"
@@ -866,28 +572,19 @@ input {
 
 </div>
 
-
 <script>
 
 /* =====================================================
    TELEGRAM
 ===================================================== */
 
-const tg =
-    window.Telegram.WebApp;
+const tg = window.Telegram.WebApp;
 
 tg.ready();
-
 tg.expand();
-
-
-/* =====================================================
-   USUÁRIO
-===================================================== */
 
 const telegramUser =
     tg.initDataUnsafe?.user;
-
 
 if (telegramUser) {
 
@@ -895,16 +592,12 @@ if (telegramUser) {
         telegramUser.first_name ||
         "Usuário";
 
-    document.getElementById(
-        "usuario"
-    ).innerText =
+    document.getElementById("usuario").innerText =
         "Olá, " + nome + " 👋";
 
 } else {
 
-    document.getElementById(
-        "usuario"
-    ).innerText =
+    document.getElementById("usuario").innerText =
         "HD VIDEOS POV 💎";
 
 }
@@ -919,14 +612,19 @@ const WEBHOOK_URL =
 
 
 /* =====================================================
-   CATÁLOGO
+   PREÇO POR VÍDEO
 =====================================================
 
-   Para adicionar novos vídeos,
-   você vai colocar novos itens nesta lista.
+   Você pode mudar somente este número.
 
-   O sistema suporta até 200 vídeos
-   sem precisar criar os cards manualmente.
+   9.90 = R$ 9,90 por vídeo.
+===================================================== */
+
+const PRECO_POR_VIDEO = 9.90;
+
+
+/* =====================================================
+   CATÁLOGO
 ===================================================== */
 
 const videos = [
@@ -935,7 +633,6 @@ const videos = [
         id: "video_001",
         titulo: "Vídeo POV - Relógio",
         descricao: "Vídeo POV pronto para divulgação.",
-        preco: 9.90,
         categoria: "pov novos",
         busca: "relogio relógio",
         capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+01",
@@ -947,7 +644,6 @@ const videos = [
         id: "video_002",
         titulo: "Vídeo POV - Tênis",
         descricao: "Vídeo pronto para conteúdo e divulgação.",
-        preco: 9.90,
         categoria: "moda calcados novos",
         busca: "tenis tênis calcado calçado",
         capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+02",
@@ -959,7 +655,6 @@ const videos = [
         id: "video_003",
         titulo: "Vídeo POV - Perfume",
         descricao: "Vídeo POV para produtos de beleza.",
-        preco: 9.90,
         categoria: "beleza pov",
         busca: "perfume beleza",
         capa: "https://placehold.co/800x450/111111/ffffff?text=VIDEO+POV+03",
@@ -971,16 +666,16 @@ const videos = [
 
 
 /* =====================================================
-   CONFIGURAÇÃO DE EXIBIÇÃO
+   CONFIGURAÇÕES
 ===================================================== */
 
 const POR_PAGINA = 10;
 
-let quantidadeExibida =
-    POR_PAGINA;
+let quantidadeExibida = POR_PAGINA;
 
-let categoriaAtual =
-    "todos";
+let categoriaAtual = "todos";
+
+let selecionados = [];
 
 
 /* =====================================================
@@ -988,46 +683,41 @@ let categoriaAtual =
 ===================================================== */
 
 const galeria =
-    document.getElementById(
-        "galeria"
-    );
+    document.getElementById("galeria");
 
 const pesquisa =
-    document.getElementById(
-        "pesquisa"
-    );
+    document.getElementById("pesquisa");
 
 const contador =
-    document.getElementById(
-        "contador"
-    );
+    document.getElementById("contador");
 
 const semResultados =
-    document.getElementById(
-        "semResultados"
-    );
+    document.getElementById("semResultados");
 
 const carregarBotao =
-    document.getElementById(
-        "carregarMais"
-    );
+    document.getElementById("carregarMais");
+
+const carrinhoTotal =
+    document.getElementById("carrinhoTotal");
+
+const carrinhoInfo =
+    document.getElementById("carrinhoInfo");
+
+const botaoComprar =
+    document.getElementById("botaoComprar");
 
 
 /* =====================================================
    PESQUISA
 ===================================================== */
 
-pesquisa.addEventListener(
-    "input",
-    () => {
+pesquisa.addEventListener("input", () => {
 
-        quantidadeExibida =
-            POR_PAGINA;
+    quantidadeExibida = POR_PAGINA;
 
-        renderizar();
+    renderizar();
 
-    }
-);
+});
 
 
 /* =====================================================
@@ -1038,32 +728,25 @@ document
 .querySelectorAll(".categoria")
 .forEach(botao => {
 
-    botao.addEventListener(
-        "click",
-        () => {
+    botao.addEventListener("click", () => {
 
-            document
-            .querySelectorAll(".categoria")
-            .forEach(b =>
-                b.classList.remove(
-                    "ativa"
-                )
-            );
+        document
+        .querySelectorAll(".categoria")
+        .forEach(b =>
+            b.classList.remove("ativa")
+        );
 
-            botao.classList.add(
-                "ativa"
-            );
+        botao.classList.add("ativa");
 
-            categoriaAtual =
-                botao.dataset.categoria;
+        categoriaAtual =
+            botao.dataset.categoria;
 
-            quantidadeExibida =
-                POR_PAGINA;
+        quantidadeExibida =
+            POR_PAGINA;
 
-            renderizar();
+        renderizar();
 
-        }
-    );
+    });
 
 });
 
@@ -1079,40 +762,69 @@ function filtrarVideos() {
         .toLowerCase()
         .trim();
 
-    return videos.filter(
-        video => {
+    return videos.filter(video => {
 
-            const textoOK =
-                !texto ||
-                video.titulo
-                .toLowerCase()
-                .includes(texto) ||
-                video.busca
-                .toLowerCase()
-                .includes(texto);
+        const textoOK =
+            !texto ||
+            video.titulo
+            .toLowerCase()
+            .includes(texto) ||
+            video.busca
+            .toLowerCase()
+            .includes(texto);
 
-            const categoriaOK =
-                categoriaAtual ===
-                "todos" ||
-                video.categoria
-                .toLowerCase()
-                .includes(
-                    categoriaAtual
-                );
+        const categoriaOK =
+            categoriaAtual === "todos" ||
+            video.categoria
+            .toLowerCase()
+            .includes(categoriaAtual);
 
-            return (
-                textoOK &&
-                categoriaOK
-            );
+        return textoOK && categoriaOK;
 
-        }
-    );
+    });
 
 }
 
 
 /* =====================================================
-   RENDERIZAR VÍDEOS
+   VERIFICAR SE ESTÁ SELECIONADO
+===================================================== */
+
+function estaSelecionado(id) {
+
+    return selecionados.includes(id);
+
+}
+
+
+/* =====================================================
+   SELECIONAR / DESSELECIONAR
+===================================================== */
+
+function alternarVideo(id) {
+
+    if (selecionados.includes(id)) {
+
+        selecionados =
+            selecionados.filter(
+                item => item !== id
+            );
+
+    } else {
+
+        selecionados.push(id);
+
+    }
+
+    renderizar();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =====================================================
+   RENDERIZAR
 ===================================================== */
 
 function renderizar() {
@@ -1155,81 +867,76 @@ function renderizar() {
         );
 
 
-    mostrar.forEach(
-        video => {
+    mostrar.forEach(video => {
 
-            const card =
-                document.createElement(
-                    "article"
-                );
+        const selecionado =
+            estaSelecionado(video.id);
 
-            card.className =
-                "card";
+        const card =
+            document.createElement("article");
+
+        card.className = "card";
 
 
-            card.innerHTML = `
+        card.innerHTML = `
 
-                <div class="capa">
+            <div class="capa">
 
-                    <img
-                        src="${video.capa}"
-                        alt="${video.titulo}"
-                    >
+                <img
+                    src="${video.capa}"
+                    alt="${video.titulo}"
+                >
 
-                    <div class="etiqueta">
-                        ${video.etiqueta}
-                    </div>
-
-                    <button
-                        class="play"
-                        onclick="abrirPreview('${video.preview}')"
-                    >
-                        ▶
-                    </button>
-
+                <div class="etiqueta">
+                    ${video.etiqueta}
                 </div>
 
-                <div class="info">
+                <button
+                    class="play"
+                    onclick="abrirPreview('${video.preview}')"
+                >
+                    ▶
+                </button>
 
-                    <div class="titulo">
-                        ${video.titulo}
-                    </div>
+            </div>
 
-                    <div class="descricao">
-                        ${video.descricao}
-                    </div>
+            <div class="info">
 
-                    <div class="preco">
-                        R$ ${video.preco.toFixed(2).replace(".", ",")}
-                    </div>
-
-                    <button
-                        class="comprar"
-                        onclick="comprar(
-                            '${video.id}',
-                            '${video.titulo.replace(/'/g, "\\'")}',
-                            ${video.preco}
-                        )"
-                    >
-                        🛒 Comprar Vídeo
-                    </button>
-
+                <div class="titulo">
+                    ${video.titulo}
                 </div>
-            `;
+
+                <div class="descricao">
+                    ${video.descricao}
+                </div>
+
+                <div class="preco">
+                    R$ ${PRECO_POR_VIDEO
+                        .toFixed(2)
+                        .replace(".", ",")}
+                </div>
+
+                <button
+                    class="selecionar ${selecionado ? "selecionado" : ""}"
+                    onclick="alternarVideo('${video.id}')"
+                >
+                    ${
+                        selecionado
+                        ? "✅ Vídeo selecionado"
+                        : "➕ Selecionar vídeo"
+                    }
+                </button>
+
+            </div>
+        `;
 
 
-            galeria.appendChild(
-                card
-            );
+        galeria.appendChild(card);
 
-        }
-    );
+    });
 
 
-    if (
-        quantidadeExibida <
-        lista.length
-    ) {
+    if (quantidadeExibida < lista.length) {
 
         carregarBotao.style.display =
             "block";
@@ -1250,8 +957,7 @@ function renderizar() {
 
 function carregarMais() {
 
-    quantidadeExibida +=
-        POR_PAGINA;
+    quantidadeExibida += POR_PAGINA;
 
     renderizar();
 
@@ -1259,95 +965,64 @@ function carregarMais() {
 
 
 /* =====================================================
-   PREVIEW
+   ATUALIZAR CARRINHO
 ===================================================== */
 
-function abrirPreview(url) {
+function atualizarCarrinho() {
 
-    if (
-        !url ||
-        url.includes(
-            "URL_PREVIEW"
-        )
-    ) {
+    const quantidade =
+        selecionados.length;
 
-        alert(
-            "A prévia deste vídeo ainda não foi configurada."
-        );
+    const total =
+        quantidade *
+        PRECO_POR_VIDEO;
+
+
+    carrinhoTotal.innerText =
+        "R$ " +
+        total
+        .toFixed(2)
+        .replace(".", ",");
+
+
+    if (quantidade === 0) {
+
+        carrinhoInfo.innerText =
+            "Nenhum vídeo selecionado.";
+
+        botaoComprar.disabled =
+            true;
 
         return;
 
     }
 
 
-    const video =
-        document.getElementById(
-            "preview"
-        );
+    carrinhoInfo.innerText =
+        quantidade +
+        (
+            quantidade === 1
+            ? " vídeo selecionado"
+            : " vídeos selecionados"
+        ) +
+        " • R$ " +
+        PRECO_POR_VIDEO
+        .toFixed(2)
+        .replace(".", ",") +
+        " por vídeo";
 
 
-    video.src =
-        url;
-
-
-    document
-    .getElementById(
-        "modal"
-    )
-    .classList.add(
-        "aberto"
-    );
-
-
-    video.play()
-    .catch(
-        () => {}
-    );
+    botaoComprar.disabled =
+        false;
 
 }
 
 
 /* =====================================================
-   FECHAR PREVIEW
+   COMPRAR SELECIONADOS
 ===================================================== */
 
-function fecharPreview() {
-
-    const video =
-        document.getElementById(
-            "preview"
-        );
-
-
-    video.pause();
-
-    video.removeAttribute(
-        "src"
-    );
-
-    video.load();
-
-
-    document
-    .getElementById(
-        "modal"
-    )
-    .classList.remove(
-        "aberto"
-    );
-
-}
-
-
-/* =====================================================
-   COMPRAR
-===================================================== */
-
-async function comprar(
-    produtoId,
-    produtoNome,
-    preco
-) {
+async function comprarSelecionados() {
 
     const user =
         tg.initDataUnsafe?.user;
@@ -1364,19 +1039,52 @@ async function comprar(
     }
 
 
+    if (selecionados.length === 0) {
+
+        alert(
+            "Selecione pelo menos 1 vídeo."
+        );
+
+        return;
+
+    }
+
+
+    const produtos =
+        selecionados
+        .map(id =>
+            videos.find(
+                video => video.id === id
+            )
+        )
+        .filter(Boolean);
+
+
+    const quantidade =
+        produtos.length;
+
+
+    const total =
+        quantidade *
+        PRECO_POR_VIDEO;
+
+
     const pedido = {
 
         action:
             "comprar",
 
-        produto_id:
-            produtoId,
+        quantidade:
+            quantidade,
 
-        produto_nome:
-            produtoNome,
+        preco_unitario:
+            PRECO_POR_VIDEO,
 
-        preco:
-            preco,
+        total:
+            Number(total.toFixed(2)),
+
+        moeda:
+            "BRL",
 
         telegram_id:
             user.id,
@@ -1388,16 +1096,28 @@ async function comprar(
             user.first_name || "",
 
         initData:
-            tg.initData
+            tg.initData,
+
+        produtos:
+            produtos.map(video => ({
+
+                produto_id:
+                    video.id,
+
+                produto_nome:
+                    video.titulo
+
+            }))
 
     };
 
 
     try {
 
-        alert(
-            "⏳ Enviando pedido..."
-        );
+        botaoComprar.disabled = true;
+
+        botaoComprar.innerText =
+            "⏳ Enviando pedido...";
 
 
         const resposta =
@@ -1405,19 +1125,15 @@ async function comprar(
                 WEBHOOK_URL,
                 {
 
-                    method:
-                        "POST",
+                    method: "POST",
 
-                    headers:
-                        {
-                            "Content-Type":
-                                "application/json"
-                        },
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
                     body:
-                        JSON.stringify(
-                            pedido
-                        )
+                        JSON.stringify(pedido)
 
                 }
             );
@@ -1433,22 +1149,90 @@ async function comprar(
 
 
         alert(
-            "✅ Pedido enviado com sucesso!"
+            "✅ Pedido enviado!\n\n" +
+            "Vídeos: " +
+            quantidade +
+            "\nTotal: R$ " +
+            total
+            .toFixed(2)
+            .replace(".", ",")
         );
 
 
     } catch (erro) {
 
-        console.error(
-            erro
-        );
-
+        console.error(erro);
 
         alert(
             "❌ Não foi possível enviar o pedido. Tente novamente."
         );
 
     }
+
+
+    atualizarCarrinho();
+
+    botaoComprar.innerText =
+        "🛒 Comprar vídeos selecionados";
+
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+function abrirPreview(url) {
+
+    if (
+        !url ||
+        url.includes("URL_PREVIEW")
+    ) {
+
+        alert(
+            "A prévia deste vídeo ainda não foi configurada."
+        );
+
+        return;
+
+    }
+
+
+    const video =
+        document.getElementById("preview");
+
+    video.src = url;
+
+
+    document
+    .getElementById("modal")
+    .classList.add("aberto");
+
+
+    video.play().catch(() => {});
+
+}
+
+
+/* =====================================================
+   FECHAR PREVIEW
+===================================================== */
+
+function fecharPreview() {
+
+    const video =
+        document.getElementById("preview");
+
+    video.pause();
+
+    video.removeAttribute("src");
+
+    video.load();
+
+
+    document
+    .getElementById("modal")
+    .classList.remove("aberto");
 
 }
 
@@ -1459,8 +1243,9 @@ async function comprar(
 
 renderizar();
 
+atualizarCarrinho();
+
 </script>
 
 </body>
-
 </html>
