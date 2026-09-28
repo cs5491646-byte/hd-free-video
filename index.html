@@ -684,6 +684,26 @@ color:#00ef72;
 font-size:17px
 }
 
+.btnBaixarVideo{
+display:none;
+width:100%;
+height:48px;
+margin-top:14px;
+border:0;
+border-radius:11px;
+background:linear-gradient(135deg,#00c853,#009624);
+color:#fff;
+font-size:15px;
+font-weight:900;
+text-decoration:none;
+align-items:center;
+justify-content:center
+}
+
+.btnBaixarVideo.aberto{
+display:flex
+}
+
 .reservaAviso{
 display:none;
 margin-top:10px;
@@ -904,6 +924,15 @@ Não haverá redirecionamento para o Mercado Pago.
 <strong>✅ Pagamento confirmado!</strong>
 <br><br>
 Seu pagamento foi confirmado.
+
+<a
+id="btnBaixarVideo"
+class="btnBaixarVideo"
+href="#"
+download>
+⬇️ BAIXAR VÍDEO
+</a>
+
 </div>
 
 </div>
@@ -934,11 +963,16 @@ const WEBHOOK_URL=
 "https://hook.us2.make.com/5fjkpgbtcrpf6xo7motrnaxak1xvb7aa";
 
 
-/*
-  QUANDO CRIARMOS O WEBHOOK DE CONSULTA DO PAGAMENTO
-  COLOQUE A URL AQUI.
+/* WEBHOOK DE CONSULTA E ENTREGA DO VÍDEO */
+const VIDEO_WEBHOOK_URL=
+"https://hook.us2.make.com/npsekoueyaqdjgp38rackybnjea3md6x";
 
-  Por enquanto deixamos vazio para não inventar uma URL.
+
+/*
+  WEBHOOK DE STATUS ANTIGO.
+
+  Mantido aqui para não alterar
+  o restante da estrutura original.
 */
 const STATUS_WEBHOOK_URL="";
 
@@ -1615,6 +1649,12 @@ document.getElementById("reservaAviso")
 document.getElementById("pagamentoSucesso")
 .classList.remove("aberto");
 
+document.getElementById("btnBaixarVideo")
+.classList.remove("aberto");
+
+document.getElementById("btnBaixarVideo")
+.removeAttribute("href");
+
 document.getElementById("pixStatus").textContent=
 "⏳ Aguardando pagamento...";
 
@@ -1868,7 +1908,7 @@ document.getElementById("pixStatus").textContent=
 
 
 /*
-  Guarda o ID para uma futura consulta de status.
+  Guarda o ID para a consulta e entrega.
 */
 
 window.pagamentoAtual={
@@ -1877,17 +1917,23 @@ payment_id:resposta.payment_id,
 
 status:resposta.status,
 
-produtos:carrinho.map(x=>x.id)
+produtos:carrinho.map(x=>x.id),
+
+produtosDetalhes:carrinho.map(x=>({
+
+produto_id:x.id,
+
+produto_nome:x.titulo,
+
+preco:x.preco
+
+}))
 
 };
 
 
 /*
-  O status recebido na criação NÃO significa
-  que o pagamento já foi pago.
-
-  Por enquanto mostramos o Pix e aguardamos
-  a confirmação pelo backend.
+  Inicia a consulta no segundo webhook.
 */
 
 iniciarConsultaPagamento();
@@ -1963,13 +2009,25 @@ alert("✅ Pix Copia e Cola copiado!");
 
 
 /*
-  CONSULTA DE PAGAMENTO
+  CONSULTA DE PAGAMENTO + ENTREGA
 
-  Quando criarmos o segundo webhook do Make,
-  coloque a URL em STATUS_WEBHOOK_URL.
+  O segundo webhook recebe o payment_id
+  e os produtos comprados.
 
-  Até lá o pagamento continua aparecendo
-  como "aguardando confirmação".
+  Enquanto não estiver aprovado,
+  o Make deve responder:
+
+  {
+    "status":"pending"
+  }
+
+  Quando estiver aprovado e o vídeo
+  estiver disponível, deve responder:
+
+  {
+    "status":"approved",
+    "video_url":"LINK_DO_VIDEO"
+  }
 */
 
 let intervaloPagamento=null;
@@ -1982,7 +2040,7 @@ clearInterval(intervaloPagamento);
 
 }
 
-if(!STATUS_WEBHOOK_URL){
+if(!VIDEO_WEBHOOK_URL){
 
 return;
 
@@ -2009,15 +2067,37 @@ return;
 
 try{
 
-const url=
-STATUS_WEBHOOK_URL+
-"?payment_id="+
-encodeURIComponent(
-window.pagamentoAtual.payment_id
-);
-
 const r=
-await fetch(url);
+await fetch(
+VIDEO_WEBHOOK_URL,
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+payment_id:
+window.pagamentoAtual.payment_id,
+
+telegram_id:
+telegramUser?.id||"",
+
+username:
+telegramUser?.username||"",
+
+produtos:
+window.pagamentoAtual.produtos,
+
+produtos_detalhes:
+window.pagamentoAtual.produtosDetalhes
+
+})
+
+}
+);
 
 if(!r.ok){
 
@@ -2028,7 +2108,11 @@ return;
 const data=
 await r.json();
 
-if(data.status==="approved"||data.status==="paid"){
+
+if(
+data.status==="approved"||
+data.status==="paid"
+){
 
 clearInterval(intervaloPagamento);
 
@@ -2041,12 +2125,38 @@ document.getElementById("reservaAviso")
 document.getElementById("pagamentoSucesso")
 .classList.add("aberto");
 
+
+/*
+  Pega o endereço do vídeo
+  retornado pelo segundo webhook.
+*/
+
+const videoUrl=
+data.video_url||
+data.url||
+data.video||
+"";
+
+
+if(videoUrl){
+
+const botaoDownload=
+document.getElementById("btnBaixarVideo");
+
+botaoDownload.href=videoUrl;
+
+botaoDownload.download="video.mp4";
+
+botaoDownload.classList.add("aberto");
+
+}
+
 }
 
 }catch(e){
 
 console.log(
-"Consulta de pagamento:",
+"Consulta/entrega do vídeo:",
 e
 );
 
